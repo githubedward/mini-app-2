@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import LoginSignup from "./presentationals/LoginSignup";
 
-const RegAuth = () => {
-  return <div />;
-};
+export default class index extends Component {
+  render() {
+    return <LoginSignup />;
+  }
+}
 
-export default RegAuth;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {};
