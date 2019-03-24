@@ -13,7 +13,7 @@ export const darkgray = "#888888";
 export const gray = "#B4B4B4";
 export const lightgray = "#F1F1F1";
 export const extralightgray = "#F8F8F8";
-export const blue = "#2577fc";
+export const blue = "#2694E0";
 
 // animations
 export const appear = keyframes`
