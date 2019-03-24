@@ -3,13 +3,15 @@ import * as styleGuides from "../../shared/styleGuides";
 import { FlexContainer } from "../../shared/styles";
 
 export const Form = styled.form`
-  width: inherit;
   flex-direction: ${p => p.direction};
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: inherit;
   padding: ${p => (p.big && "2.5rem") || "1rem"};
   margin: ${p => p.margin};
+
   background-color: ${p => (p.solid ? "white" : "#FFFFFF00")};
   border: ${p => p.solid && `2px solid ${styleGuides.lightgray}`};
   /* border-radius: ${p => p.solid && "10px 10px 0 0"}; */
@@ -18,6 +20,7 @@ export const Form = styled.form`
 export const FormBlock = styled(FlexContainer)`
   align-items: baseline;
   flex-direction: ${p => (p.column ? "column" : "row")};
+
   margin: 0.25rem;
   width: ${p => p.big && "100%"};
 `;
@@ -26,8 +29,10 @@ export const Label = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: ${p => p.fontSize || "1rem"};
   font-weight: ${p => p.fontWeight || styleGuides.lighter};
+
   width: ${p => p.width || "inherit"};
   margin: ${p => p.margin};
   color: ${styleGuides.darkgray};
@@ -45,16 +50,17 @@ export const H2 = styled.h1`
 `;
 
 export const Input = styled.input`
-  color: ${styleGuides.superdarkgray};
   width: ${p => p.big && "100%"};
   margin-top: 0.25rem;
   padding: 0 0 0 0.5rem;
+
+  color: ${styleGuides.superdarkgray};
   font-size: ${p => (p.big ? "1.5rem" : ".95rem")};
   font-weight: ${styleGuides.light};
   height: ${p => (p.big ? "3rem" : "1.75rem")};
   border: ${p =>
-    `1px solid ${(p.big && `${styleGuides.lightgray}`) ||
-      `${styleGuides.gray}`}`};
+    `1px solid 
+   ${p.border || (!p.big && styleGuides.gray) || styleGuides.lightgray}`};
   outline: 1;
   appearance: ${p => p.appearance};
   border-radius: ${p => p.big && "5px"};
@@ -99,8 +105,8 @@ export const signupBtn = {
   color: "white",
   fontSize: "1.5rem",
   padding: "0rem 1rem",
-  borderColor: styleGuides.lightred,
-  bgc: styleGuides.lightred,
+  borderColor: styleGuides.blue,
+  bgc: styleGuides.blue,
   hoverbgc: styleGuides.red,
   height: "3rem",
   hoverbc: styleGuides.red

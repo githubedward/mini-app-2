@@ -1,0 +1,22 @@
+.error-left {
+  color: #fff !important;
+  background-color: #f3615c !important;
+}
+
+.error-left.place-left:after {
+  border-left-color: #f3615c !important;
+  border-left-style: solid !important;
+  border-left-width: 6px !important;
+}
+
+.error-top {
+  color: #fff !important;
+  background-color: #f3615c !important;
+}
+
+.error-top.place-top:after {
+  border-top-color: #f3615c !important;
+  border-top-style: solid !important;
+  border-top-width: 6px !important;
+}
+/*# sourceMappingURL=tooltip.css.map */

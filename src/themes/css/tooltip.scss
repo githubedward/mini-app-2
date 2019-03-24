@@ -1,0 +1,28 @@
+$color: #f3615c;
+
+@mixin error($color, $bgcolor) {
+  color: $color !important;
+  background-color: $bgcolor !important;
+}
+
+.error-left {
+  @include error(#fff, $color);
+  &.place-left {
+    &:after {
+      border-left-color: $color !important;
+      border-left-style: solid !important;
+      border-left-width: 6px !important;
+    }
+  }
+}
+
+.error-top {
+  @include error(#fff, $color);
+  &.place-top {
+    &:after {
+      border-top-color: $color !important;
+      border-top-style: solid !important;
+      border-top-width: 6px !important;
+    }
+  }
+}

@@ -1,21 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import {
-  Form,
-  FormBlock,
-  // Label,
-  Input,
-  ErrorBlock,
-  Span,
-  signupBtn,
-  H2
-} from "./styles";
+import { Form, FormBlock, Input, ErrorBlock, signupBtn, H2 } from "./styles";
 import ThemedButton from "../../shared/Button";
-import validate from "./validate";
 import ReactTooltip from "react-tooltip";
-// import * as styleGuides from "../../shared/styleGuides";
-import styles from "../../../themes/tooltip.css";
+import validate from "./validate";
+import ErrorIcon from "../../shared/ErrorIcon";
+import * as styleGuides from "../../shared/styleGuides";
+import "../../../themes/css/tooltip.css";
 
 const renderField = ({
   input,
@@ -28,30 +20,27 @@ const renderField = ({
   <FormBlock column big>
     <Input
       big
+      border={touched && error && styleGuides.lightred}
       id={id}
       {...input}
       placeholder={placeholder}
       type={type}
-      data-tip={(touched && (error && tooltip)) || null}
+      data-tip={(error && tooltip) || null}
       data-for={id}
-      data-event={"blur"}
     />
     {touched &&
       (error && (
         <ReactTooltip
-          className={"errorTheme"}
+          className="error-left"
           id={id}
           place="left"
-          // type="error"
           effect="solid"
           getContent={dataTip => (
             <ErrorBlock>{`What's your ${dataTip}?`}</ErrorBlock>
           )}
         />
       ))}
-    {/* <ErrorBlock>
-      {touched && (error && <Span color="red">{error}</Span>)}
-    </ErrorBlock> */}
+    <ErrorIcon />
   </FormBlock>
 );
 

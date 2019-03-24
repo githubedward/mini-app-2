@@ -12,6 +12,9 @@ import {
 } from "./styles";
 import ThemedButton from "../../shared/Button";
 import validate from "./validate";
+import ReactTooltip from "react-tooltip";
+import * as styleGuides from "../../shared/styleGuides";
+import "../../../themes/css/tooltip.css";
 
 const renderField = ({
   input,
@@ -19,6 +22,7 @@ const renderField = ({
   type,
   placeholder,
   id,
+  tooltip,
   meta: { asyncValidating, touched, error }
 }) => (
   <FormBlock column>
@@ -29,10 +33,21 @@ const renderField = ({
       {...input}
       placeholder={placeholder}
       type={type}
+      data-tip={(error && tooltip) || null}
+      data-for={id}
     />
-    <ErrorBlock>
-      {touched && (error && <Span color="red">{error}</Span>)}
-    </ErrorBlock>
+    {touched &&
+      (error && (
+        <ReactTooltip
+          className={type === "password" ? "error-top" : "error-left"}
+          id={id}
+          place={type === "password" ? "top" : "left"}
+          effect="solid"
+          getContent={dataTip => (
+            <ErrorBlock>{`What's your ${dataTip}?`}</ErrorBlock>
+          )}
+        />
+      ))}
   </FormBlock>
 );
 
@@ -42,14 +57,16 @@ const LoginForm = props => {
     <Form onSubmit={handleSubmit} solid>
       <Field
         name="username"
-        id="username"
+        tooltip="username"
+        id="username-login"
         type="text"
         label="Username"
         component={renderField}
       />
       <Field
         name="password"
-        id="password"
+        tooltip="password"
+        id="password-login"
         type="password"
         label="Password"
         component={renderField}
