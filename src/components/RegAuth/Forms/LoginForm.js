@@ -11,6 +11,7 @@ import {
   loginBtn
 } from "./styles";
 import ThemedButton from "../../shared/Button";
+import validate from "./validate";
 
 const renderField = ({
   input,
@@ -71,6 +72,6 @@ LoginForm.defaultProps = {
 };
 
 export default reduxForm({
-  form: "login form"
-  // validate
+  form: "login form",
+  validate
 })(LoginForm);

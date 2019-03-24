@@ -12,20 +12,46 @@ import {
   H2
 } from "./styles";
 import ThemedButton from "../../shared/Button";
+import validate from "./validate";
+import ReactTooltip from "react-tooltip";
 // import * as styleGuides from "../../shared/styleGuides";
+import styles from "../../../themes/tooltip.css";
 
 const renderField = ({
   input,
   type,
   placeholder,
   id,
+  tooltip,
   meta: { asyncValidating, touched, error }
 }) => (
   <FormBlock column big>
-    <Input big id={id} {...input} placeholder={placeholder} type={type} />
-    <ErrorBlock>
+    <Input
+      big
+      id={id}
+      {...input}
+      placeholder={placeholder}
+      type={type}
+      data-tip={(touched && (error && tooltip)) || null}
+      data-for={id}
+      data-event={"blur"}
+    />
+    {touched &&
+      (error && (
+        <ReactTooltip
+          className={"errorTheme"}
+          id={id}
+          place="left"
+          // type="error"
+          effect="solid"
+          getContent={dataTip => (
+            <ErrorBlock>{`What's your ${dataTip}?`}</ErrorBlock>
+          )}
+        />
+      ))}
+    {/* <ErrorBlock>
       {touched && (error && <Span color="red">{error}</Span>)}
-    </ErrorBlock>
+    </ErrorBlock> */}
   </FormBlock>
 );
 
@@ -38,7 +64,8 @@ const SignupForm = props => {
       </H2>
       <Field
         name="fullname"
-        id="fullname"
+        tooltip="full name"
+        id="fullname-signup"
         type="text"
         label="Full Name"
         placeholder="Full Name"
@@ -46,7 +73,8 @@ const SignupForm = props => {
       />
       <Field
         name="username"
-        id="username"
+        tooltip="username"
+        id="username-signup"
         type="text"
         label="Username"
         placeholder="Username"
@@ -54,7 +82,8 @@ const SignupForm = props => {
       />
       <Field
         name="password"
-        id="password"
+        tooltip="password"
+        id="password-signup"
         type="password"
         label="Password"
         placeholder="Password"
@@ -78,6 +107,6 @@ SignupForm.defaultProps = {
 };
 
 export default reduxForm({
-  form: "signup form"
-  // validate
+  form: "signup form",
+  validate
 })(SignupForm);

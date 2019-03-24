@@ -48,7 +48,7 @@ export const Input = styled.input`
   color: ${styleGuides.superdarkgray};
   width: ${p => p.big && "100%"};
   margin-top: 0.25rem;
-  padding: 0 0 0 0.25rem;
+  padding: 0 0 0 0.5rem;
   font-size: ${p => (p.big ? "1.5rem" : ".95rem")};
   font-weight: ${styleGuides.light};
   height: ${p => (p.big ? "3rem" : "1.75rem")};
@@ -58,12 +58,12 @@ export const Input = styled.input`
   outline: 1;
   appearance: ${p => p.appearance};
   border-radius: ${p => p.big && "5px"};
-  background-color: ${p => p.big && `rgba(256, 256, 256, 0.7)`};
+  /* background-color: ${p => p.big && `rgba(256, 256, 256, 0.7)`}; */
 
   &:focus {
     outline: none;
-    background-color: ${p =>
-      (p.big && styleGuides.extralightgray) || styleGuides.lightgray};
+    /* background-color: ${p =>
+      (p.big && styleGuides.extralightgray) || styleGuides.lightgray}; */
     /* border: ${p => p.big && `1px solid ${styleGuides.lightred}`}; */
     border: 1px solid ${styleGuides.lightred};
   }
@@ -77,6 +77,7 @@ export const Input = styled.input`
 
 export const ErrorBlock = styled.div`
   text-align: center;
+  /* background-color: ${styleGuides.red}; */
 `;
 
 export const loginBtn = {
