@@ -21,7 +21,7 @@ export const FormBlock = styled(FlexContainer)`
   align-items: baseline;
   flex-direction: ${p => (p.column ? "column" : "row")};
 
-  margin: 0.25rem;
+  margin: ${p => p.big && `.5rem` || `0 0.25rem`};
   width: ${p => p.big && "100%"};
 `;
 
@@ -51,7 +51,7 @@ export const H2 = styled.h1`
 
 export const Input = styled.input`
   width: ${p => p.big && "100%"};
-  margin-top: 0.25rem;
+  /* margin: 0.25rem 0; */
   padding: 0 0 0 0.5rem;
 
   color: ${styleGuides.superdarkgray};
@@ -87,7 +87,7 @@ export const ErrorBlock = styled.div`
 `;
 
 export const loginBtn = {
-  margin: "1.5rem .5rem 0 1rem",
+  margin: "1rem .5rem 0 1rem",
   color: styleGuides.darkgray,
   fontSize: "1rem",
   padding: "0rem 1rem",

@@ -26,7 +26,7 @@ const Button = styled.button`
 
   &:hover {
     background: ${p => (p.disabled && "none") || p.theme.hoverbgc};
-    transition: 0.2s;
+    transition: 0.1s;
     border: 1px solid ${p => (p.disabled && "none") || p.theme.hoverbc};
     color: ${p => (p.disabled && "none") || p.theme.hovercolor};
   }
@@ -36,9 +36,9 @@ const Button = styled.button`
   }
 
   &:active {
-    background-color: ${p => p.theme.bgc};
-    border: 1px solid ${p => p.theme.borderColor};
-    color: ${p => p.theme.color};
+    background-color: ${styleGuides.extralightgray};
+    border: 1px solid ${styleGuides.lightred};
+    color: ${styleGuides.lightred};
   }
 `;
 
