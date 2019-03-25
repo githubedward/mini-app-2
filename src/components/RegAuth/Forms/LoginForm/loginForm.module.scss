@@ -1,5 +1,5 @@
-@import "../../../shared/styles/mixins/mixins.scss";
-@import "../../../shared/styles/style-guides/style-guides.scss";
+@import "../../../style-helpers/mixins.scss";
+@import "../../../style-helpers/style-guides.scss";
 
 .form {
   @include flex-center;
@@ -7,4 +7,45 @@
   padding: 1rem;
   background-color: white;
   border: $lightgray;
+}
+
+.label {
+  align-items: baseline;
+  font-size: 1rem;
+  font-weight: $fw-light;
+  color: $darkgray;
+  width: 100%;
+}
+
+.input {
+  padding: 0 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: $fw-light;
+  height: 1.75rem;
+
+  border: 1px solid $gray;
+  outline: 1;
+  color: $superdarkgray;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $lightred;
+  }
+}
+
+$btn-style: (
+  height: 2rem,
+  width: auto,
+  font-size: 1rem,
+  padding: 0rem 1rem,
+  border: $gray,
+  bg: white,
+  hover-bg: $lightred,
+  hover-border: $lightred,
+  hover-color: white,
+  color: $darkgray
+);
+
+.btn {
+  @include button($btn-style...);
 }

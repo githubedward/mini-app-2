@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import { Form, FormBlock, Input, ErrorBlock, signupBtn, H2 } from "./styles";
-import ThemedButton from "../../shared/Button";
 import ReactTooltip from "react-tooltip";
-import validate from "./validate";
-import ErrorIcon from "../../shared/ErrorIcon";
-import * as styleGuides from "../../shared/styleGuides";
-import "../../shared/styles/tooltip/tooltip.css";
+import validate from "../helpers/validate";
+import "../../../style-helpers/tooltip.css";
+import styles from "./SignupForm.module.css";
 
 const renderField = ({
   input,
@@ -17,10 +14,9 @@ const renderField = ({
   tooltip,
   meta: { asyncValidating, touched, error }
 }) => (
-  <FormBlock column big>
-    <Input
-      big
-      border={touched && error && styleGuides.lightred}
+  <label className={styles.label}>
+    <input
+      className={styles.input}
       id={id}
       {...input}
       placeholder={placeholder}
@@ -35,22 +31,19 @@ const renderField = ({
           id={id}
           place="left"
           effect="solid"
-          getContent={dataTip => (
-            <ErrorBlock>{`What's your ${dataTip}?`}</ErrorBlock>
-          )}
+          getContent={dataTip => <div>{`What's your ${dataTip}?`}</div>}
         />
       ))}
-    {/* <ErrorIcon /> */}
-  </FormBlock>
+  </label>
 );
 
 const SignupForm = props => {
   const { handleSubmit /* , pristine, submitting */ } = props;
   return (
-    <Form onSubmit={handleSubmit} direction="column" big>
-      <H2>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <h1 className={styles.h1}>
         <strong>Signup</strong> to explore new experiences
-      </H2>
+      </h1>
       <Field
         name="fullname"
         tooltip="full name"
@@ -78,8 +71,10 @@ const SignupForm = props => {
         placeholder="Password"
         component={renderField}
       />
-      <ThemedButton theme={signupBtn} name="Signup" type="submit" />
-    </Form>
+      <button className={styles.button} type="submit">
+        Signup
+      </button>
+    </form>
   );
 };
 

@@ -1,0 +1,54 @@
+@import "./style-guides.scss";
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin full-page {
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin button(
+  $height,
+  $width,
+  $font-size,
+  $padding,
+  $bg: $lightred,
+  $border: $lightred,
+  $color: white,
+  $hover-bg: white,
+  $hover-border: $lightred,
+  $hover-color: $lightred
+) {
+  @include flex-center();
+  height: $height;
+  width: $width;
+  font-size: $font-size;
+  padding: $padding;
+  background-color: $bg;
+  border: 1px solid $border;
+  border-radius: 3px;
+  text-decoration: none;
+  color: $color;
+
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.1s;
+    background: $hover-bg;
+    border: 1px solid $hover-border;
+    color: $hover-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: $bg;
+    border: 1px solid $border;
+  }
+}

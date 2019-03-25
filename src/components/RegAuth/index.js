@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RegAuth from "./container/RegAuth";
+import RegAuth from "./Forms/RegAuth";
 
 export default class index extends Component {
   render() {

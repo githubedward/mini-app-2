@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import RegAuth from "./components/RegAuth/index";
-import GlobalStyle from "./themes/GlobalStyle";
+import RegAuth from "./RegAuth/index";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <GlobalStyle />
         <RegAuth />
       </div>
     );

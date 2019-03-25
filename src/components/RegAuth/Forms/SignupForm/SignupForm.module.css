@@ -1,0 +1,116 @@
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+  border: #f1f1f1;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #888888;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.h1 {
+  color: #888888;
+  font-weight: 100;
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  height: 3rem;
+  border: 1px solid #f1f1f1;
+  outline: 1;
+  color: #333333;
+  border-radius: 5px;
+}
+
+.input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #b4b4b4;
+  font-size: 1.25rem;
+}
+
+.input:-ms-input-placeholder {
+  font-weight: 100;
+  color: #b4b4b4;
+  font-size: 1.25rem;
+}
+
+.input::-ms-input-placeholder {
+  font-weight: 100;
+  color: #b4b4b4;
+  font-size: 1.25rem;
+}
+
+.input::placeholder {
+  font-weight: 100;
+  color: #b4b4b4;
+  font-size: 1.25rem;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #ee4943;
+}
+
+.button {
+  margin-top: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+  width: 100%;
+  font-size: 1.75rem;
+  padding: 0rem 1rem;
+  background-color: #ee4943;
+  border: 1px solid #ee4943;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  background: red;
+  border: 1px solid #ee4943;
+  color: white;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  background-color: #ee4943;
+  border: 1px solid #ee4943;
+}
+/*# sourceMappingURL=SignupForm.module.css.map */

@@ -13,4 +13,68 @@
   background-color: white;
   border: #f1f1f1;
 }
-/*# sourceMappingURL=loginForm.module.css.map */
+
+.label {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #888888;
+  width: 100%;
+}
+
+.input {
+  padding: 0 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  height: 1.75rem;
+  border: 1px solid #b4b4b4;
+  outline: 1;
+  color: #333333;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #ee4943;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2rem;
+  width: auto;
+  font-size: 1rem;
+  padding: 0rem 1rem;
+  background-color: white;
+  border: 1px solid #b4b4b4;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #888888;
+  cursor: pointer;
+}
+
+.btn:hover {
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  background: #ee4943;
+  border: 1px solid #ee4943;
+  color: white;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  background-color: white;
+  border: 1px solid #b4b4b4;
+}
+/*# sourceMappingURL=LoginForm.module.css.map */

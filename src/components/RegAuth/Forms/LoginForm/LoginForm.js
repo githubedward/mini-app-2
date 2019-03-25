@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import validate from "../validate";
+import validate from "../helpers/validate";
 import ReactTooltip from "react-tooltip";
-import "../../../shared/styles/tooltip/tooltip.css";
-import styles from "./LoginForm";
+import "../../../style-helpers/tooltip.css";
+import styles from "./LoginForm.module.css";
 
 const renderField = ({
   input,
@@ -15,9 +15,10 @@ const renderField = ({
   tooltip,
   meta: { asyncValidating, touched, error }
 }) => (
-  <label>
+  <label className={styles.label}>
     {label}
     <input
+      className={styles.input}
       id={id}
       {...input}
       placeholder={placeholder}
@@ -41,7 +42,7 @@ const renderField = ({
 const LoginForm = props => {
   const { handleSubmit /* , pristine, submitting */ } = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <Field
         name="username"
         tooltip="username"
@@ -58,6 +59,9 @@ const LoginForm = props => {
         label="Password"
         component={renderField}
       />
+      <button type="submit" className={styles.btn}>
+        Login
+      </button>
     </form>
   );
 };

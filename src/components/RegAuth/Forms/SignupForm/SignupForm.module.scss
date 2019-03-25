@@ -1,0 +1,68 @@
+@import "../../../style-helpers/mixins.scss";
+@import "../../../style-helpers/style-guides.scss";
+
+.form {
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+  border: $lightgray;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: $fw-light;
+  color: $darkgray;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.h1 {
+  color: $darkgray;
+  font-weight: $fw-lighter;
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: $fw-light;
+  height: 3rem;
+
+  border: 1px solid $lightgray;
+  outline: 1;
+  color: $superdarkgray;
+  border-radius: 5px;
+
+  &::placeholder {
+    font-weight: $fw-lighter;
+    color: $gray;
+    font-size: 1.25rem;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $lightred;
+  }
+}
+
+$btn-style: (
+  height: 3rem,
+  width: 100%,
+  font-size: 1.75rem,
+  padding: 0rem 1rem,
+  border: $lightred,
+  bg: $lightred,
+  color: white,
+  hover-bg: red,
+  hover-border: $lightred,
+  hover-color: white
+);
+
+.button {
+  margin-top: 2.5rem;
+  @include button($btn-style...);
+}
