@@ -1,11 +1,10 @@
-"use strict";
-
 import React, { Component } from "react";
-import LoginSignup from "./LoginSignup";
+import RegAuth from "./container/RegAuth";
 
 export default class index extends Component {
   render() {
-    return <LoginSignup />;
+    const { props } = this;
+    return <RegAuth {...props} />;
   }
 }
 

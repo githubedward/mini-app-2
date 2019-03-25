@@ -1,0 +1,10 @@
+@import "../../../shared/styles/mixins/mixins.scss";
+@import "../../../shared/styles/style-guides/style-guides.scss";
+
+.form {
+  @include flex-center;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border: $lightgray;
+}

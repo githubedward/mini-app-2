@@ -7,7 +7,7 @@ import ReactTooltip from "react-tooltip";
 import validate from "./validate";
 import ErrorIcon from "../../shared/ErrorIcon";
 import * as styleGuides from "../../shared/styleGuides";
-import "../../../themes/css/tooltip.css";
+import "../../shared/styles/tooltip/tooltip.css";
 
 const renderField = ({
   input,

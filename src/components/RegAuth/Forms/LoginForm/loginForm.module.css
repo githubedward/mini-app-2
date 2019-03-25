@@ -1,0 +1,16 @@
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border: #f1f1f1;
+}
+/*# sourceMappingURL=loginForm.module.css.map */

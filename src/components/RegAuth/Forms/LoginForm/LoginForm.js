@@ -1,20 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import {
-  Form,
-  FormBlock,
-  Label,
-  Input,
-  ErrorBlock,
-  Span,
-  loginBtn
-} from "./styles";
-import ThemedButton from "../../shared/Button";
-import validate from "./validate";
+import validate from "../validate";
 import ReactTooltip from "react-tooltip";
-import * as styleGuides from "../../shared/styleGuides";
-import "../../shared/styles/tooltip/tooltip.css";
+import "../../../shared/styles/tooltip/tooltip.css";
+import styles from "./LoginForm";
 
 const renderField = ({
   input,
@@ -25,11 +15,10 @@ const renderField = ({
   tooltip,
   meta: { asyncValidating, touched, error }
 }) => (
-  <FormBlock column>
-    <Label htmlFor={id}>{label}</Label>
-    <Input
+  <label>
+    {label}
+    <input
       id={id}
-      width="100%"
       {...input}
       placeholder={placeholder}
       type={type}
@@ -43,18 +32,16 @@ const renderField = ({
           id={id}
           place={type === "password" ? "top" : "left"}
           effect="solid"
-          getContent={dataTip => (
-            <ErrorBlock>{`What's your ${dataTip}?`}</ErrorBlock>
-          )}
+          getContent={dataTip => <div>{`What's your ${dataTip}?`}</div>}
         />
       ))}
-  </FormBlock>
+  </label>
 );
 
 const LoginForm = props => {
   const { handleSubmit /* , pristine, submitting */ } = props;
   return (
-    <Form onSubmit={handleSubmit} solid>
+    <form onSubmit={handleSubmit}>
       <Field
         name="username"
         tooltip="username"
@@ -71,8 +58,7 @@ const LoginForm = props => {
         label="Password"
         component={renderField}
       />
-      <ThemedButton theme={loginBtn} name="Login" type="submit" />
-    </Form>
+    </form>
   );
 };
 
