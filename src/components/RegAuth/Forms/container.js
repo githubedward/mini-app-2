@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from "./LoginForm/LoginForm";
 import SignupForm from "./SignupForm/SignupForm";
-import styles from "./RegAuth.module.css";
+import styles from "./container.module.css";
 
 const RegAuth = props => {
   return (

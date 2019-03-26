@@ -3,6 +3,7 @@ $color: #f3615c;
 @mixin error($color, $bgcolor) {
   color: $color !important;
   background-color: $bgcolor !important;
+  max-width: 12rem;
 }
 
 .error-left {

@@ -5,6 +5,7 @@ import ReactTooltip from "react-tooltip";
 import validate from "../helpers/validate";
 import "../../../style-helpers/tooltip.css";
 import styles from "./SignupForm.module.css";
+import ErrorIcon from "../../../shared/ErrorIcon";
 
 const renderField = ({
   input,
@@ -31,9 +32,10 @@ const renderField = ({
           id={id}
           place="left"
           effect="solid"
-          getContent={dataTip => <div>{`What's your ${dataTip}?`}</div>}
+          getContent={dataTip => <div>{dataTip}</div>}
         />
       ))}
+    {touched && (error && <ErrorIcon className={styles.error} />)}
   </label>
 );
 
@@ -46,7 +48,7 @@ const SignupForm = props => {
       </h1>
       <Field
         name="fullname"
-        tooltip="full name"
+        tooltip="What's your full name?"
         id="fullname-signup"
         type="text"
         label="Full Name"
@@ -55,7 +57,7 @@ const SignupForm = props => {
       />
       <Field
         name="username"
-        tooltip="username"
+        tooltip="What's your username? You need it to login."
         id="username-signup"
         type="text"
         label="Username"
@@ -64,7 +66,7 @@ const SignupForm = props => {
       />
       <Field
         name="password"
-        tooltip="password"
+        tooltip="What's your password? You need it to login."
         id="password-signup"
         type="password"
         label="Password"

@@ -3,10 +3,12 @@
 
 .form {
   @include flex-center;
+  justify-content: center !important;
+  align-items: flex-end;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: white;
-  border: $lightgray;
+  border: 3px solid $lightgray;
 }
 
 .label {
@@ -40,8 +42,8 @@ $btn-style: (
   padding: 0rem 1rem,
   border: $gray,
   bg: white,
-  hover-bg: $lightred,
-  hover-border: $lightred,
+  hover-bg: $lovelyblue,
+  hover-border: $lovelyblue,
   hover-color: white,
   color: $darkgray
 );

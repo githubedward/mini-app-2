@@ -24,6 +24,13 @@
   color: #888888;
   width: 100%;
   margin-top: 1rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .h1 {
@@ -89,8 +96,8 @@
   width: 100%;
   font-size: 1.75rem;
   padding: 0rem 1rem;
-  background-color: #ee4943;
-  border: 1px solid #ee4943;
+  background-color: #2694e0;
+  border: 1px solid #2694e0;
   border-radius: 3px;
   text-decoration: none;
   color: white;
@@ -100,7 +107,7 @@
 .button:hover {
   -webkit-transition: 0.1s;
   transition: 0.1s;
-  background: red;
+  background: #ee4943;
   border: 1px solid #ee4943;
   color: white;
 }
@@ -110,7 +117,15 @@
 }
 
 .button:active {
-  background-color: #ee4943;
-  border: 1px solid #ee4943;
+  background-color: #2694e0;
+  border: 1px solid #2694e0;
+}
+
+.error {
+  fill: red;
+  position: absolute;
+  right: 10px;
+  height: 2rem;
+  width: 2rem;
 }
 /*# sourceMappingURL=SignupForm.module.css.map */

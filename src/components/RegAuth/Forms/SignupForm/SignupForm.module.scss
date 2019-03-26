@@ -16,6 +16,10 @@
   color: $darkgray;
   width: 100%;
   margin-top: 1rem;
+  position: relative;
+
+  display: flex;
+  align-items: center;
 }
 
 .h1 {
@@ -54,10 +58,10 @@ $btn-style: (
   width: 100%,
   font-size: 1.75rem,
   padding: 0rem 1rem,
-  border: $lightred,
-  bg: $lightred,
+  border: $lovelyblue,
+  bg: $lovelyblue,
   color: white,
-  hover-bg: red,
+  hover-bg: $lightred,
   hover-border: $lightred,
   hover-color: white
 );
@@ -65,4 +69,14 @@ $btn-style: (
 .button {
   margin-top: 2.5rem;
   @include button($btn-style...);
+}
+
+$svg-size: 2rem;
+
+.error {
+  fill: red;
+  position: absolute;
+  right: 10px;
+  height: $svg-size;
+  width: $svg-size;
 }
