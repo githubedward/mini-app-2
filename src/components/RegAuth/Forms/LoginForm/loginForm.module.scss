@@ -17,6 +17,7 @@
   font-weight: $fw-light;
   color: $darkgray;
   width: 100%;
+  position: relative;
 }
 
 .input {
@@ -42,12 +43,23 @@ $btn-style: (
   padding: 0rem 1rem,
   border: $gray,
   bg: white,
-  hover-bg: $lovelyblue,
-  hover-border: $lovelyblue,
+  hover-bg: $lightred,
+  hover-border: $lightred,
   hover-color: white,
   color: $darkgray
 );
 
 .btn {
   @include button($btn-style...);
+}
+
+$svg-size: 1.5rem;
+
+.error {
+  fill: red;
+  position: absolute;
+  right: 23px;
+  top: 21px;
+  height: $svg-size;
+  width: $svg-size;
 }

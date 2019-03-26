@@ -26,6 +26,7 @@
   font-weight: 300;
   color: #888888;
   width: 100%;
+  position: relative;
 }
 
 .input {
@@ -68,8 +69,8 @@
 .btn:hover {
   -webkit-transition: 0.1s;
   transition: 0.1s;
-  background: #2694e0;
-  border: 1px solid #2694e0;
+  background: #ee4943;
+  border: 1px solid #ee4943;
   color: white;
 }
 
@@ -80,5 +81,19 @@
 .btn:active {
   background-color: white;
   border: 1px solid #b4b4b4;
+}
+
+.btn:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.75 !important;
+}
+
+.error {
+  fill: red;
+  position: absolute;
+  right: 23px;
+  top: 21px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 /*# sourceMappingURL=LoginForm.module.css.map */

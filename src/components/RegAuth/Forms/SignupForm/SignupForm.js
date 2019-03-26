@@ -1,79 +1,68 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
-import ReactTooltip from "react-tooltip";
-import validate from "../helpers/validate";
+import { withFormik } from "formik";
+import validationSchema from "../helpers/validationSchema";
 import "../../../style-helpers/tooltip.css";
 import styles from "./SignupForm.module.css";
-import ErrorIcon from "../../../shared/ErrorIcon";
-
-const renderField = ({
-  input,
-  type,
-  placeholder,
-  id,
-  tooltip,
-  meta: { asyncValidating, touched, error }
-}) => (
-  <label className={styles.label}>
-    <input
-      className={styles.input}
-      id={id}
-      {...input}
-      placeholder={placeholder}
-      type={type}
-      data-tip={(error && tooltip) || null}
-      data-for={id}
-    />
-    {touched &&
-      (error && (
-        <ReactTooltip
-          className="error-left"
-          id={id}
-          place="left"
-          effect="solid"
-          getContent={dataTip => <div>{dataTip}</div>}
-        />
-      ))}
-    {touched && (error && <ErrorIcon className={styles.error} />)}
-  </label>
-);
+import SignupInput from "./SignupInput";
 
 const SignupForm = props => {
-  const { handleSubmit /* , pristine, submitting */ } = props;
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting
+  } = props;
+  console.log(touched, errors);
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+      className={styles.form}
+    >
       <h1 className={styles.h1}>
         <strong>Signup</strong> to explore new experiences
       </h1>
-      <Field
+      <SignupInput
         name="fullname"
-        tooltip="What's your full name?"
-        id="fullname-signup"
         type="text"
-        label="Full Name"
         placeholder="Full Name"
-        component={renderField}
+        error={touched.fullname && errors.fullname}
+        value={values.fullname}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        touched={touched.fullname}
       />
-      <Field
+      <SignupInput
         name="username"
-        tooltip="What's your username? You need it to login."
-        id="username-signup"
         type="text"
-        label="Username"
         placeholder="Username"
-        component={renderField}
+        error={touched.username && errors.username}
+        value={values.username}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        touched={touched.username}
       />
-      <Field
+      <SignupInput
         name="password"
-        tooltip="What's your password? You need it to login."
-        id="password-signup"
         type="password"
-        label="Password"
         placeholder="Password"
-        component={renderField}
+        error={touched.password && errors.password}
+        value={values.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        touched={touched.password}
       />
-      <button className={styles.button} type="submit">
+      <button
+        className={styles.button}
+        type="submit"
+        disabled={Object.values(errors).length !== 0 || isSubmitting}
+      >
         Signup
       </button>
     </form>
@@ -81,18 +70,23 @@ const SignupForm = props => {
 };
 
 SignupForm.propTypes = {
+  values: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  dirty: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired
+  isSubmitting: PropTypes.bool.isRequired
 };
 
-SignupForm.defaultProps = {
-  handleSubmit: e => e.preventDefault(),
-  pristine: false,
-  submitting: false
-};
+const formikEnhancer = withFormik({
+  validationSchema,
+  mapPropsToValues: ({ user }) => ({ ...user }),
+  handleSubmit: (values, formikBag) => {
+    formikBag.props.onSubmit(values);
+  },
+  displayName: "SignupForm"
+});
 
-export default reduxForm({
-  form: "signup form",
-  validate
-})(SignupForm);
+export default formikEnhancer(SignupForm);

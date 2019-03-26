@@ -1,63 +1,43 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Field, reduxForm } from "redux-form";
-import validate from "../helpers/validate";
-import ReactTooltip from "react-tooltip";
+import { withFormik } from "formik";
+import LoginInput from "./LoginInput";
+import validationSchema from "../helpers/validationSchema";
 import "../../../style-helpers/tooltip.css";
 import styles from "./LoginForm.module.css";
 
-const renderField = ({
-  input,
-  label,
-  type,
-  placeholder,
-  id,
-  tooltip,
-  meta: { asyncValidating, touched, error }
-}) => (
-  <label className={styles.label}>
-    {label}
-    <input
-      className={styles.input}
-      id={id}
-      {...input}
-      placeholder={placeholder}
-      type={type}
-      data-tip={(error && tooltip) || null}
-      data-for={id}
-    />
-    {touched &&
-      (error && (
-        <ReactTooltip
-          className={type === "password" ? "error-top" : "error-left"}
-          id={id}
-          place={type === "password" ? "top" : "left"}
-          effect="solid"
-          getContent={dataTip => <div>{`What's your ${dataTip}?`}</div>}
-        />
-      ))}
-  </label>
-);
-
 const LoginForm = props => {
-  const { handleSubmit /* , pristine, submitting */ } = props;
+  const {
+    values,
+    touched,
+    errors,
+    dirty,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting
+  } = props;
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <Field
+      <LoginInput
         name="username"
-        tooltip="username"
-        id="username-login"
         type="text"
         label="Username"
-        component={renderField}
+        error={touched.username && errors.username}
+        value={values.username}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        touched={touched.username}
       />
-      <Field
+      <LoginInput
         name="password"
-        tooltip="password"
-        id="password-login"
         type="password"
         label="Password"
-        component={renderField}
+        error={touched.password && errors.password}
+        value={values.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        touched={touched.password}
       />
       <button type="submit" className={styles.btn}>
         Login
@@ -67,18 +47,29 @@ const LoginForm = props => {
 };
 
 LoginForm.propTypes = {
+  values: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  dirty: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired
+  isSubmitting: PropTypes.bool.isRequired
 };
 
-LoginForm.defaultProps = {
-  handleSubmit: e => e.preventDefault(),
-  pristine: false,
-  submitting: false
-};
+// LoginForm.defaultProps = {
+//   handleSubmit: e => e.preventDefault(),
+//   pristine: false,
+//   submitting: false
+// };
 
-export default reduxForm({
-  form: "login form",
-  validate
-})(LoginForm);
+const formikEnhancer = withFormik({
+  validationSchema,
+  mapPropsToValues: ({ user }) => ({ ...user }),
+  handleSubmit: (values, { onSubmit }) => {
+    onSubmit();
+  },
+  displayName: "SignupForm"
+});
+
+export default formikEnhancer(LoginForm);

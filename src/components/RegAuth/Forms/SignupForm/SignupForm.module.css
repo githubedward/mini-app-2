@@ -121,6 +121,11 @@
   border: 1px solid #2694e0;
 }
 
+.button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.75 !important;
+}
+
 .error {
   fill: red;
   position: absolute;
