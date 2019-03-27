@@ -79,12 +79,10 @@ const formikEnhancer = withFormik({
     ...user,
     handleLoginFocus
   }),
-  mapPropsToStaus: formikBag => formikBag.props,
   handleSubmit: (values, formikBag) => {
     formikBag.props.onSubmit(values);
   },
-  handleLoginFocus: formikBag => formikBag.props.handleLoginFocus,
-  displayName: "SignupForm"
+  displayName: "LoginForm"
 });
 
 export default formikEnhancer(LoginForm);
