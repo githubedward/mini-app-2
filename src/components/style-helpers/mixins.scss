@@ -41,7 +41,7 @@
   cursor: pointer;
 
   &:hover {
-    transition: 0.1s;
+    transition: $trans-delay;
     background: $hover-bg;
     border: 1px solid $hover-border;
     color: $hover-color;
@@ -57,6 +57,7 @@
   }
 
   &:disabled {
+    @include trans-opacity;
     cursor: not-allowed !important;
     opacity: 0.25 !important;
   }

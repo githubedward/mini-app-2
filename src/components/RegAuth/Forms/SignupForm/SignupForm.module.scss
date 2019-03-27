@@ -2,6 +2,7 @@
 
 .form {
   @include flex-center;
+
   flex-direction: column;
   width: 100%;
   padding: 2rem;
@@ -27,10 +28,15 @@
 }
 
 .h1 {
-  color: $darkgray;
+  color: $gray;
   font-weight: $fw-lighter;
   margin-bottom: 1rem;
   font-size: 2.25rem;
+
+  &_error {
+    transition: 2s;
+    color: $superdarkgray;
+  }
 }
 
 .input {
@@ -73,8 +79,8 @@ $btn-style: (
   width: 100%,
   font-size: 1.75rem,
   padding: 0rem 1rem,
-  border: $lovelyblue,
-  bg: $lovelyblue,
+  border: $red,
+  bg: $red,
   color: white,
   hover-bg: $lightred,
   hover-border: $lightred,
@@ -84,13 +90,12 @@ $btn-style: (
 .button {
   margin-top: 2.5rem;
   @include button($btn-style...);
-  @include trans-opacity;
 }
 
 $svg-size: 2rem;
 
 .error {
-  fill: red;
+  fill: $red;
   position: absolute;
   right: 10px;
   height: $svg-size;

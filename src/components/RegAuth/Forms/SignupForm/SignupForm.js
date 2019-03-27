@@ -22,18 +22,19 @@ const SignupForm = props => {
     <form
       onSubmit={e => {
         e.preventDefault();
+        handleSignupFocus();
         handleSubmit();
       }}
       className={styles.form}
     >
-      <h1 className={styles.h1}>
+      <h1 className={`${styles.h1} ${isError && styles.h1_error}`}>
         <strong>Signup</strong> to explore new experiences
       </h1>
       <SignupInput
         name="fullname"
         type="text"
         placeholder="Full Name"
-        error={touched.fullname && errors.fullname}
+        error={touched.fullname && errors.fullname && errors.fullname}
         value={values.fullname}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -44,7 +45,7 @@ const SignupForm = props => {
         name="username"
         type="text"
         placeholder="Username"
-        error={touched.username && errors.username}
+        error={touched.username && errors.username && errors.username}
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -55,7 +56,7 @@ const SignupForm = props => {
         name="password"
         type="password"
         placeholder="Password"
-        error={touched.password && errors.password}
+        error={touched.password && errors.password && errors.password}
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}

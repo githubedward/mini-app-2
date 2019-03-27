@@ -48,7 +48,7 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid #ee4943;
+  border: 1px solid #eb7985;
 }
 
 .btn {
@@ -74,10 +74,10 @@
 }
 
 .btn:hover {
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  background: #ee4943;
-  border: 1px solid #ee4943;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #eb7985;
+  border: 1px solid #eb7985;
   color: white;
 }
 
@@ -91,18 +91,14 @@
 }
 
 .btn:disabled {
+  -webkit-transition: opacity 0.75s ease 0.5s;
+  transition: opacity 0.75s ease 0.5s;
   cursor: not-allowed !important;
-  opacity: 0.5 !important;
-}
-
-.btn:hover .btn:disabled {
-  background: white;
-  border: 1px solid #b4b4b4;
-  color: #888888;
+  opacity: 0.25 !important;
 }
 
 .error {
-  fill: red;
+  fill: #eb2936;
   position: absolute;
   right: 23px;
   top: 21px;

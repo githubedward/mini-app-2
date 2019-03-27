@@ -40,10 +40,16 @@
 }
 
 .h1 {
-  color: #888888;
+  color: #b4b4b4;
   font-weight: 100;
   margin-bottom: 1rem;
   font-size: 2.25rem;
+}
+
+.h1_error {
+  -webkit-transition: 2s;
+  transition: 2s;
+  color: #333333;
 }
 
 .input {
@@ -84,7 +90,7 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid #ee4943;
+  border: 1px solid #eb7985;
 }
 
 .input_error {
@@ -95,7 +101,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 1px solid #ff1d15;
+  border: 1px solid #eb2936;
 }
 
 @-webkit-keyframes shake {
@@ -145,22 +151,22 @@
 }
 
 .input_error::-webkit-input-placeholder {
-  color: #ff1d15;
+  color: #eb2936;
   font-weight: 300;
 }
 
 .input_error:-ms-input-placeholder {
-  color: #ff1d15;
+  color: #eb2936;
   font-weight: 300;
 }
 
 .input_error::-ms-input-placeholder {
-  color: #ff1d15;
+  color: #eb2936;
   font-weight: 300;
 }
 
 .input_error::placeholder {
-  color: #ff1d15;
+  color: #eb2936;
   font-weight: 300;
 }
 
@@ -179,21 +185,19 @@
   width: 100%;
   font-size: 1.75rem;
   padding: 0rem 1rem;
-  background-color: #2694e0;
-  border: 1px solid #2694e0;
+  background-color: #eb2936;
+  border: 1px solid #eb2936;
   border-radius: 3px;
   text-decoration: none;
   color: white;
   cursor: pointer;
-  -webkit-transition: opacity 0.75s ease 0.5s;
-  transition: opacity 0.75s ease 0.5s;
 }
 
 .button:hover {
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  background: #ee4943;
-  border: 1px solid #ee4943;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #eb7985;
+  border: 1px solid #eb7985;
   color: white;
 }
 
@@ -202,17 +206,19 @@
 }
 
 .button:active {
-  background-color: #2694e0;
-  border: 1px solid #2694e0;
+  background-color: #eb2936;
+  border: 1px solid #eb2936;
 }
 
 .button:disabled {
+  -webkit-transition: opacity 0.75s ease 0.5s;
+  transition: opacity 0.75s ease 0.5s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }
 
 .error {
-  fill: red;
+  fill: #eb2936;
   position: absolute;
   right: 10px;
   height: 2rem;
