@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
   fullname: Yup.string()
-    .min(2, "One more character and you're good")
+    .min(2, "One more character and you're good.")
     .required("What's your name?"),
   username: Yup.string()
     .min(6, "Username needs to be at least 6 characters")

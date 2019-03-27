@@ -16,7 +16,8 @@ const SignupForm = props => {
     handleSubmit,
     isSubmitting
   } = props;
-  console.log(touched, errors);
+  const { handleSignupFocus } = values;
+  const isError = Object.values(errors).length !== 0;
   return (
     <form
       onSubmit={e => {
@@ -36,6 +37,7 @@ const SignupForm = props => {
         value={values.fullname}
         onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={handleSignupFocus}
         touched={touched.fullname}
       />
       <SignupInput
@@ -46,6 +48,7 @@ const SignupForm = props => {
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={handleSignupFocus}
         touched={touched.username}
       />
       <SignupInput
@@ -56,12 +59,13 @@ const SignupForm = props => {
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={handleSignupFocus}
         touched={touched.password}
       />
       <button
         className={styles.button}
         type="submit"
-        disabled={Object.values(errors).length !== 0 || isSubmitting}
+        disabled={isError || isSubmitting}
       >
         Signup
       </button>
@@ -82,7 +86,11 @@ SignupForm.propTypes = {
 
 const formikEnhancer = withFormik({
   validationSchema,
-  mapPropsToValues: ({ user }) => ({ ...user }),
+  enableReinitialize: true,
+  mapPropsToValues: ({ user, handleSignupFocus }) => ({
+    ...user,
+    handleSignupFocus
+  }),
   handleSubmit: (values, formikBag) => {
     formikBag.props.onSubmit(values);
   },

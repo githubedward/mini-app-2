@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm/LoginForm";
 import SignupForm from "./SignupForm/SignupForm";
-import styles from "./container.module.css";
+import styles from "./FormContainer.module.css";
 
-class RegAuth extends Component {
+class FormContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       username: "",
       password: "",
-      fullname: ""
+      fullname: "",
+      isSignupFocus: false,
+      isLoginFocus: false
     };
   }
 
@@ -18,20 +20,37 @@ class RegAuth extends Component {
     alert(values);
   };
 
+  handleSignupFocus = () => {
+    if (!this.state.isSignupFocus) {
+      this.setState({
+        isSignupFocus: true,
+        isLoginFocus: false
+      });
+    }
+  };
+
+  handleLoginFocus = () => {
+    if (!this.state.isLoginFocus) {
+      this.setState({
+        isSignupFocus: false,
+        isLoginFocus: true
+      });
+    }
+  };
+
   render() {
-    const { props } = this;
     return (
       <section className={styles.background}>
         <div className={styles.container}>
           <LoginForm
-            {...props}
             onSubmit={this.handleSubmit}
             user={this.state}
+            handleLoginFocus={this.handleLoginFocus}
           />
           <SignupForm
-            {...props}
             onSubmit={this.handleSubmit}
             user={this.state}
+            handleSignupFocus={this.handleSignupFocus}
           />
         </div>
       </section>
@@ -39,4 +58,4 @@ class RegAuth extends Component {
   }
 }
 
-export default RegAuth;
+export default FormContainer;

@@ -1,9 +1,15 @@
-$color: #f3615c;
+@import "./style-guides.scss";
+
+$color: $lightred;
 
 @mixin error($color, $bgcolor) {
   color: $color !important;
   background-color: $bgcolor !important;
   max-width: 12rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.75s ease 0.25s;
 }
 
 .error-left {

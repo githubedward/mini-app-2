@@ -15,7 +15,13 @@
   width: 100%;
   padding: 2rem;
   border: #f1f1f1;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.form_less {
+  opacity: 0.1;
+  -webkit-transition: opacity 0.75s ease 0.5s;
+  transition: opacity 0.75s ease 0.5s;
 }
 
 .label {
@@ -54,31 +60,108 @@
 
 .input::-webkit-input-placeholder {
   font-weight: 100;
-  color: #b4b4b4;
+  color: #888888;
   font-size: 1.25rem;
 }
 
 .input:-ms-input-placeholder {
   font-weight: 100;
-  color: #b4b4b4;
+  color: #888888;
   font-size: 1.25rem;
 }
 
 .input::-ms-input-placeholder {
   font-weight: 100;
-  color: #b4b4b4;
+  color: #888888;
   font-size: 1.25rem;
 }
 
 .input::placeholder {
   font-weight: 100;
-  color: #b4b4b4;
+  color: #888888;
   font-size: 1.25rem;
 }
 
 .input:focus {
   outline: none;
   border: 1px solid #ee4943;
+}
+
+.input_error {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  outline: none;
+  border: 1px solid #ff1d15;
+}
+
+@-webkit-keyframes shake {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+  }
+}
+
+.input_error::-webkit-input-placeholder {
+  color: #ff1d15;
+  font-weight: 300;
+}
+
+.input_error:-ms-input-placeholder {
+  color: #ff1d15;
+  font-weight: 300;
+}
+
+.input_error::-ms-input-placeholder {
+  color: #ff1d15;
+  font-weight: 300;
+}
+
+.input_error::placeholder {
+  color: #ff1d15;
+  font-weight: 300;
 }
 
 .button {
@@ -102,6 +185,8 @@
   text-decoration: none;
   color: white;
   cursor: pointer;
+  -webkit-transition: opacity 0.75s ease 0.5s;
+  transition: opacity 0.75s ease 0.5s;
 }
 
 .button:hover {
@@ -123,7 +208,7 @@
 
 .button:disabled {
   cursor: not-allowed !important;
-  opacity: 0.75 !important;
+  opacity: 0.25 !important;
 }
 
 .error {

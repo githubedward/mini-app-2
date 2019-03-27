@@ -1,5 +1,4 @@
 @import "../../../style-helpers/mixins.scss";
-@import "../../../style-helpers/style-guides.scss";
 
 .form {
   @include flex-center;
@@ -7,7 +6,12 @@
   width: 100%;
   padding: 2rem;
   border: $lightgray;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
+
+  &_less {
+    opacity: 0.1;
+    @include trans-opacity;
+  }
 }
 
 .label {
@@ -43,13 +47,24 @@
 
   &::placeholder {
     font-weight: $fw-lighter;
-    color: $gray;
+    color: $darkgray;
     font-size: 1.25rem;
   }
 
   &:focus {
     outline: none;
     border: 1px solid $lightred;
+  }
+
+  &_error {
+    @include shake-animation();
+    outline: none;
+    border: 1px solid $red;
+
+    &::placeholder {
+      color: $red;
+      font-weight: $fw-light;
+    }
   }
 }
 
@@ -69,6 +84,7 @@ $btn-style: (
 .button {
   margin-top: 2.5rem;
   @include button($btn-style...);
+  @include trans-opacity;
 }
 
 $svg-size: 2rem;

@@ -18,6 +18,12 @@
   border: 3px solid #f1f1f1;
 }
 
+.form_less {
+  opacity: 0.2;
+  -webkit-transition: opacity 0.75s ease 0.5s;
+  transition: opacity 0.75s ease 0.5s;
+}
+
 .label {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
@@ -30,6 +36,7 @@
 }
 
 .input {
+  margin-top: 0.25rem;
   padding: 0 0 0 0.5rem;
   font-size: 0.95rem;
   font-weight: 300;
@@ -85,7 +92,13 @@
 
 .btn:disabled {
   cursor: not-allowed !important;
-  opacity: 0.75 !important;
+  opacity: 0.5 !important;
+}
+
+.btn:hover .btn:disabled {
+  background: white;
+  border: 1px solid #b4b4b4;
+  color: #888888;
 }
 
 .error {

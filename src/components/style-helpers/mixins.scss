@@ -1,5 +1,9 @@
 @import "./style-guides.scss";
 
+@mixin trans-opacity {
+  transition: opacity 0.75s ease 0.5s;
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -54,6 +58,34 @@
 
   &:disabled {
     cursor: not-allowed !important;
-    opacity: 0.75 !important;
+    opacity: 0.25 !important;
   }
+}
+
+@mixin shake-animation() {
+  @keyframes shake {
+    from,
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(-10px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: shake;
 }

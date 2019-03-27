@@ -14,11 +14,12 @@ const SignupInput = ({
   onChange,
   ...props
 }) => {
+  const classes = `${styles.input} ${!!error && styles.input_error}`;
   return (
     <label className={styles.label}>
       {label}
       <input
-        className={styles.input}
+        className={classes}
         type={type}
         name={name}
         placeholder={placeholder}

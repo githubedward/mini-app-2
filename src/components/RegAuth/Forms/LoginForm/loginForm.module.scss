@@ -1,5 +1,4 @@
 @import "../../../style-helpers/mixins.scss";
-@import "../../../style-helpers/style-guides.scss";
 
 .form {
   @include flex-center;
@@ -9,6 +8,11 @@
   padding: 1rem 2rem;
   background-color: white;
   border: 3px solid $lightgray;
+
+  &_less {
+    opacity: 0.2;
+    @include trans-opacity;
+  }
 }
 
 .label {
@@ -21,6 +25,7 @@
 }
 
 .input {
+  margin-top: 0.25rem;
   padding: 0 0 0 0.5rem;
   font-size: 0.95rem;
   font-weight: $fw-light;
