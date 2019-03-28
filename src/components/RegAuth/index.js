@@ -8,6 +8,6 @@ export default class index extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+// const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
+// const mapDispatchToProps = {};

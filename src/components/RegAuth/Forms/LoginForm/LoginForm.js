@@ -17,7 +17,7 @@ const LoginForm = props => {
     handleSubmit,
     isSubmitting
   } = props;
-  const { isSignupFocus, isLoginFocus, handleLoginFocus } = values;
+  const { isSignupFocus, isLoginFocus, handleLoginFocus, asyncError } = values;
   const isError = Object.values(errors).length !== 0;
   return (
     <form
@@ -32,7 +32,10 @@ const LoginForm = props => {
         name="username"
         type="text"
         label="Username"
-        error={touched.username && errors.username}
+        error={
+          (touched.username && errors.username) ||
+          (asyncError.username && asyncError.message)
+        }
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -43,7 +46,10 @@ const LoginForm = props => {
         name="password"
         type="password"
         label="Password"
-        error={touched.password && errors.password}
+        error={
+          (touched.password && errors.password) ||
+          (asyncError.password && asyncError.message)
+        }
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -55,14 +61,15 @@ const LoginForm = props => {
         className={styles.btn}
         disabled={isError || isSubmitting || isSignupFocus}
       >
-        {/* (isSubmitting && */ (
+        {(isSubmitting && (
           <PulseLoader
             sizeUnit={"px"}
             size={5}
             loading={true}
             color={`#ff4451`}
           />
-        ) || "Login"}
+        )) ||
+          "Login"}
       </button>
     </form>
   );
@@ -76,6 +83,7 @@ LoginForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleLoginFocus: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 };
 
@@ -88,8 +96,10 @@ LoginForm.propTypes = {
 const formikEnhancer = withFormik({
   validationSchema,
   enableReinitialize: true,
-  mapPropsToValues: ({ user, handleLoginFocus }) => ({
+  mapPropsToValues: ({ user, handleLoginFocus, asyncError, isFocus }) => ({
     ...user,
+    asyncError,
+    ...isFocus,
     handleLoginFocus
   }),
   handleSubmit: (values, formikBag) => {

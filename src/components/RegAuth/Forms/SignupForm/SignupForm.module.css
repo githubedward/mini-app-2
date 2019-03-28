@@ -94,26 +94,26 @@
 }
 
 .input_pressed {
-  border: 1px solid #ff4451;
+  border: 1px solid #fd545f;
 }
 
 .input_pressed::-webkit-input-placeholder {
-  color: #ff4451;
+  color: #fd545f;
   font-weight: 300;
 }
 
 .input_pressed:-ms-input-placeholder {
-  color: #ff4451;
+  color: #fd545f;
   font-weight: 300;
 }
 
 .input_pressed::-ms-input-placeholder {
-  color: #ff4451;
+  color: #fd545f;
   font-weight: 300;
 }
 
 .input_pressed::placeholder {
-  color: #ff4451;
+  color: #fd545f;
   font-weight: 300;
 }
 
@@ -125,7 +125,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 1px solid #fc202f;
+  border: 2px solid #fc202f;
 }
 
 @-webkit-keyframes shake {
@@ -209,8 +209,8 @@
   width: 100%;
   font-size: 1.75rem;
   padding: 0rem 1rem;
-  background-color: #ff4451;
-  border: 1px solid #ff4451;
+  background-color: #fd545f;
+  border: 1px solid #fd545f;
   border-radius: 3px;
   text-decoration: none;
   color: white;
@@ -230,8 +230,8 @@
 }
 
 .button:active {
-  background-color: #ff4451;
-  border: 1px solid #ff4451;
+  background-color: #fd545f;
+  border: 1px solid #fd545f;
 }
 
 .button:disabled {

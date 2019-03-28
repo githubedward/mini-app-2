@@ -17,7 +17,7 @@ const SignupForm = props => {
     handleSubmit,
     isSubmitting
   } = props;
-  const { handleSignupFocus, isSignupFocus, isLoginFocus } = values;
+  const { handleSignupFocus, isSignupFocus, isLoginFocus, asyncError } = values;
   const isError = Object.values(errors).length !== 0;
   return (
     <form
@@ -35,7 +35,10 @@ const SignupForm = props => {
         name="fullname"
         type="text"
         placeholder="Full Name"
-        error={touched.fullname && errors.fullname}
+        error={
+          (touched.fullname && errors.fullname) ||
+          (asyncError.fullname && asyncError.message)
+        }
         value={values.fullname}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -46,7 +49,10 @@ const SignupForm = props => {
         name="username"
         type="text"
         placeholder="Username"
-        error={touched.username && errors.username}
+        error={
+          (touched.username && errors.username) ||
+          (asyncError.username && asyncError.message)
+        }
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -57,7 +63,10 @@ const SignupForm = props => {
         name="password"
         type="password"
         placeholder="Password"
-        error={touched.password && errors.password}
+        error={
+          (touched.password && errors.password) ||
+          (asyncError.password && asyncError.message)
+        }
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -67,16 +76,17 @@ const SignupForm = props => {
       <button
         className={styles.button}
         type="submit"
-        disabled={isError || isSubmitting || isLoginFocus}
+        disabled={isError || asyncError || isSubmitting || isLoginFocus}
       >
-        {/* (isSubmitting && */ (
+        {(isSubmitting && (
           <PulseLoader
             sizeUnit={"px"}
             size={12}
             color={"white"}
             loading={true}
           />
-        ) || "Signup"}
+        )) ||
+          "Signup"}
       </button>
     </form>
   );
@@ -90,18 +100,27 @@ SignupForm.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleSignupFocus: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 };
 
 const formikEnhancer = withFormik({
   validationSchema,
   enableReinitialize: true,
-  mapPropsToValues: ({ user, handleSignupFocus }) => ({
+  mapPropsToValues: ({ user, handleSignupFocus, asyncError, isFocus }) => ({
     ...user,
+    asyncError,
+    ...isFocus,
     handleSignupFocus
   }),
   handleSubmit: (values, formikBag) => {
-    formikBag.props.onSubmit(values);
+    const { username, fullname, password } = values;
+    const user = {
+      username,
+      fullname,
+      password
+    };
+    formikBag.props.onSubmit(user);
   },
   displayName: "SignupForm"
 });

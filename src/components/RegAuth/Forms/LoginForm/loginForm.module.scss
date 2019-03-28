@@ -55,7 +55,7 @@
   &_error {
     @include shake-animation();
     outline: none;
-    @include login-border(1px, $theme);
+    @include login-border(2px, $theme);
   }
 }
 

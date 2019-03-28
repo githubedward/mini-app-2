@@ -30,7 +30,7 @@
 }
 
 .label_pressed {
-  color: #ff4451;
+  color: #fd545f;
 }
 
 .label_error {
@@ -55,7 +55,7 @@
 }
 
 .input_pressed {
-  border: 1px solid #ff4451;
+  border: 1px solid #fd545f;
 }
 
 .input_error {
@@ -66,7 +66,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 1px solid #fc202f;
+  border: 2px solid #fc202f;
 }
 
 @-webkit-keyframes shake {
@@ -140,8 +140,8 @@
 .btn:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #ff4451;
-  border: 1px solid #ff4451;
+  background: #fd545f;
+  border: 1px solid #fd545f;
   color: white;
 }
 
