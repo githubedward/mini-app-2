@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withFormik } from "formik";
 import LoginInput from "./LoginInput";
-import validationSchema from "../helpers/validationSchema";
+import { PulseLoader } from "react-spinners";
+import { loginValidationSchema as validationSchema } from "../helpers/validationSchema";
 import "../../../style-helpers/tooltip.css";
 import styles from "./LoginForm.module.css";
 
@@ -16,10 +17,17 @@ const LoginForm = props => {
     handleSubmit,
     isSubmitting
   } = props;
-  const { isSignupFocus } = values;
-  const classes = `${styles.form} ${isSignupFocus && styles.form_less}`;
+  const { isSignupFocus, isLoginFocus, handleLoginFocus } = values;
+  const isError = Object.values(errors).length !== 0;
   return (
-    <form onSubmit={handleSubmit} className={classes}>
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        handleLoginFocus();
+        handleSubmit();
+      }}
+      className={styles.form}
+    >
       <LoginInput
         name="username"
         type="text"
@@ -28,8 +36,8 @@ const LoginForm = props => {
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
-        touched={touched.username}
-        disabled={isSignupFocus}
+        onFocus={handleLoginFocus}
+        pressed={isLoginFocus}
       />
       <LoginInput
         name="password"
@@ -39,17 +47,22 @@ const LoginForm = props => {
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
-        touched={touched.password}
-        disabled={isSignupFocus}
+        onFocus={handleLoginFocus}
+        pressed={isLoginFocus}
       />
       <button
         type="submit"
         className={styles.btn}
-        disabled={
-          Object.values(errors).length !== 0 || isSubmitting || isSignupFocus
-        }
+        disabled={isError || isSubmitting || isSignupFocus}
       >
-        Login
+        {/* (isSubmitting && */ (
+          <PulseLoader
+            sizeUnit={"px"}
+            size={5}
+            loading={true}
+            color={`#ff4451`}
+          />
+        ) || "Login"}
       </button>
     </form>
   );

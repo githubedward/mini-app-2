@@ -9,16 +9,20 @@ const LoginInput = ({
   placeholder,
   label,
   error,
-  touched,
   value,
   onChange,
+  pressed,
   ...props
 }) => {
   return (
-    <label className={styles.label}>
+    <label
+      className={`${styles.label} ${error && styles.label_error} ${pressed &&
+        styles.label_pressed}`}
+    >
       {label}
       <input
-        className={styles.input}
+        className={`${styles.input} ${error && styles.input_error} ${pressed &&
+          styles.input_pressed}`}
         type={type}
         name={name}
         placeholder={placeholder}
@@ -28,17 +32,16 @@ const LoginInput = ({
         data-tip={error}
         data-for={`${name}-login`}
       />
-      {touched &&
-        (error && (
-          <ReactTooltip
-            className={type === "password" ? "error-top" : "error-left"}
-            id={`${name}-login`}
-            place={type === "password" ? "top" : "left"}
-            effect="solid"
-            getContent={dataTip => <div>{dataTip}</div>}
-          />
-        ))}
-      {touched && (error && <ErrorIcon className={styles.error} />)}
+      {error && (
+        <ReactTooltip
+          className={type === "password" ? "error-top" : "error-left"}
+          id={`${name}-login`}
+          place={type === "password" ? "top" : "left"}
+          effect="solid"
+          getContent={dataTip => <div>{dataTip}</div>}
+        />
+      )}
+      {error && <ErrorIcon className={styles.error} />}
     </label>
   );
 };

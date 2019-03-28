@@ -9,12 +9,13 @@ const SignupInput = ({
   placeholder,
   label,
   error,
-  touched,
   value,
   onChange,
+  pressed,
   ...props
 }) => {
-  const classes = `${styles.input} ${!!error && styles.input_error}`;
+  const classes = `${styles.input} ${error && styles.input_error} ${pressed &&
+    styles.input_pressed}`;
   return (
     <label className={styles.label}>
       {label}

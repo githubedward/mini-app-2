@@ -18,12 +18,6 @@
   border: 3px solid #f1f1f1;
 }
 
-.form_less {
-  opacity: 0.2;
-  -webkit-transition: opacity 0.75s ease 0.5s;
-  transition: opacity 0.75s ease 0.5s;
-}
-
 .label {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
@@ -33,6 +27,15 @@
   color: #888888;
   width: 100%;
   position: relative;
+}
+
+.label_pressed {
+  color: #ff4451;
+}
+
+.label_error {
+  color: #fc202f;
+  font-weight: normal;
 }
 
 .input {
@@ -48,7 +51,68 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid #eb7985;
+  border: 2px solid #fc202f;
+}
+
+.input_pressed {
+  border: 1px solid #ff4451;
+}
+
+.input_error {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  outline: none;
+  border: 1px solid #fc202f;
+}
+
+@-webkit-keyframes shake {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+  }
 }
 
 .btn {
@@ -61,8 +125,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 2rem;
-  width: auto;
+  height: 1.8rem;
+  width: 7rem;
   font-size: 1rem;
   padding: 0rem 1rem;
   background-color: white;
@@ -76,8 +140,8 @@
 .btn:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #eb7985;
-  border: 1px solid #eb7985;
+  background: #ff4451;
+  border: 1px solid #ff4451;
   color: white;
 }
 
@@ -98,11 +162,31 @@
 }
 
 .error {
-  fill: #eb2936;
+  -webkit-animation: appear 1s ease-out;
+          animation: appear 1s ease-out;
+  fill: #fc202f;
   position: absolute;
-  right: 23px;
-  top: 21px;
-  height: 1.5rem;
-  width: 1.5rem;
+  right: 25px;
+  top: 27px;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=LoginForm.module.css.map */

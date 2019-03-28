@@ -30,13 +30,17 @@
 .h1 {
   color: $gray;
   font-weight: $fw-lighter;
-  margin-bottom: 1rem;
+  margin: 0.25rem 0 1rem 0;
   font-size: 2.25rem;
 
   &_error {
     transition: 2s;
     color: $superdarkgray;
   }
+}
+
+@mixin signup-border($thk, $color) {
+  border: $thk solid $color;
 }
 
 .input {
@@ -46,7 +50,7 @@
   font-weight: $fw-light;
   height: 3rem;
 
-  border: 1px solid $lightgray;
+  @include signup-border(1px, $lightgray);
   outline: 1;
   color: $superdarkgray;
   border-radius: 5px;
@@ -59,17 +63,26 @@
 
   &:focus {
     outline: none;
-    border: 1px solid $lightred;
+    @include signup-border(2px, $theme);
+  }
+
+  &_pressed {
+    @include signup-border(1px, $light-theme);
+
+    &::placeholder {
+      color: $light-theme;
+      font-weight: $fw-light;
+    }
   }
 
   &_error {
     @include shake-animation();
     outline: none;
-    border: 1px solid $red;
+    @include signup-border(1px, $theme);
 
     &::placeholder {
-      color: $red;
-      font-weight: $fw-light;
+      color: $theme;
+      font-weight: normal;
     }
   }
 }
@@ -79,23 +92,24 @@ $btn-style: (
   width: 100%,
   font-size: 1.75rem,
   padding: 0rem 1rem,
-  border: $red,
-  bg: $red,
+  border: $light-theme,
+  bg: $light-theme,
   color: white,
-  hover-bg: $lightred,
-  hover-border: $lightred,
+  hover-bg: $theme,
+  hover-border: $theme,
   hover-color: white
 );
 
 .button {
-  margin-top: 2.5rem;
+  margin: 3rem 0 1rem 0;
   @include button($btn-style...);
 }
 
 $svg-size: 2rem;
 
 .error {
-  fill: $red;
+  @include appear;
+  fill: $theme;
   position: absolute;
   right: 10px;
   height: $svg-size;

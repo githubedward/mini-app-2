@@ -42,7 +42,7 @@
 .h1 {
   color: #b4b4b4;
   font-weight: 100;
-  margin-bottom: 1rem;
+  margin: 0.25rem 0 1rem 0;
   font-size: 2.25rem;
 }
 
@@ -90,7 +90,31 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid #eb7985;
+  border: 2px solid #fc202f;
+}
+
+.input_pressed {
+  border: 1px solid #ff4451;
+}
+
+.input_pressed::-webkit-input-placeholder {
+  color: #ff4451;
+  font-weight: 300;
+}
+
+.input_pressed:-ms-input-placeholder {
+  color: #ff4451;
+  font-weight: 300;
+}
+
+.input_pressed::-ms-input-placeholder {
+  color: #ff4451;
+  font-weight: 300;
+}
+
+.input_pressed::placeholder {
+  color: #ff4451;
+  font-weight: 300;
 }
 
 .input_error {
@@ -101,7 +125,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 1px solid #eb2936;
+  border: 1px solid #fc202f;
 }
 
 @-webkit-keyframes shake {
@@ -151,27 +175,27 @@
 }
 
 .input_error::-webkit-input-placeholder {
-  color: #eb2936;
-  font-weight: 300;
+  color: #fc202f;
+  font-weight: normal;
 }
 
 .input_error:-ms-input-placeholder {
-  color: #eb2936;
-  font-weight: 300;
+  color: #fc202f;
+  font-weight: normal;
 }
 
 .input_error::-ms-input-placeholder {
-  color: #eb2936;
-  font-weight: 300;
+  color: #fc202f;
+  font-weight: normal;
 }
 
 .input_error::placeholder {
-  color: #eb2936;
-  font-weight: 300;
+  color: #fc202f;
+  font-weight: normal;
 }
 
 .button {
-  margin-top: 2.5rem;
+  margin: 3rem 0 1rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,8 +209,8 @@
   width: 100%;
   font-size: 1.75rem;
   padding: 0rem 1rem;
-  background-color: #eb2936;
-  border: 1px solid #eb2936;
+  background-color: #ff4451;
+  border: 1px solid #ff4451;
   border-radius: 3px;
   text-decoration: none;
   color: white;
@@ -196,8 +220,8 @@
 .button:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #eb7985;
-  border: 1px solid #eb7985;
+  background: #fc202f;
+  border: 1px solid #fc202f;
   color: white;
 }
 
@@ -206,8 +230,8 @@
 }
 
 .button:active {
-  background-color: #eb2936;
-  border: 1px solid #eb2936;
+  background-color: #ff4451;
+  border: 1px solid #ff4451;
 }
 
 .button:disabled {
@@ -218,10 +242,30 @@
 }
 
 .error {
-  fill: #eb2936;
+  -webkit-animation: appear 1s ease-out;
+          animation: appear 1s ease-out;
+  fill: #fc202f;
   position: absolute;
   right: 10px;
   height: 2rem;
   width: 2rem;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=SignupForm.module.css.map */

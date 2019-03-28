@@ -8,11 +8,6 @@
   padding: 1rem 2rem;
   background-color: white;
   border: 3px solid $lightgray;
-
-  &_less {
-    opacity: 0.2;
-    @include trans-opacity;
-  }
 }
 
 .label {
@@ -22,6 +17,19 @@
   color: $darkgray;
   width: 100%;
   position: relative;
+
+  &_pressed {
+    color: $light-theme;
+  }
+
+  &_error {
+    color: $theme;
+    font-weight: normal;
+  }
+}
+
+@mixin login-border($thk, $color) {
+  border: $thk solid $color;
 }
 
 .input {
@@ -37,19 +45,29 @@
 
   &:focus {
     outline: none;
-    border: 1px solid $lightred;
+    @include login-border(2px, $theme);
+  }
+
+  &_pressed {
+    @include login-border(1px, $light-theme);
+  }
+
+  &_error {
+    @include shake-animation();
+    outline: none;
+    @include login-border(1px, $theme);
   }
 }
 
 $btn-style: (
-  height: 2rem,
-  width: auto,
+  height: 1.8rem,
+  width: 7rem,
   font-size: 1rem,
   padding: 0rem 1rem,
   border: $gray,
   bg: white,
-  hover-bg: $lightred,
-  hover-border: $lightred,
+  hover-bg: $light-theme,
+  hover-border: $light-theme,
   hover-color: white,
   color: $darkgray
 );
@@ -58,13 +76,14 @@ $btn-style: (
   @include button($btn-style...);
 }
 
-$svg-size: 1.5rem;
+$svg-size: 1.25rem;
 
 .error {
-  fill: $red;
+  @include appear;
+  fill: $theme;
   position: absolute;
-  right: 23px;
-  top: 21px;
+  right: 25px;
+  top: 27px;
   height: $svg-size;
   width: $svg-size;
 }

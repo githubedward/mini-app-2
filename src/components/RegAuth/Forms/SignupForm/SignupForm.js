@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withFormik } from "formik";
-import validationSchema from "../helpers/validationSchema";
+import { signupValidationSchema as validationSchema } from "../helpers/validationSchema";
 import "../../../style-helpers/tooltip.css";
 import styles from "./SignupForm.module.css";
 import SignupInput from "./SignupInput";
+import { PulseLoader } from "react-spinners";
 
 const SignupForm = props => {
   const {
@@ -16,7 +17,7 @@ const SignupForm = props => {
     handleSubmit,
     isSubmitting
   } = props;
-  const { handleSignupFocus } = values;
+  const { handleSignupFocus, isSignupFocus, isLoginFocus } = values;
   const isError = Object.values(errors).length !== 0;
   return (
     <form
@@ -27,48 +28,55 @@ const SignupForm = props => {
       }}
       className={styles.form}
     >
-      <h1 className={`${styles.h1} ${isError && styles.h1_error}`}>
+      <h1 className={`${styles.h1} ${isSignupFocus && styles.h1_error}`}>
         <strong>Signup</strong> to explore new experiences
       </h1>
       <SignupInput
         name="fullname"
         type="text"
         placeholder="Full Name"
-        error={touched.fullname && errors.fullname && errors.fullname}
+        error={touched.fullname && errors.fullname}
         value={values.fullname}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleSignupFocus}
-        touched={touched.fullname}
+        pressed={isSignupFocus}
       />
       <SignupInput
         name="username"
         type="text"
         placeholder="Username"
-        error={touched.username && errors.username && errors.username}
+        error={touched.username && errors.username}
         value={values.username}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleSignupFocus}
-        touched={touched.username}
+        pressed={isSignupFocus}
       />
       <SignupInput
         name="password"
         type="password"
         placeholder="Password"
-        error={touched.password && errors.password && errors.password}
+        error={touched.password && errors.password}
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleSignupFocus}
-        touched={touched.password}
+        pressed={isSignupFocus}
       />
       <button
         className={styles.button}
         type="submit"
-        disabled={isError || isSubmitting}
+        disabled={isError || isSubmitting || isLoginFocus}
       >
-        Signup
+        {/* (isSubmitting && */ (
+          <PulseLoader
+            sizeUnit={"px"}
+            size={12}
+            color={"white"}
+            loading={true}
+          />
+        ) || "Signup"}
       </button>
     </form>
   );

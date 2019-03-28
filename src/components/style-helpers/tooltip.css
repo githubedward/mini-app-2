@@ -1,33 +1,35 @@
 .error-left {
   color: #fff !important;
-  background-color: #eb2936 !important;
+  background-color: #fc202f !important;
   max-width: 12rem;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   opacity: 0;
+  font-weight: normal;
   -webkit-transition: opacity 0.75s ease 0.5s;
   transition: opacity 0.75s ease 0.5s;
 }
 
 .error-left.place-left:after {
-  border-left-color: #eb2936 !important;
+  border-left-color: #fc202f !important;
   border-left-style: solid !important;
   border-left-width: 6px !important;
 }
 
 .error-top {
   color: #fff !important;
-  background-color: #eb2936 !important;
+  background-color: #fc202f !important;
   max-width: 12rem;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   opacity: 0;
+  font-weight: normal;
   -webkit-transition: opacity 0.75s ease 0.5s;
   transition: opacity 0.75s ease 0.5s;
 }
 
 .error-top.place-top:after {
-  border-top-color: #eb2936 !important;
+  border-top-color: #fc202f !important;
   border-top-style: solid !important;
   border-top-width: 6px !important;
 }

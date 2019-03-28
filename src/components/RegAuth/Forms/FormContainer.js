@@ -17,7 +17,7 @@ class FormContainer extends Component {
   }
 
   handleSubmit = values => {
-    alert(values);
+    alert(JSON.stringify(values));
   };
 
   handleSignupFocus = () => {

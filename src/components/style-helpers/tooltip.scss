@@ -1,5 +1,5 @@
 @import "./mixins.scss";
-$color: $red;
+$color: $theme;
 
 @mixin error($color, $bgcolor) {
   color: $color !important;
@@ -8,6 +8,7 @@ $color: $red;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   opacity: 0;
+  font-weight: normal;
   @include trans-opacity;
 }
 
