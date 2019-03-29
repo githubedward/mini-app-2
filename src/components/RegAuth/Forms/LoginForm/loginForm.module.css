@@ -51,7 +51,7 @@
 
 .input:focus {
   outline: none;
-  border: 2px solid #fc202f;
+  border: 2px solid #fd545f;
 }
 
 .input_pressed {
@@ -155,8 +155,8 @@
 }
 
 .btn:disabled {
-  -webkit-transition: opacity 0.75s ease 0.5s;
-  transition: opacity 0.75s ease 0.5s;
+  -webkit-transition: opacity 0.75s ease 0.25s;
+  transition: opacity 0.75s ease 0.25s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }

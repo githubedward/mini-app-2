@@ -6,8 +6,8 @@
   font-size: 1rem;
   opacity: 0;
   font-weight: normal;
-  -webkit-transition: opacity 0.75s ease 0.5s;
-  transition: opacity 0.75s ease 0.5s;
+  -webkit-transition: opacity 0.75s ease 0.25s;
+  transition: opacity 0.75s ease 0.25s;
 }
 
 .error-left.place-left:after {
@@ -24,8 +24,8 @@
   font-size: 1rem;
   opacity: 0;
   font-weight: normal;
-  -webkit-transition: opacity 0.75s ease 0.5s;
-  transition: opacity 0.75s ease 0.5s;
+  -webkit-transition: opacity 0.75s ease 0.25s;
+  transition: opacity 0.75s ease 0.25s;
 }
 
 .error-top.place-top:after {

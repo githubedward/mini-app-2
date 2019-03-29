@@ -2,7 +2,6 @@
 
 .form {
   @include flex-center;
-
   flex-direction: column;
   width: 100%;
   padding: 2rem;
@@ -22,7 +21,6 @@
   width: 100%;
   margin-top: 1rem;
   position: relative;
-
   display: flex;
   align-items: center;
 }
@@ -63,7 +61,7 @@
 
   &:focus {
     outline: none;
-    @include signup-border(2px, $theme);
+    @include signup-border(2px, $light-theme);
   }
 
   &_pressed {

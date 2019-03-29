@@ -14,13 +14,12 @@ const SignupInput = ({
   pressed,
   ...props
 }) => {
-  const classes = `${styles.input} ${error && styles.input_error} ${pressed &&
-    styles.input_pressed}`;
   return (
     <label className={styles.label}>
       {label}
       <input
-        className={classes}
+        className={`${styles.input} ${error && styles.input_error} ${pressed &&
+          styles.input_pressed}`}
         type={type}
         name={name}
         placeholder={placeholder}

@@ -27,12 +27,12 @@ class FormContainer extends Component {
         isSignupFocus: false,
         isLoginFocus: false
       },
-      asyncError: ""
+      signupError: "",
+      loginError: ""
     };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.state, nextState, nextProps);
     return this.state !== nextState;
   }
 
@@ -55,13 +55,13 @@ class FormContainer extends Component {
       });
     } catch (err) {
       const error = err.response.data.errors[0];
-      const asyncError = {
+      const signupError = {
         [error.path]: true,
         message: error.message
       };
       this.setState({
         ...this.state,
-        asyncError
+        signupError
       });
     }
   };
@@ -70,12 +70,15 @@ class FormContainer extends Component {
     await helper.delay(500);
     try {
       const resp = await axios.post(LOGIN_URL, data);
-      console.log(resp.data);
+      localStorage.setItem("token", resp.data.token);
     } catch (err) {
-      console.log(err.response);
+      this.setState({
+        loginError: err.response.data.errors[0].message
+      });
     }
   };
 
+  // reset login inputs and disable login btn when signup input is onfocus
   handleSignupFocus = () => {
     if (!this.state.isFocus.isSignupFocus) {
       this.setState({
@@ -88,11 +91,12 @@ class FormContainer extends Component {
           username: "",
           password: ""
         },
-        asyncError: ""
+        loginError: ""
       });
     }
   };
 
+  // reset signup inputs and disable signup btn when login input is onfocus
   handleLoginFocus = () => {
     if (!this.state.isFocus.isLoginFocus) {
       this.setState({
@@ -106,14 +110,20 @@ class FormContainer extends Component {
           password: "",
           fullname: ""
         },
-        asyncError: ""
+        signupError: ""
       });
     }
   };
 
   render() {
     console.log("render!");
-    const { loginInput, signupInput, isFocus, asyncError } = this.state;
+    const {
+      loginInput,
+      signupInput,
+      isFocus,
+      signupError,
+      loginError
+    } = this.state;
     return (
       <section className={styles.background}>
         <div className={styles.container}>
@@ -121,14 +131,14 @@ class FormContainer extends Component {
             onSubmit={this.handleLogin}
             user={loginInput}
             isFocus={isFocus}
-            asyncError={asyncError}
+            asyncError={loginError}
             handleLoginFocus={this.handleLoginFocus}
           />
           <SignupForm
             onSubmit={this.handleSignup}
             user={signupInput}
             isFocus={isFocus}
-            asyncError={asyncError}
+            asyncError={signupError}
             handleSignupFocus={this.handleSignupFocus}
           />
         </div>
