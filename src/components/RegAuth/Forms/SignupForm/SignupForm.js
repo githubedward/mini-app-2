@@ -96,11 +96,9 @@ SignupForm.propTypes = {
   values: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  dirty: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleSignupFocus: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 };
 
