@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm/LoginForm";
-import SignupForm from "./SignupForm/SignupForm";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 import axios from "axios";
 import styles from "./FormContainer.module.css";
 import * as helper from "../../../utils/functions";
@@ -27,8 +27,8 @@ class FormContainer extends Component {
         isSignupFocus: false,
         isLoginFocus: false
       },
-      signupError: "",
-      loginError: ""
+      signupError: {},
+      loginError: {}
     };
   }
 

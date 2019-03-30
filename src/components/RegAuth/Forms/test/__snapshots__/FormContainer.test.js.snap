@@ -1,0 +1,424 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormContainer /> should render correctly 1`] = `
+<FormContainer>
+  <section
+    className="background"
+  >
+    <div
+      className="container"
+    >
+      <WithFormik(LoginForm)
+        asyncError=""
+        handleLoginFocus={[Function]}
+        isFocus={
+          Object {
+            "isLoginFocus": false,
+            "isSignupFocus": false,
+          }
+        }
+        onSubmit={[Function]}
+        user={
+          Object {
+            "password": "",
+            "username": "",
+          }
+        }
+      >
+        <Formik
+          asyncError=""
+          displayName="LoginForm"
+          enableReinitialize={true}
+          handleLoginFocus={[Function]}
+          handleSubmit={[Function]}
+          initialValues={
+            Object {
+              "asyncError": "",
+              "handleLoginFocus": [Function],
+              "isLoginFocus": false,
+              "isSignupFocus": false,
+              "password": "",
+              "username": "",
+            }
+          }
+          isFocus={
+            Object {
+              "isLoginFocus": false,
+              "isSignupFocus": false,
+            }
+          }
+          isInitialValid={false}
+          onSubmit={[Function]}
+          render={[Function]}
+          user={
+            Object {
+              "password": "",
+              "username": "",
+            }
+          }
+          validateOnBlur={true}
+          validateOnChange={true}
+          validationSchema={[Function]}
+        >
+          <LoginForm
+            asyncError=""
+            dirty={false}
+            errors={Object {}}
+            handleBlur={[Function]}
+            handleChange={[Function]}
+            handleLoginFocus={[Function]}
+            handleReset={[Function]}
+            handleSubmit={[Function]}
+            initialValues={
+              Object {
+                "asyncError": "",
+                "handleLoginFocus": [Function],
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+                "password": "",
+                "username": "",
+              }
+            }
+            isFocus={
+              Object {
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+              }
+            }
+            isSubmitting={false}
+            isValid={false}
+            isValidating={false}
+            onSubmit={[Function]}
+            registerField={[Function]}
+            resetForm={[Function]}
+            setError={[Function]}
+            setErrors={[Function]}
+            setFieldError={[Function]}
+            setFieldTouched={[Function]}
+            setFieldValue={[Function]}
+            setFormikState={[Function]}
+            setStatus={[Function]}
+            setSubmitting={[Function]}
+            setTouched={[Function]}
+            setValues={[Function]}
+            submitCount={0}
+            submitForm={[Function]}
+            touched={Object {}}
+            unregisterField={[Function]}
+            user={
+              Object {
+                "password": "",
+                "username": "",
+              }
+            }
+            validateField={[Function]}
+            validateForm={[Function]}
+            validateOnBlur={true}
+            validateOnChange={true}
+            values={
+              Object {
+                "asyncError": "",
+                "handleLoginFocus": [Function],
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+                "password": "",
+                "username": "",
+              }
+            }
+          >
+            <form
+              className="form"
+              onSubmit={[Function]}
+            >
+              <LoginInput
+                label="Username"
+                name="username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pressed={false}
+                type="text"
+                value=""
+              >
+                <label
+                  className="label undefined false"
+                >
+                  Username
+                  <input
+                    className="input undefined false"
+                    data-for="username-login"
+                    name="username"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </label>
+              </LoginInput>
+              <LoginInput
+                label="Password"
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                pressed={false}
+                type="password"
+                value=""
+              >
+                <label
+                  className="label undefined false"
+                >
+                  Password
+                  <input
+                    className="input undefined false"
+                    data-for="password-login"
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    type="password"
+                    value=""
+                  />
+                </label>
+              </LoginInput>
+              <button
+                className="btn"
+                disabled={false}
+                type="submit"
+              >
+                Login
+              </button>
+            </form>
+          </LoginForm>
+        </Formik>
+      </WithFormik(LoginForm)>
+      <WithFormik(SignupForm)
+        asyncError=""
+        handleSignupFocus={[Function]}
+        isFocus={
+          Object {
+            "isLoginFocus": false,
+            "isSignupFocus": false,
+          }
+        }
+        onSubmit={[Function]}
+        user={
+          Object {
+            "fullname": "",
+            "password": "",
+            "username": "",
+          }
+        }
+      >
+        <Formik
+          asyncError=""
+          displayName="SignupForm"
+          enableReinitialize={true}
+          handleSignupFocus={[Function]}
+          handleSubmit={[Function]}
+          initialValues={
+            Object {
+              "asyncError": "",
+              "fullname": "",
+              "handleSignupFocus": [Function],
+              "isLoginFocus": false,
+              "isSignupFocus": false,
+              "password": "",
+              "username": "",
+            }
+          }
+          isFocus={
+            Object {
+              "isLoginFocus": false,
+              "isSignupFocus": false,
+            }
+          }
+          isInitialValid={false}
+          onSubmit={[Function]}
+          render={[Function]}
+          user={
+            Object {
+              "fullname": "",
+              "password": "",
+              "username": "",
+            }
+          }
+          validateOnBlur={true}
+          validateOnChange={true}
+          validationSchema={[Function]}
+        >
+          <SignupForm
+            asyncError=""
+            dirty={false}
+            errors={Object {}}
+            handleBlur={[Function]}
+            handleChange={[Function]}
+            handleReset={[Function]}
+            handleSignupFocus={[Function]}
+            handleSubmit={[Function]}
+            initialValues={
+              Object {
+                "asyncError": "",
+                "fullname": "",
+                "handleSignupFocus": [Function],
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+                "password": "",
+                "username": "",
+              }
+            }
+            isFocus={
+              Object {
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+              }
+            }
+            isSubmitting={false}
+            isValid={false}
+            isValidating={false}
+            onSubmit={[Function]}
+            registerField={[Function]}
+            resetForm={[Function]}
+            setError={[Function]}
+            setErrors={[Function]}
+            setFieldError={[Function]}
+            setFieldTouched={[Function]}
+            setFieldValue={[Function]}
+            setFormikState={[Function]}
+            setStatus={[Function]}
+            setSubmitting={[Function]}
+            setTouched={[Function]}
+            setValues={[Function]}
+            submitCount={0}
+            submitForm={[Function]}
+            touched={Object {}}
+            unregisterField={[Function]}
+            user={
+              Object {
+                "fullname": "",
+                "password": "",
+                "username": "",
+              }
+            }
+            validateField={[Function]}
+            validateForm={[Function]}
+            validateOnBlur={true}
+            validateOnChange={true}
+            values={
+              Object {
+                "asyncError": "",
+                "fullname": "",
+                "handleSignupFocus": [Function],
+                "isLoginFocus": false,
+                "isSignupFocus": false,
+                "password": "",
+                "username": "",
+              }
+            }
+          >
+            <form
+              className="form"
+              onSubmit={[Function]}
+            >
+              <h1
+                className="h1 false"
+              >
+                <strong>
+                  Signup
+                </strong>
+                 to explore new experiences
+              </h1>
+              <SignupInput
+                name="fullname"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Full Name"
+                pressed={false}
+                type="text"
+                value=""
+              >
+                <label
+                  className="label"
+                >
+                  <input
+                    className="input undefined false"
+                    data-for="fullname-signup"
+                    name="fullname"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Full Name"
+                    type="text"
+                    value=""
+                  />
+                </label>
+              </SignupInput>
+              <SignupInput
+                name="username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Username"
+                pressed={false}
+                type="text"
+                value=""
+              >
+                <label
+                  className="label"
+                >
+                  <input
+                    className="input undefined false"
+                    data-for="username-signup"
+                    name="username"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Username"
+                    type="text"
+                    value=""
+                  />
+                </label>
+              </SignupInput>
+              <SignupInput
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                pressed={false}
+                type="password"
+                value=""
+              >
+                <label
+                  className="label"
+                >
+                  <input
+                    className="input undefined false"
+                    data-for="password-signup"
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Password"
+                    type="password"
+                    value=""
+                  />
+                </label>
+              </SignupInput>
+              <button
+                className="button"
+                disabled={false}
+                type="submit"
+              >
+                Signup
+              </button>
+            </form>
+          </SignupForm>
+        </Formik>
+      </WithFormik(SignupForm)>
+    </div>
+  </section>
+</FormContainer>
+`;
