@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withFormik } from "formik";
-import LoginInput from "./LoginInput";
 import { PulseLoader } from "react-spinners";
-import { loginValidationSchema as validationSchema } from "./helpers/validationSchema";
+// components/styles
+import LoginInput from "./LoginInput";
 import "../../style-helpers/tooltip.css";
 import styles from "./LoginForm.module.css";
+// others
+import { loginValidationSchema as validationSchema } from "./helpers/validationSchema";
 
 const LoginForm = props => {
   const {
@@ -58,7 +60,7 @@ const LoginForm = props => {
       />
       <button
         type="submit"
-        className={styles.btn}
+        className={styles.btn_login}
         disabled={isError || isSubmitting || isSignupFocus}
       >
         {(isSubmitting && (
@@ -76,21 +78,29 @@ const LoginForm = props => {
 };
 
 LoginForm.propTypes = {
-  values: PropTypes.object.isRequired,
+  values: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    isSignupFocus: PropTypes.bool.isRequired,
+    isLoginFocus: PropTypes.bool.isRequired,
+    handleLoginFocus: PropTypes.func.isRequired,
+    asyncError: PropTypes.object.isRequired
+  }),
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  dirty: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isSubmitting: PropTypes.bool.isRequired
 };
 
-// LoginForm.defaultProps = {
-//   handleSubmit: e => e.preventDefault(),
-//   pristine: false,
-//   submitting: false
-// };
+LoginForm.defaultProps = {
+  values: {
+    fullname: "",
+    username: "",
+    password: ""
+  }
+};
 
 const formikEnhancer = withFormik({
   validationSchema,

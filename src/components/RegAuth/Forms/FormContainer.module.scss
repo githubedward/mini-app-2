@@ -1,6 +1,8 @@
 @import "../../style-helpers/mixins.scss";
 
 .background {
+  @include appear();
+  @include trans-opacity;
   @include flex-center;
   @include full-page;
   background-image: url("../../../assets/path.jpg");

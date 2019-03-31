@@ -9,7 +9,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
       className="container"
     >
       <WithFormik(LoginForm)
-        asyncError=""
+        asyncError={Object {}}
         handleLoginFocus={[Function]}
         isFocus={
           Object {
@@ -26,14 +26,14 @@ exports[`<FormContainer /> should render correctly 1`] = `
         }
       >
         <Formik
-          asyncError=""
+          asyncError={Object {}}
           displayName="LoginForm"
           enableReinitialize={true}
           handleLoginFocus={[Function]}
           handleSubmit={[Function]}
           initialValues={
             Object {
-              "asyncError": "",
+              "asyncError": Object {},
               "handleLoginFocus": [Function],
               "isLoginFocus": false,
               "isSignupFocus": false,
@@ -61,7 +61,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
           validationSchema={[Function]}
         >
           <LoginForm
-            asyncError=""
+            asyncError={Object {}}
             dirty={false}
             errors={Object {}}
             handleBlur={[Function]}
@@ -71,7 +71,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
             handleSubmit={[Function]}
             initialValues={
               Object {
-                "asyncError": "",
+                "asyncError": Object {},
                 "handleLoginFocus": [Function],
                 "isLoginFocus": false,
                 "isSignupFocus": false,
@@ -117,7 +117,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
             validateOnChange={true}
             values={
               Object {
-                "asyncError": "",
+                "asyncError": Object {},
                 "handleLoginFocus": [Function],
                 "isLoginFocus": false,
                 "isSignupFocus": false,
@@ -183,7 +183,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
                 </label>
               </LoginInput>
               <button
-                className="btn"
+                className="btn_login"
                 disabled={false}
                 type="submit"
               >
@@ -194,7 +194,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
         </Formik>
       </WithFormik(LoginForm)>
       <WithFormik(SignupForm)
-        asyncError=""
+        asyncError={Object {}}
         handleSignupFocus={[Function]}
         isFocus={
           Object {
@@ -212,14 +212,14 @@ exports[`<FormContainer /> should render correctly 1`] = `
         }
       >
         <Formik
-          asyncError=""
+          asyncError={Object {}}
           displayName="SignupForm"
           enableReinitialize={true}
           handleSignupFocus={[Function]}
           handleSubmit={[Function]}
           initialValues={
             Object {
-              "asyncError": "",
+              "asyncError": Object {},
               "fullname": "",
               "handleSignupFocus": [Function],
               "isLoginFocus": false,
@@ -249,7 +249,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
           validationSchema={[Function]}
         >
           <SignupForm
-            asyncError=""
+            asyncError={Object {}}
             dirty={false}
             errors={Object {}}
             handleBlur={[Function]}
@@ -259,7 +259,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
             handleSubmit={[Function]}
             initialValues={
               Object {
-                "asyncError": "",
+                "asyncError": Object {},
                 "fullname": "",
                 "handleSignupFocus": [Function],
                 "isLoginFocus": false,
@@ -307,7 +307,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
             validateOnChange={true}
             values={
               Object {
-                "asyncError": "",
+                "asyncError": Object {},
                 "fullname": "",
                 "handleSignupFocus": [Function],
                 "isLoginFocus": false,
@@ -408,7 +408,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
                 </label>
               </SignupInput>
               <button
-                className="button"
+                className="btn_signup"
                 disabled={false}
                 type="submit"
               >

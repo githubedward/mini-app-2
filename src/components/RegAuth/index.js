@@ -1,13 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import RegAuth from "./Forms/FormContainer";
+import { toggleGlobalLoader } from "../../actions/global.actions";
 
-export default class index extends Component {
+class index extends Component {
   render() {
     const { props } = this;
     return <RegAuth {...props} />;
   }
 }
 
-// const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleGlobalLoader: bool => dispatch(toggleGlobalLoader(bool))
+  };
+};
 
-// const mapDispatchToProps = {};
+export default connect(
+  null,
+  mapDispatchToProps
+)(index);

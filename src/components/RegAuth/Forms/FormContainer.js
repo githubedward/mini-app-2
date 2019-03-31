@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
+// component/styles
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import axios from "axios";
 import styles from "./FormContainer.module.css";
+// others
 import * as helper from "../../../utils/functions";
 
 const API_URL = process.env.REACT_APP_DEV_API_URL;
@@ -27,8 +29,8 @@ class FormContainer extends Component {
         isSignupFocus: false,
         isLoginFocus: false
       },
-      signupError: {},
-      loginError: {}
+      asyncSignupError: {},
+      asyncLoginError: {}
     };
   }
 
@@ -55,13 +57,13 @@ class FormContainer extends Component {
       });
     } catch (err) {
       const error = err.response.data.errors[0];
-      const signupError = {
+      const asyncSignupError = {
         [error.path]: true,
         message: error.message
       };
       this.setState({
         ...this.state,
-        signupError
+        asyncSignupError
       });
     }
   };
@@ -71,9 +73,11 @@ class FormContainer extends Component {
     try {
       const resp = await axios.post(LOGIN_URL, data);
       localStorage.setItem("token", resp.data.token);
+      this.props.toggleGlobalLoader(true);
     } catch (err) {
+      console.log(err);
       this.setState({
-        loginError: err.response.data.errors[0].message
+        asyncLoginError: err.response.data.errors[0].message
       });
     }
   };
@@ -91,7 +95,7 @@ class FormContainer extends Component {
           username: "",
           password: ""
         },
-        loginError: ""
+        asyncLoginError: {}
       });
     }
   };
@@ -110,19 +114,18 @@ class FormContainer extends Component {
           password: "",
           fullname: ""
         },
-        signupError: ""
+        asyncSignupError: {}
       });
     }
   };
 
   render() {
-    console.log("render!");
     const {
       loginInput,
       signupInput,
       isFocus,
-      signupError,
-      loginError
+      asyncSignupError,
+      asyncLoginError
     } = this.state;
     return (
       <section className={styles.background}>
@@ -131,14 +134,14 @@ class FormContainer extends Component {
             onSubmit={this.handleLogin}
             user={loginInput}
             isFocus={isFocus}
-            asyncError={loginError}
+            asyncError={asyncLoginError}
             handleLoginFocus={this.handleLoginFocus}
           />
           <SignupForm
             onSubmit={this.handleSignup}
             user={signupInput}
             isFocus={isFocus}
-            asyncError={signupError}
+            asyncError={asyncSignupError}
             handleSignupFocus={this.handleSignupFocus}
           />
         </div>

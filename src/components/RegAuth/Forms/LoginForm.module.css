@@ -115,7 +115,7 @@
   }
 }
 
-.btn {
+.btn_login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,7 +137,7 @@
   cursor: pointer;
 }
 
-.btn:hover {
+.btn_login:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background: #fd545f;
@@ -145,16 +145,16 @@
   color: white;
 }
 
-.btn:focus {
+.btn_login:focus {
   outline: none;
 }
 
-.btn:active {
+.btn_login:active {
   background-color: white;
   border: 1px solid #b4b4b4;
 }
 
-.btn:disabled {
+.btn_login:disabled {
   -webkit-transition: opacity 0.75s ease 0.25s;
   transition: opacity 0.75s ease 0.25s;
   cursor: not-allowed !important;

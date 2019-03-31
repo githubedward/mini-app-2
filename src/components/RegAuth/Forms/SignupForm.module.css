@@ -194,7 +194,7 @@
   font-weight: normal;
 }
 
-.button {
+.btn_signup {
   margin: 3rem 0 1rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -217,7 +217,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.btn_signup:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background: #fc202f;
@@ -225,16 +225,16 @@
   color: white;
 }
 
-.button:focus {
+.btn_signup:focus {
   outline: none;
 }
 
-.button:active {
+.btn_signup:active {
   background-color: #fd545f;
   border: 1px solid #fd545f;
 }
 
-.button:disabled {
+.btn_signup:disabled {
   -webkit-transition: opacity 0.75s ease 0.25s;
   transition: opacity 0.75s ease 0.25s;
   cursor: not-allowed !important;

@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withFormik } from "formik";
-import { signupValidationSchema as validationSchema } from "./helpers/validationSchema";
+import { PulseLoader } from "react-spinners";
+// components/styles
+import SignupInput from "./SignupInput";
 import "../../style-helpers/tooltip.css";
 import styles from "./SignupForm.module.css";
-import SignupInput from "./SignupInput";
-import { PulseLoader } from "react-spinners";
+// others
+import { signupValidationSchema as validationSchema } from "./helpers/validationSchema";
 
 const SignupForm = props => {
   const {
@@ -74,7 +76,7 @@ const SignupForm = props => {
         pressed={isSignupFocus}
       />
       <button
-        className={styles.button}
+        className={styles.btn_signup}
         type="submit"
         disabled={isError || isSubmitting || isLoginFocus}
       >
@@ -93,7 +95,15 @@ const SignupForm = props => {
 };
 
 SignupForm.propTypes = {
-  values: PropTypes.object.isRequired,
+  values: PropTypes.shape({
+    fullname: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    isSignupFocus: PropTypes.bool.isRequired,
+    isLoginFocus: PropTypes.bool.isRequired,
+    handleSignupFocus: PropTypes.func.isRequired,
+    asyncError: PropTypes.object.isRequired
+  }),
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
@@ -102,7 +112,7 @@ SignupForm.propTypes = {
   isSubmitting: PropTypes.bool.isRequired
 };
 
-const formikEnhancer = withFormik({
+export const formikEnhancer = withFormik({
   validationSchema,
   enableReinitialize: true,
   mapPropsToValues: ({ user, handleSignupFocus, asyncError, isFocus }) => ({

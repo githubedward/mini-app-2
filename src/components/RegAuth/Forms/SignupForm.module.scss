@@ -98,7 +98,7 @@ $btn-style: (
   hover-color: white
 );
 
-.button {
+.btn_signup {
   margin: 3rem 0 1rem 0;
   @include button($btn-style...);
 }
