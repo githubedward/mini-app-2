@@ -1,7 +1,7 @@
 @import "../style-helpers/mixins.scss";
 
 .container {
-  @include appear;
+  @include fade-in(1s);
   @include trans-opacity;
   display: flex;
   flex-direction: column;

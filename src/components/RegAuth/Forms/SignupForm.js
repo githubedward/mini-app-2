@@ -31,7 +31,7 @@ const SignupForm = props => {
       className={styles.form}
     >
       <h1 className={`${styles.h1} ${isSignupFocus && styles.h1_error}`}>
-        <strong>Signup</strong> to explore new experiences
+        <strong>Signup</strong> to explore and share new experiences
       </h1>
       <SignupInput
         name="fullname"

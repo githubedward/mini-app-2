@@ -80,15 +80,15 @@
   50%,
   70%,
   90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0);
+    -webkit-transform: translate3d(-3px, 0, 0);
+            transform: translate3d(-3px, 0, 0);
   }
   20%,
   40%,
   60%,
   80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0);
+    -webkit-transform: translate3d(3px, 0, 0);
+            transform: translate3d(3px, 0, 0);
   }
 }
 
@@ -103,15 +103,15 @@
   50%,
   70%,
   90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0);
+    -webkit-transform: translate3d(-3px, 0, 0);
+            transform: translate3d(-3px, 0, 0);
   }
   20%,
   40%,
   60%,
   80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0);
+    -webkit-transform: translate3d(3px, 0, 0);
+            transform: translate3d(3px, 0, 0);
   }
 }
 
@@ -155,15 +155,15 @@
 }
 
 .btn_login:disabled {
-  -webkit-transition: opacity 0.75s ease 0.25s;
-  transition: opacity 0.75s ease 0.25s;
+  -webkit-transition: opacity 1s ease 0.25s;
+  transition: opacity 1s ease 0.25s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }
 
 .error {
-  -webkit-animation: appear 1s ease-out;
-          animation: appear 1s ease-out;
+  -webkit-animation: fade 0.5s ease-out;
+          animation: fade 0.5s ease-out;
   fill: #fc202f;
   position: absolute;
   right: 25px;
@@ -172,7 +172,7 @@
   width: 1.25rem;
 }
 
-@-webkit-keyframes appear {
+@-webkit-keyframes fade {
   from {
     opacity: 0;
   }
@@ -181,7 +181,7 @@
   }
 }
 
-@keyframes appear {
+@keyframes fade {
   from {
     opacity: 0;
   }

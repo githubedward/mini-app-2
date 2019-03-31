@@ -13,8 +13,12 @@ import { delay } from "../utils/functions";
 class App extends Component {
   async componentDidMount() {
     const token = localStorage.getItem("token");
-    if (!token) return null;
-    else {
+    if (!token) {
+      const { toggleGlobalLoader, authenticate } = this.props;
+      toggleGlobalLoader(true);
+      await delay(1000);
+      toggleGlobalLoader(false);
+    } else {
       const { toggleGlobalLoader, authenticate } = this.props;
       toggleGlobalLoader(true);
       await delay(2000);

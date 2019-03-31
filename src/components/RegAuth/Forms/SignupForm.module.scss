@@ -7,11 +7,6 @@
   padding: 2rem;
   border: $lightgray;
   background: rgba(255, 255, 255, 0.8);
-
-  &_less {
-    opacity: 0.1;
-    @include trans-opacity;
-  }
 }
 
 .label {
@@ -106,7 +101,7 @@ $btn-style: (
 $svg-size: 2rem;
 
 .error {
-  @include appear;
+  @include fade-in(0.5s);
   fill: $theme;
   position: absolute;
   right: 10px;

@@ -13,14 +13,14 @@
     50%,
     70%,
     90% {
-      transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-3px, 0, 0);
     }
 
     20%,
     40%,
     60%,
     80% {
-      transform: translate3d(10px, 0, 0);
+      transform: translate3d(3px, 0, 0);
     }
   }
 
@@ -29,10 +29,10 @@
   animation-name: shake;
 }
 
-@mixin appear() {
-  animation: appear 1s ease-out;
+@mixin fade-in($duration) {
+  animation: fade $duration ease-out;
 
-  @keyframes appear {
+  @keyframes fade {
     from {
       opacity: 0;
     }
@@ -42,8 +42,8 @@
   }
 }
 
-@mixin trans-opacity {
-  transition: opacity 0.75s ease 0.25s;
+@mixin trans-opacity($duration) {
+  transition: opacity $duration ease 0.25s;
 }
 
 // layout
@@ -101,7 +101,7 @@
   }
 
   &:disabled {
-    @include trans-opacity;
+    @include trans-opacity(1s);
     cursor: not-allowed !important;
     opacity: 0.25 !important;
   }

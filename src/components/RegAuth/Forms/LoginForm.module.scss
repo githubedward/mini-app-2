@@ -79,7 +79,7 @@ $btn-style: (
 $svg-size: 1.25rem;
 
 .error {
-  @include appear;
+  @include fade-in(0.5s);
   fill: $theme;
   position: absolute;
   right: 25px;
