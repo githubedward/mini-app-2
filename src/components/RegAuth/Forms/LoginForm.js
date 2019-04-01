@@ -94,14 +94,6 @@ LoginForm.propTypes = {
   isSubmitting: PropTypes.bool.isRequired
 };
 
-LoginForm.defaultProps = {
-  values: {
-    fullname: "",
-    username: "",
-    password: ""
-  }
-};
-
 const formikEnhancer = withFormik({
   validationSchema,
   enableReinitialize: true,

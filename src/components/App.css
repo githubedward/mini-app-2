@@ -1,14 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
-
 * {
   margin: 0px;
   padding: 0px;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
+
+.App {
+  -webkit-animation: fade 0.75s ease-out;
+          animation: fade 0.75s ease-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=App.css.map */

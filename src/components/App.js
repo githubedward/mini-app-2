@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { BrowserRouter as Router } from "react-router-dom";
 // state
 import { toggleGlobalLoader } from "../actions/global.actions";
 import { authenticate } from "../actions/user.actions";
 // components/styles
 import RegAuth from "../components/RegAuth/index";
 import GlobalLoader from "./shared/GlobalLoader";
+import Map from "./Map/index";
+import Nav from "./Nav/index";
 import "./App.css";
 // others
 import { delay } from "../utils/functions";
@@ -14,28 +18,27 @@ class App extends Component {
   async componentDidMount() {
     const token = localStorage.getItem("token");
     if (!token) {
-      const { toggleGlobalLoader, authenticate } = this.props;
+      const { toggleGlobalLoader } = this.props;
       toggleGlobalLoader(true);
-      await delay(1000);
+      await delay(500);
       toggleGlobalLoader(false);
     } else {
       const { toggleGlobalLoader, authenticate } = this.props;
       toggleGlobalLoader(true);
-      await delay(2000);
+      await delay(500);
       authenticate();
       toggleGlobalLoader(false);
     }
   }
 
   async componentDidUpdate() {
-    console.log("updated!", this.props);
     const token = localStorage.getItem("token");
     const { toggleGlobalLoader } = this.props;
     try {
       const { authenticate } = this.props;
       const { authenticated } = this.props.user;
       if (token && !authenticated) {
-        await delay(2000);
+        await delay(500);
         authenticate();
         toggleGlobalLoader(false);
       }
@@ -45,6 +48,7 @@ class App extends Component {
   }
 
   shouldComponentUpdate(prevState, nextState) {
+    console.log(this.props, nextState);
     return this.props !== nextState;
   }
 
@@ -52,9 +56,17 @@ class App extends Component {
     const { loading } = this.props;
     const { authenticated } = this.props.user;
     if (loading) return <GlobalLoader loading={loading} />;
-    if (authenticated) return <h1>Welcome!</h1>;
+    if (authenticated)
+      return (
+        <Router>
+          <main className="App">
+            <Nav />
+            <Map />
+          </main>
+        </Router>
+      );
     return (
-      <div className="App">
+      <div>
         <RegAuth />
       </div>
     );
@@ -75,6 +87,16 @@ const mapDispatchToProps = dispatch => {
     toggleGlobalLoader: bool => dispatch(toggleGlobalLoader(bool)),
     authenticate: () => dispatch(authenticate())
   };
+};
+
+App.propTypes = {
+  toggleGlobalLoader: PropTypes.func.isRequired,
+  authenticate: PropTypes.func.isRequired,
+
+  loading: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    fullname: PropTypes.string.isRequired
+  })
 };
 
 export default connect(

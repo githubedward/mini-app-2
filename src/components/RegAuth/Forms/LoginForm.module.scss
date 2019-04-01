@@ -8,6 +8,7 @@
   padding: 1rem 2rem;
   background-color: white;
   border: 3px solid $lightgray;
+  border-radius: $auth-b-radius $auth-b-radius 0 0;
 }
 
 .label {
@@ -42,6 +43,7 @@
   border: 1px solid $gray;
   outline: 1;
   color: $superdarkgray;
+  border-radius: 3px;
 
   &:focus {
     outline: none;
@@ -55,7 +57,7 @@
   &_error {
     @include shake-animation();
     outline: none;
-    @include login-border(2px, $theme);
+    @include login-border(1px, $theme);
   }
 }
 

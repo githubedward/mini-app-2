@@ -1,0 +1,37 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100vh;
+  width: 5rem;
+  background-color: #fd545f;
+}
+
+a:hover {
+  background-color: white;
+}
+
+.icons {
+  height: 5rem;
+  width: auto;
+  padding: 1.25rem;
+  fill: white;
+}
+
+.icons:hover {
+  fill: #fd545f;
+}
+/*# sourceMappingURL=NavBar.module.css.map */

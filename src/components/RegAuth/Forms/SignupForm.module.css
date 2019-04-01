@@ -15,6 +15,7 @@
   width: 100%;
   padding: 2rem;
   border: #f1f1f1;
+  border-radius: 0 0 10px 10px;
   background: rgba(255, 255, 255, 0.8);
 }
 
@@ -119,7 +120,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 2px solid #fc202f;
+  border: 1px solid #fc202f;
 }
 
 @-webkit-keyframes shake {

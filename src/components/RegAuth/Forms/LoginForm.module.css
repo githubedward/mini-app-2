@@ -16,6 +16,7 @@
   padding: 1rem 2rem;
   background-color: white;
   border: 3px solid #f1f1f1;
+  border-radius: 10px 10px 0 0;
 }
 
 .label {
@@ -47,6 +48,7 @@
   border: 1px solid #b4b4b4;
   outline: 1;
   color: #333333;
+  border-radius: 3px;
 }
 
 .input:focus {
@@ -66,7 +68,7 @@
   -webkit-animation-name: shake;
           animation-name: shake;
   outline: none;
-  border: 2px solid #fc202f;
+  border: 1px solid #fc202f;
 }
 
 @-webkit-keyframes shake {

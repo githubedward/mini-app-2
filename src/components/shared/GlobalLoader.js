@@ -1,13 +1,13 @@
 import React from "react";
-import { CircleLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import styles from "./GlobalLoader.module.css";
 
 const GlobalLoader = ({ loading }) => {
   return (
     <div className={styles.container}>
-      <CircleLoader
+      <PropagateLoader
         sizeUnit={"px"}
-        size={75}
+        size={25}
         color={"#fd545f"}
         loading={loading}
       />

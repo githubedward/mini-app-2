@@ -1,0 +1,29 @@
+@import "../../style-helpers/mixins.scss";
+
+$nav-width: 5rem;
+
+.container {
+  @include flex-center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  width: $nav-width;
+  background-color: $light-theme;
+}
+
+a {
+  &:hover {
+    background-color: white;
+  }
+}
+
+.icons {
+  height: $nav-width;
+  width: auto;
+  padding: 1.25rem;
+  fill: white;
+
+  &:hover {
+    fill: $light-theme;
+  }
+}
