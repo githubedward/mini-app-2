@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import axios from "axios";
 // component/styles
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import styles from "./FormContainer.module.css";
 // others
 import * as helper from "../../../utils/functions";
-
-const API_URL = process.env.REACT_APP_DEV_API_URL;
-const SIGNUP_URL = `${API_URL}/register`;
-const LOGIN_URL = `${API_URL}/login`;
+import Api from "../../../services/index";
 
 class FormContainer extends Component {
   constructor(props) {
@@ -41,8 +37,9 @@ class FormContainer extends Component {
   handleSignup = async data => {
     await helper.delay(500);
     try {
-      const resp = await axios.post(SIGNUP_URL, data);
-      const { username } = resp.data;
+      // const resp = await axios.post(SIGNUP_URL, data);
+      const resp = await Api.signup(data);
+      const { username } = resp;
       this.setState({
         ...this.state,
         loginInput: {
@@ -71,13 +68,14 @@ class FormContainer extends Component {
   handleLogin = async data => {
     await helper.delay(500);
     try {
-      const resp = await axios.post(LOGIN_URL, data);
-      localStorage.setItem("token", resp.data.token);
+      // const resp = await axios.post(LOGIN_URL, data);
+      const resp = await Api.login(data);
+      localStorage.setItem("token", resp.token);
       this.props.toggleGlobalLoader(true);
     } catch (err) {
-      console.log(err);
       this.setState({
-        asyncLoginError: err.response.data.errors[0].message
+        ...this.state,
+        asyncLoginError: err.response.data
       });
     }
   };

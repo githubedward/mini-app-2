@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 // state - actions
 import { toggleGlobalLoader } from "../actions/global.actions";
-import { authenticate } from "../actions/user.actions";
+import { authenticateUserAction } from "../actions/user.actions";
 // components/styles
 import RegAuth from "../components/RegAuth/index";
 import GlobalLoader from "./shared/GlobalLoader";
@@ -17,17 +17,17 @@ import { delay } from "../utils/functions";
 class App extends Component {
   async componentDidMount() {
     const token = localStorage.getItem("token");
+    const { toggleGlobalLoader } = this.props;
     if (!token) {
-      const { toggleGlobalLoader } = this.props;
       toggleGlobalLoader(true);
       await delay(500);
       this.props.history.push("/");
       toggleGlobalLoader(false);
     } else {
-      const { toggleGlobalLoader, authenticate } = this.props;
+      const { authenticateUserAction } = this.props;
       toggleGlobalLoader(true);
       await delay(500);
-      authenticate();
+      authenticateUserAction();
       toggleGlobalLoader(false);
     }
   }
@@ -36,11 +36,11 @@ class App extends Component {
     const token = localStorage.getItem("token");
     const { toggleGlobalLoader } = this.props;
     try {
-      const { authenticate } = this.props;
+      const { authenticateUserAction } = this.props;
       const { authenticated } = this.props.user;
       if (token && !authenticated) {
         await delay(500);
-        authenticate();
+        authenticateUserAction();
         toggleGlobalLoader(false);
       }
     } catch {
@@ -48,12 +48,12 @@ class App extends Component {
     }
   }
 
-  shouldComponentUpdate(prevState, nextState) {
-    console.log(this.props, nextState);
-    return this.props !== nextState;
-  }
+  // shouldComponentUpdate(prevState, nextState) {
+  //   return this.props !== nextState;
+  // }
 
   render() {
+    console.log(this.props);
     const { loading } = this.props;
     const { authenticated } = this.props.user;
     if (loading) return <GlobalLoader loading={loading} />;
@@ -84,13 +84,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleGlobalLoader: bool => dispatch(toggleGlobalLoader(bool)),
-    authenticate: () => dispatch(authenticate())
+    authenticateUserAction: () => dispatch(authenticateUserAction())
   };
 };
 
 App.propTypes = {
   toggleGlobalLoader: PropTypes.func.isRequired,
-  authenticate: PropTypes.func.isRequired,
+  authenticateUserAction: PropTypes.func.isRequired,
 
   loading: PropTypes.bool.isRequired,
   user: PropTypes.shape({
