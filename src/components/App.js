@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 // state
 import { toggleGlobalLoader } from "../actions/global.actions";
 import { authenticate } from "../actions/user.actions";
@@ -21,6 +21,7 @@ class App extends Component {
       const { toggleGlobalLoader } = this.props;
       toggleGlobalLoader(true);
       await delay(500);
+      this.props.history.replace("/");
       toggleGlobalLoader(false);
     } else {
       const { toggleGlobalLoader, authenticate } = this.props;
@@ -58,12 +59,10 @@ class App extends Component {
     if (loading) return <GlobalLoader loading={loading} />;
     if (authenticated)
       return (
-        <Router>
-          <main className="App">
-            <Nav />
-            <Map />
-          </main>
-        </Router>
+        <main className="App">
+          <Nav />
+          <Map />
+        </main>
       );
     return (
       <div>
@@ -99,7 +98,9 @@ App.propTypes = {
   })
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

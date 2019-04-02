@@ -48,6 +48,7 @@
   &:focus {
     outline: none;
     @include login-border(2px, $light-theme);
+    @include box-shadow(rgba(255, 62, 62, 0.6));
   }
 
   &_pressed {

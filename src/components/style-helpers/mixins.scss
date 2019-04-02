@@ -42,6 +42,22 @@
   }
 }
 
+@mixin slide($from, $to, $timing, $transition) {
+  @keyframes slide {
+    from {
+      // margin-left: $nav-width;
+      transform: translateX($from);
+    }
+
+    to {
+      // margin-right: $nav-width;
+      transform: translateX($to);
+    }
+  }
+
+  animation: slide $timing $transition;
+}
+
 @mixin trans-opacity($duration) {
   transition: opacity $duration ease 0.25s;
 }
@@ -58,6 +74,13 @@
   width: 100vw;
 }
 
+@mixin box-shadow($shadow) {
+  box-shadow: 0px 0px 5px 2px $shadow;
+}
+
+@mixin rbox-shadow($shadow) {
+  box-shadow: 1px 0px 5px 1px $shadow;
+}
 // shared utils
 @mixin button(
   $height,

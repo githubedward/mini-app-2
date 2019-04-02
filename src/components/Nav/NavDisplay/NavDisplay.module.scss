@@ -1,0 +1,14 @@
+@import "../../style-helpers/mixins.scss";
+
+$tab-width: 25rem;
+
+.container {
+  width: $tab-width;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  // left: $tab-width;
+  z-index: 1;
+  @include slide(-100%, 0%, 0.35s, ease-out);
+  @include rbox-shadow(rgba(119, 119, 119, 0.4));
+}

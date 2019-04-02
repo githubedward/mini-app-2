@@ -1,8 +1,9 @@
 @import "../../style-helpers/mixins.scss";
 
-$nav-width: 5rem;
+$nav-width: 4.5rem;
 
 .container {
+  z-index: 2;
   @include flex-center;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,8 +13,12 @@ $nav-width: 5rem;
 }
 
 a {
-  &:hover {
+  &.active {
     background-color: white;
+  }
+
+  &:hover {
+    @include box-shadow(rgba(255, 255, 255, 0.986));
   }
 }
 
@@ -23,7 +28,7 @@ a {
   padding: 1.25rem;
   fill: white;
 
-  &:hover {
+  &_active {
     fill: $light-theme;
   }
 }

@@ -11,6 +11,6 @@
 }
 
 .App {
-  @include fade-in(0.75s);
+  @include fade-in(0.5s);
   display: flex;
 }
