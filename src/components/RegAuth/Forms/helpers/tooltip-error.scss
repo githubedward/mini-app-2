@@ -1,4 +1,4 @@
-@import "./mixins.scss";
+@import "../../../style-helpers/mixins.scss";
 $color: $theme;
 
 @mixin error($color, $bgcolor) {

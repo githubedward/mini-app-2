@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-// state
+// state - actions
 import { toggleGlobalLoader } from "../actions/global.actions";
 import { authenticate } from "../actions/user.actions";
 // components/styles
@@ -21,7 +21,7 @@ class App extends Component {
       const { toggleGlobalLoader } = this.props;
       toggleGlobalLoader(true);
       await delay(500);
-      this.props.history.replace("/");
+      this.props.history.push("/");
       toggleGlobalLoader(false);
     } else {
       const { toggleGlobalLoader, authenticate } = this.props;

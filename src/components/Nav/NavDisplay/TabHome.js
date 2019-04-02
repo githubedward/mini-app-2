@@ -3,7 +3,11 @@ import React from "react";
 import styles from "./NavDisplay.module.css";
 
 const Home = () => {
-  return <div className={styles.container}>Home</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.tab}>My Profile</div>
+    </div>
+  );
 };
 
 export default Home;

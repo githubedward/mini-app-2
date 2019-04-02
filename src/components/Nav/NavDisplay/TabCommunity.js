@@ -3,7 +3,11 @@ import React from "react";
 import styles from "./NavDisplay.module.css";
 
 const Community = () => {
-  return <div className={styles.container}>Community</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.tab}>Community</div>
+    </div>
+  );
 };
 
 export default Community;

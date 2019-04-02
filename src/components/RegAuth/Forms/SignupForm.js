@@ -4,7 +4,7 @@ import { withFormik } from "formik";
 import { PulseLoader } from "react-spinners";
 // components/styles
 import SignupInput from "./SignupInput";
-import "../../style-helpers/tooltip.css";
+import "./helpers/tooltip-error.css";
 import styles from "./SignupForm.module.css";
 // others
 import { signupValidationSchema as validationSchema } from "./helpers/validationSchema";

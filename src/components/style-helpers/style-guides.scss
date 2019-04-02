@@ -1,5 +1,13 @@
 // this file is imported to mixins
 
+// font-size
+$t1: 20 / 16 + rem;
+$t2: 18 / 16 + rem;
+$t3: 16 / 16 + rem;
+$t4: 14 / 18 + rem;
+$help-txt: 12 / 16 + rem;
+$thumbnail: 10 / 16 + rem;
+
 // font-weight
 $fw-lighter: 100;
 $fw-light: 300;
@@ -8,6 +16,7 @@ $fw-medium: 500;
 // colors
 $theme: #fc202f;
 $light-theme: #fd545f;
+$superlight-theme: #ff7982;
 $superdarkgray: #333333;
 $darkgray: #888888;
 $gray: #b4b4b4;
@@ -19,4 +28,4 @@ $lovelyblue: #2694e0;
 $trans-delay: 0.5s;
 
 // others
-$auth-b-radius: 8px;
+$auth-b-radius: 5px;
