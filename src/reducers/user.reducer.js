@@ -3,9 +3,9 @@ import {
   AUTHENTICATE_USER_ERROR
 } from "../actions/user.types";
 
-// NOTE: registration and login is handled with local state
+// NOTE: signup and login are handled with local state
 
-const initialState = {
+export const initialState = {
   active: false,
   error: "",
   fullname: "",

@@ -327,7 +327,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
                 <strong>
                   Signup
                 </strong>
-                 to explore new experiences
+                 to explore and share new experiences
               </h1>
               <SignupInput
                 name="fullname"

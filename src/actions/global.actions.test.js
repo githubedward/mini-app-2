@@ -8,6 +8,6 @@ describe("global actions", () => {
       type: types.TOGGLE_GLOBAL_LOADER,
       bool
     };
-    expect(actions.toggleGlobalLoader(bool)).toEqual(expectedAction);
+    expect(actions.toggleGlobalLoaderAction(bool)).toEqual(expectedAction);
   });
 });

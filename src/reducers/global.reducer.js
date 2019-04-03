@@ -1,11 +1,10 @@
 import { TOGGLE_GLOBAL_LOADER } from "../actions/global.types";
 
-export default function global(
-  state = {
-    loading: false
-  },
-  action
-) {
+export const initialState = {
+  loading: false
+};
+
+export default function global(state = initialState, action) {
   if (!action) return state;
   switch (action.type) {
     case TOGGLE_GLOBAL_LOADER:
