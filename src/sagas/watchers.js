@@ -1,7 +1,7 @@
-import { takeLatest } from "redux-saga/effects";
+import { takeEvery } from "redux-saga/effects";
 import * as types from "../actions/user.types";
-import { authenticateUser } from "./userSaga";
+import * as userSaga from "./userSagas";
 
 export function* watchUserSaga() {
-  yield takeLatest(types.AUTHENTICATE_USER, authenticateUser);
+  yield takeEvery(types.AUTHENTICATE_USER, userSaga.authenticateUser);
 }

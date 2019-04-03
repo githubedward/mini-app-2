@@ -4,8 +4,8 @@
   background-color: white;
   position: absolute;
   z-index: 1;
-  -webkit-animation: slide 0.35s ease-out;
-          animation: slide 0.35s ease-out;
+  -webkit-animation: slide 0.45s ease-out;
+          animation: slide 0.45s ease-out;
   -webkit-box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
           box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
 }

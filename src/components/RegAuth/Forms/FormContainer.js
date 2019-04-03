@@ -71,7 +71,7 @@ class FormContainer extends Component {
       // const resp = await axios.post(LOGIN_URL, data);
       const resp = await Api.login(data);
       localStorage.setItem("token", resp.token);
-      this.props.toggleGlobalLoader(true);
+      this.props.authenticateUserAction();
     } catch (err) {
       this.setState({
         ...this.state,

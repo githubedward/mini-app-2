@@ -1,6 +1,6 @@
 import * as types from "./global.types";
 
-export const toggleGlobalLoader = bool => {
+export const toggleGlobalLoaderAction = bool => {
   return {
     type: types.TOGGLE_GLOBAL_LOADER,
     bool

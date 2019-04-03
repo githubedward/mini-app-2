@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import RegAuth from "./Forms/FormContainer";
-import { toggleGlobalLoader } from "../../actions/global.actions";
+import { toggleGlobalLoaderAction } from "../../actions/global.actions";
+import { authenticateUserAction } from "../../actions/user.actions";
 
 class index extends Component {
   render() {
@@ -12,7 +13,8 @@ class index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleGlobalLoader: bool => dispatch(toggleGlobalLoader(bool))
+    toggleGlobalLoaderAction: bool => dispatch(toggleGlobalLoaderAction(bool)),
+    authenticateUserAction: () => dispatch(authenticateUserAction())
   };
 };
 
