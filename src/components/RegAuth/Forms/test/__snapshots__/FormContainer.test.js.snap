@@ -6,6 +6,11 @@ exports[`<FormContainer /> should render correctly 1`] = `
     className="background"
   >
     <div
+      className="logo"
+    >
+      MapSocial
+    </div>
+    <div
       className="container"
     >
       <WithFormik(LoginForm)

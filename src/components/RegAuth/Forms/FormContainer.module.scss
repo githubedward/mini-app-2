@@ -16,3 +16,12 @@
   width: 500px;
   border-radius: $auth-b-radius;
 }
+
+.logo {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  font-family: "Pacifico", cursive;
+  font-size: $t2;
+  color: $light-theme;
+}

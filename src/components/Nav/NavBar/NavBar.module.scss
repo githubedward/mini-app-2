@@ -1,9 +1,9 @@
 @import "../../style-helpers/mixins.scss";
 
-$nav-width: 4.5rem;
+$nav-width: 4rem;
 
 .container {
-  z-index: 2;
+  z-index: 5;
   @include flex-center;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,14 +25,14 @@ a {
   }
 
   &:hover {
-    @include box-shadow(rgba(228, 228, 228, 0.7));
+    @include box-shadow(rgba(204, 204, 204, 0.7));
   }
 }
 
 .icons {
   height: $nav-width;
   width: auto;
-  padding: 1.25rem;
+  padding: 1rem;
   fill: $gray;
 
   &:hover {

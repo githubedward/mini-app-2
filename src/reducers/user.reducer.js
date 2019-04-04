@@ -1,12 +1,13 @@
 import {
   AUTHENTICATE_USER_SUCCESS,
-  AUTHENTICATE_USER_ERROR
+  AUTHENTICATE_USER_ERROR,
+  LOGOUT
 } from "../actions/user.types";
 
 // NOTE: signup and login are handled with local state
 
 export const initialState = {
-  active: false,
+  authenticated: false,
   error: "",
   fullname: "",
   id: null,
@@ -21,13 +22,18 @@ export default function user(state = initialState, action) {
       return {
         ...state,
         ...action.response,
-        active: true
+        authenticated: true
       };
     case AUTHENTICATE_USER_ERROR:
       return {
         ...state,
         ...action.error,
-        active: false
+        authenticated: false
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        authenticated: false
       };
     default:
       return state;

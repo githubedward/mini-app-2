@@ -1,0 +1,103 @@
+@import "../../style-helpers/mixins.scss";
+
+$tab-width: 23rem;
+
+.container {
+  position: relative;
+  width: $tab-width;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  z-index: 4;
+  @include slide(-100%, 0%, 0.35s, ease-out);
+  @include rbox-shadow(rgba(119, 119, 119, 0.4));
+
+  &_back {
+    position: absolute;
+    top: 15px;
+    right: -33px;
+    background-color: white;
+    padding: 0.5rem 0;
+    height: 2.5rem;
+    width: 2rem;
+    fill: $darkgray;
+    cursor: pointer;
+    @include rbox-shadow(rgba(141, 141, 141, 0.219));
+    border-radius: 0 5px 5px 0;
+
+    &:hover {
+      fill: $light-theme;
+      @include rbox-shadow(rgba(255, 68, 68, 0.7));
+    }
+  }
+}
+
+.tab {
+  width: auto;
+  margin: 0.5rem;
+
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+  @include tbox-shadow(rgba(158, 158, 158, 0.6));
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: $t1;
+  color: $light-theme;
+  padding: 0.7rem 0rem;
+  border-bottom: 1px solid $lightgray;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  color: $superdarkgray;
+
+  &_text {
+    width: 100%;
+    text-align: left;
+    font-weight: $fw-light;
+    padding: 1rem 0.5rem;
+    margin: 0 1rem 0 0.5rem;
+    font-size: $t3;
+    border-bottom: 1px solid $lightgray;
+  }
+
+  &:last-child &_text {
+    border-bottom: none;
+  }
+
+  &_icon {
+    margin: 0 1rem 0 2rem;
+    height: 2rem;
+    fill: $superdarkgray;
+  }
+
+  &_group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1.5rem;
+  }
+}
+
+$btn-style: (
+  height: 1.5rem,
+  width: 4rem,
+  font-size: $help-txt,
+  padding: 0rem 1rem,
+  border: $gray,
+  bg: white,
+  hover-bg: $light-theme,
+  hover-border: $light-theme,
+  hover-color: white,
+  color: $darkgray
+);
+
+.button {
+  &_logout {
+    @include button($btn-style...);
+  }
+}

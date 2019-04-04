@@ -3,28 +3,28 @@ import { Route, Switch } from "react-router-dom";
 // components/styles
 import Home from "./TabHome";
 import Community from "./TabCommunity";
-import Feed from "./TabFeed";
-import Pin from "./TabPin";
+import Places from "./TabPlaces";
+import Map from "./TabMap";
 
-const NavDisplay = props => {
+const NavRoutes = props => {
   return (
     <div>
       <Switch>
         <Route exact path="/home">
-          <Home />
+          <Home {...props} />
         </Route>
         <Route exact path="/community">
-          <Community />
+          <Community {...props} />
         </Route>
-        <Route exact path="/feed">
-          <Feed />
+        <Route exact path="/places">
+          <Places {...props} />
         </Route>
-        <Route exact path="/pin">
-          <Pin />
+        <Route exact path="/map">
+          <Map {...props} />
         </Route>
       </Switch>
     </div>
   );
 };
 
-export default NavDisplay;
+export default NavRoutes;

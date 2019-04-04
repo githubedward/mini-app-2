@@ -8,3 +8,9 @@ export const authenticateUserAction = () => {
     type: types.AUTHENTICATE_USER
   };
 };
+
+export const logout = () => {
+  return {
+    type: types.LOGOUT
+  };
+};

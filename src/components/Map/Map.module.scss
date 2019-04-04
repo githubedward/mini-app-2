@@ -1,3 +1,5 @@
+@import "../style-helpers/mixins.scss";
+
 .container {
   position: relative;
   height: 100vh;
@@ -10,10 +12,9 @@
   position: absolute;
   bottom: 5px;
   left: 5px;
-  color: #fd545f;
+  color: $light-theme;
   z-index: 3;
   background: white;
   padding: 0.25rem 1rem 0.25rem 0.75rem;
   border-radius: 8px;
 }
-/*# sourceMappingURL=Map.module.css.map */

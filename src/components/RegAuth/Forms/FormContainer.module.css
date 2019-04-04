@@ -46,4 +46,13 @@
   width: 500px;
   border-radius: 5px;
 }
+
+.logo {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  font-family: "Pacifico", cursive;
+  font-size: 1.125rem;
+  color: #fd545f;
+}
 /*# sourceMappingURL=FormContainer.module.css.map */

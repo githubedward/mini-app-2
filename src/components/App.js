@@ -12,12 +12,11 @@ import Map from "./Map/index";
 import Nav from "./Nav/index";
 import "./App.css";
 // others
-// import * as helper from "../utils/functions";
 
 class App extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     const token = localStorage.getItem("token");
-    if (token && !this.props.user.active) {
+    if (token && !this.props.user.authenticated) {
       this.props.authenticateUserAction();
     }
     if (!token) {
@@ -30,10 +29,9 @@ class App extends Component {
   // }
 
   render() {
-    console.log(this.props);
     const token = localStorage.getItem("token");
     const { loading } = this.props;
-    const { active } = this.props.user;
+    const { authenticated } = this.props.user;
     if (loading) return <GlobalLoader loading={loading} />;
     if (!token)
       return (
@@ -41,7 +39,7 @@ class App extends Component {
           <RegAuth />
         </div>
       );
-    if (token && !active) return null;
+    if (token && !authenticated) return null;
     // return main page
     else
       return (

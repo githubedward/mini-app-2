@@ -24,11 +24,11 @@ const NavBar = props => {
       <Link to="/community" className={getLinkClasses("/community")}>
         <IconCommunity className={getIconClasses("/community")} />
       </Link>
-      <Link to="/feed" className={getLinkClasses("/feed")}>
-        <IconFeed className={getIconClasses("/feed")} />
+      <Link to="/places" className={getLinkClasses("/places")}>
+        <IconFeed className={getIconClasses("/places")} />
       </Link>
-      <Link to="/pin" className={getLinkClasses("/pin")}>
-        <IconPlace className={getIconClasses("/pin")} />
+      <Link to="/map" className={getLinkClasses("/map")}>
+        <IconPlace className={getIconClasses("/map")} />
       </Link>
     </div>
   );

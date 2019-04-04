@@ -24,7 +24,7 @@ describe("user reducer", () => {
     const nextState = {
       ...initialState,
       ...action.response,
-      active: true
+      authenticated: true
     };
     expect(userReducer(initialState, action)).toEqual(nextState);
   });
