@@ -25,7 +25,6 @@ const LoginForm = props => {
     <form
       onSubmit={e => {
         e.preventDefault();
-        handleLoginFocus();
         handleSubmit();
       }}
       className={styles.form}
@@ -104,6 +103,7 @@ const formikEnhancer = withFormik({
     handleLoginFocus
   }),
   handleSubmit: (values, formikBag) => {
+    formikBag.props.handleLoginFocus();
     formikBag.props.onSubmit(values);
   },
   displayName: "LoginForm"

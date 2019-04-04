@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token && !this.props.user.authenticated) {
-      this.props.authenticateUserAction();
+      this.props.authenticateUser();
     }
     if (!token) {
       this.props.history.push("/");
@@ -60,19 +60,26 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleGlobalLoaderAction: bool => dispatch(toggleGlobalLoaderAction(bool)),
-    authenticateUserAction: () => dispatch(authenticateUserAction())
+    authenticateUser: () => {
+      ownProps.history.push("/places");
+      dispatch(authenticateUserAction());
+    }
   };
 };
 
 App.propTypes = {
   toggleGlobalLoaderAction: PropTypes.func.isRequired,
-  authenticateUserAction: PropTypes.func.isRequired,
+  authenticateUser: PropTypes.func.isRequired,
 
   loading: PropTypes.bool.isRequired,
-  user: PropTypes.shape({})
+  user: PropTypes.shape({
+    authenticated: PropTypes.bool.isRequired,
+    fullname: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
+  })
 };
 
 export default withRouter(

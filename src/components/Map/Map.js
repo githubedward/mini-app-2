@@ -1,33 +1,88 @@
 import React, { Component } from "react";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+// components/styles
+import CityPin from "./CityPin";
+import CityInfo from "./CityInfo";
 import styles from "./Map.module.css";
+// others
+import CITIES from "./cities.json";
 
-class Map extends Component {
-  state = {
-    viewport: {
-      width: 400,
-      height: 400,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
-    }
+const MAP_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
+export default class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        latitude: 43.6532,
+        longitude: -79.3832,
+        zoom: 13,
+        bearing: 0,
+        pitch: 0
+      },
+      popupInfo: null
+    };
+  }
+
+  _renderCityMarker = (city, index) => {
+    return (
+      <Marker
+        key={`marker-${index}`}
+        longitude={city.longitude}
+        latitude={city.latitude}
+      >
+        <CityPin size={20} onClick={() => this.setState({ popupInfo: city })} />
+      </Marker>
+    );
+  };
+
+  _renderPopup() {
+    const { popupInfo } = this.state;
+
+    return (
+      popupInfo && (
+        <Popup
+          tipSize={5}
+          anchor="top"
+          longitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
+          closeOnClick={false}
+          onClose={() => this.setState({ popupInfo: null })}
+        >
+          <CityInfo info={popupInfo} />
+          <form>
+            <input type="text" />
+            <button type='button' onClick={() => alert("clicked")}>Button</button>
+          </form>
+        </Popup>
+      )
+    );
+  }
+
+  _updateViewport = viewport => {
+    this.setState({ viewport });
   };
 
   render() {
+    const { viewport } = this.state;
     return (
       <section className={styles.container}>
-        {/* <div className={styles.logo}>MapSocial</div> */}
         <ReactMapGL
-          {...this.state.viewport}
+          {...viewport}
           width="100%"
           height="100%"
-          mapboxApiAccessToken="pk.eyJ1IjoiZGV2ZWR3YXJkIiwiYSI6ImNqb3A5cTRhNTB3dWYzdmx3aG5hZ25vNjIifQ.Sr_YY4RT2heuW8Nn0HakaA"
-          onViewportChange={viewport => this.setState({ viewport })}
+          mapboxApiAccessToken={MAP_TOKEN}
+          onViewportChange={this._updateViewport}
           mapStyle="mapbox://styles/devedward/cju265bst1xsg1fo18srfxmyr"
-        />
+        >
+          {CITIES.map(this._renderCityMarker)}
+
+          {this._renderPopup()}
+          <div className={styles.map_nav}>
+            <NavigationControl onViewportChange={this._updateViewport} />
+          </div>
+        </ReactMapGL>
       </section>
     );
   }
 }
-
-export default Map;

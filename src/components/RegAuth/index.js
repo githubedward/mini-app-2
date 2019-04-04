@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import RegAuth from "./Forms/FormContainer";
 import { toggleGlobalLoaderAction } from "../../actions/global.actions";
 import { authenticateUserAction } from "../../actions/user.actions";
@@ -11,14 +12,19 @@ class index extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleGlobalLoaderAction: bool => dispatch(toggleGlobalLoaderAction(bool)),
-    authenticateUserAction: () => dispatch(authenticateUserAction())
+    authenticateUserAction: () => {
+      ownProps.history.push("/places");
+      dispatch(authenticateUserAction());
+    }
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(index);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(index)
+);

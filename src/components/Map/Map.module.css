@@ -16,4 +16,11 @@
   padding: 0.25rem 1rem 0.25rem 0.75rem;
   border-radius: 8px;
 }
+
+.map_nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
 /*# sourceMappingURL=Map.module.css.map */

@@ -2,7 +2,7 @@ import React from "react";
 import FormContainer from "../FormContainer";
 import Adapter from "enzyme-adapter-react-16";
 import toJson from "enzyme-to-json";
-import Enzyme, { mount, unmount } from "enzyme";
+import Enzyme, { mount } from "enzyme";
 
 Enzyme.configure({ adapter: new Adapter() });
 
