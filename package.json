@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "deck.gl": "^6.4.9",
     "emotion": "^10.0.9",
     "formik": "^1.5.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-map-gl": "^4.1.1",
+    "react-map-gl-geocoder": "^1.7.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",

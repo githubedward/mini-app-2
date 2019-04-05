@@ -1,5 +1,8 @@
+import "mapbox-gl/dist/mapbox-gl.css";
 import React, { Component } from "react";
-import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+import MapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+import Geocoder from "react-map-gl-geocoder";
+import { GeoJsonLayer } from "deck.gl";
 // components/styles
 import CityPin from "./CityPin";
 import CityInfo from "./CityInfo";
@@ -8,23 +11,27 @@ import styles from "./Map.module.css";
 import CITIES from "./cities.json";
 
 const MAP_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+const MAP_STYLE = process.env.REACT_APP_MAPSTYLE;
 
 export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
       viewport: {
+        width: `100%`,
+        height: `100%`,
         latitude: 43.6532,
         longitude: -79.3832,
-        zoom: 13,
-        bearing: 0,
-        pitch: 0
+        zoom: 13
       },
-      popupInfo: null
+      popupInfo: null,
+      searchResultLayer: null
     };
   }
 
-  _renderCityMarker = (city, index) => {
+  mapRef = React.createRef();
+
+  renderCityMarker = (city, index) => {
     return (
       <Marker
         key={`marker-${index}`}
@@ -36,7 +43,7 @@ export default class Map extends Component {
     );
   };
 
-  _renderPopup() {
+  renderPopup() {
     const { popupInfo } = this.state;
 
     return (
@@ -52,36 +59,74 @@ export default class Map extends Component {
           <CityInfo info={popupInfo} />
           <form>
             <input type="text" />
-            <button type='button' onClick={() => alert("clicked")}>Button</button>
+            <button type="button" onClick={() => alert("clicked")}>
+              Button
+            </button>
           </form>
         </Popup>
       )
     );
   }
 
-  _updateViewport = viewport => {
-    this.setState({ viewport });
+  handleViewportChange = viewport => {
+    this.setState({
+      viewport: { ...this.state.viewport, ...viewport }
+    });
+  };
+
+  handleGeocoderViewportChange = viewport => {
+    const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+    return this.handleViewportChange({
+      ...viewport,
+      ...geocoderDefaultOverrides
+    });
+  };
+
+  handleOnResult = event => {
+    console.log(event);
+    this.setState({
+      ...this.state,
+      searchResultLayer: new GeoJsonLayer({
+        id: "search-result",
+        data: event.result.geometry,
+        getFillColor: [255, 0, 0, 128],
+        getRadius: 1000,
+        pointRadiusMinPixels: 10,
+        pointRadiusMaxPixels: 10
+      })
+    });
   };
 
   render() {
     const { viewport } = this.state;
     return (
       <section className={styles.container}>
-        <ReactMapGL
+        <MapGL
+          ref={this.mapRef}
           {...viewport}
-          width="100%"
-          height="100%"
           mapboxApiAccessToken={MAP_TOKEN}
-          onViewportChange={this._updateViewport}
-          mapStyle="mapbox://styles/devedward/cju265bst1xsg1fo18srfxmyr"
+          onViewportChange={this.handleViewportChange}
+          mapStyle={MAP_STYLE}
         >
-          {CITIES.map(this._renderCityMarker)}
+          {CITIES.map(this.renderCityMarker)}
 
-          {this._renderPopup()}
+          {this.renderPopup()}
+
           <div className={styles.map_nav}>
-            <NavigationControl onViewportChange={this._updateViewport} />
+            <NavigationControl onViewportChange={this.handleViewportChange} />
           </div>
-        </ReactMapGL>
+
+          <Geocoder
+            minLength={4}
+            mapRef={this.mapRef}
+            // containerRef={this.geocoderContainerRef}
+            onResult={this.handleOnResult}
+            onViewportChange={this.handleViewportChange}
+            mapboxApiAccessToken={MAP_TOKEN}
+            // position="top-left"
+          />
+        </MapGL>
       </section>
     );
   }

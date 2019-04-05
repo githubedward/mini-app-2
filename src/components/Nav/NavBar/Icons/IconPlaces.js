@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconFeed = ({ className }) => {
+const IconPlaces = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,4 +15,4 @@ const IconFeed = ({ className }) => {
   );
 };
 
-export default IconFeed;
+export default IconPlaces;

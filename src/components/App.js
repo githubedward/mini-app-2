@@ -24,7 +24,7 @@ class App extends Component {
     }
   }
 
-  // shouldComponentUpdate(prevState, nextState) {
+  // shouldComponentUpdate(prevProps, nextProps) {
   //   return this.props !== nextState;
   // }
 
@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleGlobalLoaderAction: bool => dispatch(toggleGlobalLoaderAction(bool)),
     authenticateUser: () => {
-      ownProps.history.push("/places");
+      ownProps.history.push("/");
       dispatch(authenticateUserAction());
     }
   };

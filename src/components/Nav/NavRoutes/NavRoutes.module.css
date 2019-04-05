@@ -160,4 +160,36 @@
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }
+
+.map_tools {
+  position: fixed;
+  top: 10.5rem;
+  left: 4rem;
+  width: auto;
+  padding: 1rem;
+  color: gray;
+  z-index: 4;
+  border-radius: 0 10px 10px 0;
+  -webkit-box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
+          box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
+  -webkit-animation: slide 0.35s ease-out;
+          animation: slide 0.35s ease-out;
+}
+
+@keyframes slide {
+  from {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+.map_tools__inactive {
+  -webkit-box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
+          box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
+  margin: 1rem 0;
+}
 /*# sourceMappingURL=NavRoutes.module.css.map */

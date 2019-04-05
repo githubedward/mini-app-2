@@ -18,14 +18,19 @@
           justify-content: flex-start;
   height: 100vh;
   width: 4rem;
-  background-color: white;
-  border-right: 1px solid #f1f1f1;
+  background-color: #fd545f;
+}
+
+.container_home {
+  -webkit-box-shadow: 1px 0px 5px 1px rgba(133, 133, 133, 0.7);
+          box-shadow: 1px 0px 5px 1px rgba(133, 133, 133, 0.7);
 }
 
 a.active {
   border-top: 1px solid #f1f1f1;
   border-bottom: 1px solid #f1f1f1;
   border-right: 1px solid white;
+  background-color: white;
 }
 
 a.active:first-child {
@@ -35,13 +40,14 @@ a.active:first-child {
 a:hover {
   -webkit-box-shadow: 0px 0px 5px 2px rgba(204, 204, 204, 0.7);
           box-shadow: 0px 0px 5px 2px rgba(204, 204, 204, 0.7);
+  background-color: white;
 }
 
 .icons {
   height: 4rem;
   width: auto;
   padding: 1rem;
-  fill: #b4b4b4;
+  fill: white;
 }
 
 .icons:hover {

@@ -1,8 +1,8 @@
 import React from "react";
 // components/styles
 import styles from "./NavRoutes.module.css";
-import IconRoundUser from "../../shared/IconRoundId";
-import IconRoundId from "../../shared/IconRoundUser";
+import IconRoundUser from "./Icons/IconRoundId";
+import IconRoundId from "./Icons/IconRoundUser";
 import IconArrowBack from "../../shared/IconArrowBack";
 
 const Home = ({ user: { fullname, username }, logout, history }) => {

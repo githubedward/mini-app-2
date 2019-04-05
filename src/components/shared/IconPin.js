@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconPlace = ({ className }) => {
+const IconPin = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,4 +15,4 @@ const IconPlace = ({ className }) => {
   );
 };
 
-export default IconPlace;
+export default IconPin;
