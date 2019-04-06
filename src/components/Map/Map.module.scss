@@ -25,3 +25,31 @@
   right: 0;
   padding: 10px;
 }
+
+.pindrop {
+  @keyframes shake {
+    from,
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(-3px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(3px, 0, 0);
+    }
+  }
+
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: shake;
+}

@@ -1,0 +1,22 @@
+Object
+  result:
+  bbox: (4) [-79.639302406235, 43.5603428815601, -79.1134670108977, 43.8554654957061]
+  center: (2) [-79.3849, 43.6529]
+  context: (2) [{…}, {…}]
+  geometry:
+  coordinates: Array(2)
+  0: -79.3849
+  1: 43.6529
+  length: 2
+  __proto__: Array(0)
+  type: "Point"
+  __proto__: Object
+  id: "place.1521272661948910"
+  place_name: "Toronto, Ontario, Canada"
+  place_type: ["place"]
+  properties: {wikidata: "Q172"}
+  relevance: 1
+  text: "Toronto"
+  type: "Feature"
+  __proto__: Object
+  __proto__: Object

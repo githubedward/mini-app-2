@@ -5,15 +5,18 @@ import IconArrowBack from "../../shared/IconArrowBack";
 import IconAddLocation from "./Icons/IconAddLocation";
 import IconSearch from "./Icons/IconSearch";
 
-const Pin = ({ history }) => {
+const MapTab = ({ history }) => {
   return (
-    <div className={styles.map_tools}>
-      <div className={styles.map_tools__inactive}>
-        <IconSearch />
-        <IconAddLocation />
+    <div className={styles.container}>
+      <IconArrowBack
+        className={styles.container_back}
+        onClick={() => history.push("/")}
+      />
+      <div className={styles.tab}>
+        <h1 className={styles.title}>Map Tools</h1>
       </div>
     </div>
   );
 };
 
-export default Pin;
+export default MapTab;

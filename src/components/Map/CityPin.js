@@ -18,8 +18,8 @@ export default class CityPin extends PureComponent {
         height={size}
         viewBox="0 0 24 24"
         style={{
-          ...pinStyle
-          // transform: `translate(${-size / 2}px,${-size}px)`
+          ...pinStyle,
+          transform: `translate(${-size / 2}px,${-size}px)`
         }}
         onClick={onClick}
       >
