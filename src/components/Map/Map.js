@@ -1,15 +1,66 @@
-import React, { Component } from "react";
-// components/styles
+import React from "react";
+import { compose, withProps } from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker
+} from "react-google-maps";
+//
 import styles from "./Map.module.css";
-// others
 
-const MAP_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-const MAP_STYLE = process.env.REACT_APP_MAPSTYLE;
+const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
-class Map extends Component {
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${MAP_TOKEN}&v=3.exp&libraries=geometry,drawing,places`,
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `100%` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    {props.isMarkerShown && (
+      <Marker
+        position={{ lat: -34.397, lng: 150.644 }}
+        onClick={props.onMarkerClick}
+      />
+    )}
+  </GoogleMap>
+));
+
+class MyFancyComponent extends React.PureComponent {
+  state = {
+    isMarkerShown: false
+  };
+
+  componentDidMount() {
+    this.delayedShowMarker();
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true });
+    }, 3000);
+  };
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false });
+    this.delayedShowMarker();
+  };
+
   render() {
-    return <div />;
+    return (
+      <div className={styles.container}>
+        <MyMapComponent
+          isMarkerShown={this.state.isMarkerShown}
+          onMarkerClick={this.handleMarkerClick}
+        />
+      </div>
+    );
   }
 }
 
-export default Map;
+export default MyFancyComponent;
