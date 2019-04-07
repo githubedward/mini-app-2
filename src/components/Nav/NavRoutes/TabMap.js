@@ -2,8 +2,6 @@ import React from "react";
 // components/styles
 import styles from "./NavRoutes.module.css";
 import IconArrowBack from "../../shared/IconArrowBack";
-import IconAddLocation from "./Icons/IconAddLocation";
-import IconSearch from "./Icons/IconSearch";
 
 const MapTab = ({ history }) => {
   return (
