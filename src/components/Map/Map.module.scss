@@ -26,35 +26,57 @@
   padding: 10px;
 }
 
-.pindrop {
-  @keyframes shake {
-    from,
-    to {
-      transform: translate3d(0, 0, 0);
-    }
+.searchbox {
+  display: flex;
+  align-items: center;
+  width: 15rem;
+  margin: 0.75rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 2px solid $light-theme;
+  outline: 1;
+  font-size: 1rem;
+  color: $superdarkgray;
+  @include shake-animation();
 
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      transform: translate3d(-3px, 0, 0);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-      transform: translate3d(3px, 0, 0);
-    }
+  &::placeholder {
+    font-size: 1rem;
+    color: $light-theme;
+    text-align: center;
   }
 
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-  animation-name: shake;
+  &:hover {
+    border: 2px solid $light-theme;
+  }
+
+  &:focus {
+    @include box-shadow(rgba(255, 62, 62, 0.6));
+    outline: none;
+    border: 2px solid $light-theme;
+
+    &::placeholder {
+      color: white;
+    }
+  }
 }
 
-.searchbox {
-  width: 10rem;
-  height: 1.5rem;
+@mixin fade() {
+  animation: fade 1s ease-out;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.marker_image {
+  // @include fade();
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid $light-theme;
+  opacity: 1;
 }

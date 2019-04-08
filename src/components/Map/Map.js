@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+// import _ from "lodash";
 import { compose, withProps, lifecycle } from "recompose";
 import {
   withScriptjs,
@@ -8,12 +8,13 @@ import {
   Marker
 } from "react-google-maps";
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
-//
+import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
+// components/styles
 import styles from "./Map.module.css";
 import mapStyle from "./mapstyles/customDefault.json";
+import { icon } from "./CustomMarkers";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
-const google = window.google;
 
 const MyMapComponent = compose(
   withProps({
@@ -29,7 +30,7 @@ const MyMapComponent = compose(
       this.setState({
         bounds: null,
         center: { lat: 43.6532, lng: -79.3832 },
-        searchResult: {},
+        searchResult: null,
         onMapMounted: ref => {
           refs.map = ref;
         },
@@ -42,52 +43,49 @@ const MyMapComponent = compose(
         onSearchBoxMounted: ref => {
           refs.searchBox = ref;
         },
-        onPlacesChanged: google => {
-          const places = refs.searchBox.getPlaces();
-          const bounds = new google.maps.LatLngBounds();
+        onPlacesChanged: () => {
+          const place = refs.searchBox.getPlaces()[0];
+          const bounds = new window.google.maps.LatLngBounds();
+          console.log(place);
 
-          places.forEach(place => {
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          const nextMarkers = places.map(place => ({
-            position: place.geometry.location
-          }));
-          const nextCenter = _.get(
-            nextMarkers,
-            "0.position",
-            this.state.center
-          );
+          if (place.geometry.viewport) {
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+          const searchResult = place.geometry.location;
+          const nextCenter = place.geometry.location;
 
           this.setState({
             center: nextCenter,
-            searchResult: nextMarkers
+            searchResult
           });
           // refs.map.fitBounds(bounds);
         }
       });
+    },
+    shouldComponentUpdate(prevState, nextState, nextProps) {
+      console.log(prevState, nextProps);
+      return prevState !== nextState;
     }
   }),
   withScriptjs,
   withGoogleMap
-)(
-  (
-    props,
-    {
-      bounds,
-      center,
-      searchResult,
-      onMapMounted,
-      onBoundsChanged,
-      onSearchBoxMounted,
-      onPlacesChanged
-    }
-  ) => (
+)(props => {
+  const { google } = window;
+  const {
+    center,
+    bounds,
+    searchResult,
+    onMapMounted,
+    onSearchBoxMounted,
+    onPlacesChanged,
+    isMarkerShown,
+    places
+  } = props;
+  return (
     <GoogleMap
-      // ref={props.onMapMounted}
+      ref={onMapMounted}
       defaultOptions={{
         styles: mapStyle,
         zoomControl: true,
@@ -95,32 +93,60 @@ const MyMapComponent = compose(
         fullscreenControl: false
       }}
       defaultZoom={13}
-      center={props.center}
-      onBoundsChanged={onBoundsChanged}
+      center={center}
+      // onBoundsChanged={props.onBoundsChanged}
     >
       {console.log(props)}
       <SearchBox
         ref={onSearchBoxMounted}
         bounds={bounds}
-        controlPosition={window.google.maps.ControlPosition.TOP_RIGHT}
+        controlPosition={google.maps.ControlPosition.TOP_RIGHT}
         onPlacesChanged={onPlacesChanged}
       >
         <input
           className={styles.searchbox}
           type="text"
-          placeholder="Where to?"
+          placeholder="Where to explore?"
         />
       </SearchBox>
-      {/* {props.isMarkerShown && <Marker position={searchResult.position} />} */}
+      {searchResult && (
+        // search result marker
+        <Marker
+          position={searchResult}
+          icon={searchResult && icon(google)}
+          draggable={true}
+          animation={google.maps.Animation.DROP}
+        />
+      )}
+      {isMarkerShown &&
+        places.map((position, index) => {
+          return (
+            <MarkerWithLabel
+              key={index}
+              position={position}
+              animation={google.maps.Animation.DROP}
+              icon={icon(google)}
+              labelAnchor={new google.maps.Point(18, 32)}
+            >
+              <img
+                className={styles.marker_image}
+                src={
+                  "https://media.licdn.com/dms/image/C5603AQHtvCohEUWq7Q/profile-displayphoto-shrink_200_200/0?e=1560384000&v=beta&t=nngy3wH1du8RQNeKirGZElRCfecKsWmfVoGHjqbsVsI"
+                }
+              />
+            </MarkerWithLabel>
+          );
+        })}
     </GoogleMap>
-  )
-);
+  );
+});
 
 class Map extends React.PureComponent {
   render() {
     return (
       <div className={styles.container}>
-        <MyMapComponent isMarkerShown={true} />
+        <MyMapComponent isMarkerShown={true} places={this.props.places} />
+        {/* <div className={styles.logo}>MapSocial</div> */}
       </div>
     );
   }

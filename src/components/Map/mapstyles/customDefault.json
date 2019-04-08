@@ -41,6 +41,21 @@
     ]
   },
   {
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#5c6364"
+      },
+      {
+        "visibility": "on"
+      },
+      {
+        "weight": 7
+      }
+    ]
+  },
+  {
     "featureType": "poi",
     "elementType": "geometry",
     "stylers": [
@@ -72,7 +87,7 @@
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#a2fe8d"
+        "color": "#b3f4ab"
       }
     ]
   },
@@ -162,7 +177,7 @@
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#84d7dd"
+        "color": "#ace1e7"
       }
     ]
   },
