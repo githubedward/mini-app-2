@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 // import _ from "lodash";
 import { compose, withProps, lifecycle } from "recompose";
 import {
@@ -9,9 +9,12 @@ import {
 } from "react-google-maps";
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
+import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
 // components/styles
 import styles from "./Map.module.css";
 import mapStyle from "./mapstyles/customDefault.json";
+import IconSearch from "../shared/IconSearch";
+import IconClose from "../shared/IconClose";
 import { icon } from "./CustomMarkers";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
@@ -31,6 +34,13 @@ const MyMapComponent = compose(
         bounds: null,
         center: { lat: 43.6532, lng: -79.3832 },
         searchResult: null,
+        searching: false,
+        formWindowPosition: null,
+        onSetFormWindowPosition: pos => {
+          this.setState({
+            formWindowPosition: pos
+          });
+        },
         onMapMounted: ref => {
           refs.map = ref;
         },
@@ -43,10 +53,14 @@ const MyMapComponent = compose(
         onSearchBoxMounted: ref => {
           refs.searchBox = ref;
         },
+        onSearchingChanged: bool => {
+          this.setState({
+            searching: bool
+          });
+        },
         onPlacesChanged: () => {
           const place = refs.searchBox.getPlaces()[0];
           const bounds = new window.google.maps.LatLngBounds();
-          console.log(place);
 
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);
@@ -63,10 +77,6 @@ const MyMapComponent = compose(
           // refs.map.fitBounds(bounds);
         }
       });
-    },
-    shouldComponentUpdate(prevState, nextState, nextProps) {
-      console.log(prevState, nextProps);
-      return prevState !== nextState;
     }
   }),
   withScriptjs,
@@ -77,9 +87,13 @@ const MyMapComponent = compose(
     center,
     bounds,
     searchResult,
+    searching,
+    formWindowPosition,
+    onSetFormWindowPosition,
     onMapMounted,
     onSearchBoxMounted,
     onPlacesChanged,
+    onSearchingChanged,
     isMarkerShown,
     places
   } = props;
@@ -90,7 +104,9 @@ const MyMapComponent = compose(
         styles: mapStyle,
         zoomControl: true,
         mapTypeControl: false,
-        fullscreenControl: false
+        fullscreenControl: false,
+        draggableCursor: "auto",
+        draggingCursor: "auto"
       }}
       defaultZoom={13}
       center={center}
@@ -103,38 +119,80 @@ const MyMapComponent = compose(
         controlPosition={google.maps.ControlPosition.TOP_RIGHT}
         onPlacesChanged={onPlacesChanged}
       >
-        <input
-          className={styles.searchbox}
-          type="text"
-          placeholder="Where to explore?"
-        />
+        <div className={styles.searchbox}>
+          <input
+            className={styles.searchbox_input}
+            type="text"
+            placeholder="Where to explore?"
+            onChange={!searching ? () => onSearchingChanged(true) : null}
+          />
+          {(searching && (
+            // render x when input value > 0
+            <IconClose
+              className={styles.searchbox_clear}
+              onClick={() => {
+                onSearchingChanged(false);
+                alert("click");
+              }}
+            />
+            // otherwise, render search icon
+          )) || <IconSearch className={styles.searchbox_icon} />}
+        </div>
       </SearchBox>
+
       {searchResult && (
         // search result marker
-        <Marker
-          position={searchResult}
-          icon={searchResult && icon(google)}
-          draggable={true}
-          animation={google.maps.Animation.DROP}
-        />
+        <Fragment>
+          <Marker
+            position={searchResult}
+            icon={searchResult && icon(google)}
+            draggable={true}
+            animation={google.maps.Animation.DROP}
+          />
+        </Fragment>
       )}
       {isMarkerShown &&
         places.map((position, index) => {
           return (
-            <MarkerWithLabel
-              key={index}
-              position={position}
-              animation={google.maps.Animation.DROP}
-              icon={icon(google)}
-              labelAnchor={new google.maps.Point(18, 32)}
-            >
-              <img
-                className={styles.marker_image}
-                src={
-                  "https://media.licdn.com/dms/image/C5603AQHtvCohEUWq7Q/profile-displayphoto-shrink_200_200/0?e=1560384000&v=beta&t=nngy3wH1du8RQNeKirGZElRCfecKsWmfVoGHjqbsVsI"
-                }
-              />
-            </MarkerWithLabel>
+            <div key={index} className={styles.marker_container}>
+              <MarkerWithLabel
+                key={index}
+                position={position}
+                animation={google.maps.Animation.DROP}
+                icon={icon(google)}
+                labelAnchor={new google.maps.Point(18, 56)}
+                onClick={() => {
+                  onSetFormWindowPosition(null);
+                  onSetFormWindowPosition(position);
+                }}
+              >
+                <img
+                  className={styles.marker_image}
+                  src={
+                    "https://media.licdn.com/dms/image/C5603AQHtvCohEUWq7Q/profile-displayphoto-shrink_200_200/0?e=1560384000&v=beta&t=nngy3wH1du8RQNeKirGZElRCfecKsWmfVoGHjqbsVsI"
+                  }
+                />
+              </MarkerWithLabel>
+              {formWindowPosition && (
+                <InfoBox
+                  defaultPosition={new google.maps.LatLng(formWindowPosition)}
+                  options={{
+                    closeBoxURL: ``,
+                    enableEventPropagation: true,
+                    alignBottom: true,
+                    pixelOffset: new google.maps.Size(-18, -60)
+                  }}
+                >
+                  <form
+                    className={styles.formBox}
+                    onSubmit={e => e.preventDefault()}
+                  >
+                    <textarea />
+                    <button>Pin me!</button>
+                  </form>
+                </InfoBox>
+              )}
+            </div>
           );
         })}
     </GoogleMap>
@@ -143,9 +201,10 @@ const MyMapComponent = compose(
 
 class Map extends React.PureComponent {
   render() {
+    const { places } = this.props;
     return (
       <div className={styles.container}>
-        <MyMapComponent isMarkerShown={true} places={this.props.places} />
+        <MyMapComponent isMarkerShown={true} places={places} />
         {/* <div className={styles.logo}>MapSocial</div> */}
       </div>
     );

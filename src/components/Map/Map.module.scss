@@ -6,6 +6,10 @@
   width: 100vw;
 }
 
+.map {
+  cursor: default !important;
+}
+
 .logo {
   cursor: default;
   font-family: "Pacifico", cursive;
@@ -27,36 +31,66 @@
 }
 
 .searchbox {
-  display: flex;
-  align-items: center;
-  width: 15rem;
-  margin: 0.75rem;
-  border-radius: 5px;
-  padding: 0.5rem;
-  border: 2px solid $light-theme;
-  outline: 1;
-  font-size: 1rem;
-  color: $superdarkgray;
-  @include shake-animation();
+  position: relative;
 
-  &::placeholder {
+  &_input {
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    margin: 0.75rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    border: 1px solid $light-theme;
+    outline: 1;
     font-size: 1rem;
-    color: $light-theme;
-    text-align: center;
-  }
-
-  &:hover {
-    border: 2px solid $light-theme;
-  }
-
-  &:focus {
-    @include box-shadow(rgba(255, 62, 62, 0.6));
-    outline: none;
-    border: 2px solid $light-theme;
+    color: $superdarkgray;
+    @include shake-animation();
 
     &::placeholder {
-      color: white;
+      font-size: 1rem;
+      color: $light-theme;
+      font-weight: $fw-medium;
+      // text-align: center;
     }
+
+    &:hover &::placeholder {
+      background: black;
+    }
+
+    &:focus {
+      @include box-shadow(rgba(255, 62, 62, 0.6));
+      outline: none;
+      border: 2px solid $light-theme;
+
+      &::placeholder {
+        color: white;
+      }
+
+      &.searchbox_icon {
+        fill: $light-theme;
+      }
+    }
+  }
+
+  &_icon {
+    z-index: 10;
+    @include fade-in(1s);
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    fill: $darkgray;
+    background-color: white;
+  }
+
+  &_clear {
+    z-index: 10;
+    @include fade-in(1s);
+    cursor: pointer;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    fill: $superdarkgray;
+    background-color: white;
   }
 }
 
@@ -73,10 +107,23 @@
   }
 }
 
+.formBox {
+  @include flex-center;
+  flex-direction: column;
+  background-color: white;
+  offset-block-end: 10px;
+}
+
+.marker_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 .marker_image {
   // @include fade();
   height: 2.25rem;
   border-radius: 50%;
-  border: 1px solid $light-theme;
+  border: 2px solid $light-theme;
   opacity: 1;
 }

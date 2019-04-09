@@ -42,4 +42,8 @@ h1 {
 ul {
   list-style: none;
 }
+
+button {
+  cursor: pointer;
+}
 /*# sourceMappingURL=App.css.map */
