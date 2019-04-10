@@ -31,6 +31,7 @@ const MyMapComponent = compose(
       const refs = {};
 
       this.setState({
+        formRef: null,
         bounds: null,
         center: { lat: 43.6532, lng: -79.3832 },
         searchResult: null,
@@ -39,6 +40,16 @@ const MyMapComponent = compose(
         onSetFormWindowPosition: pos => {
           this.setState({
             formWindowPosition: pos
+          });
+        },
+        onFormMounted: ref => {
+          this.setState({
+            formRef: ref
+          });
+        },
+        onClearForm: () => {
+          this.setState({
+            formRef: null
           });
         },
         onMapMounted: ref => {
@@ -89,6 +100,10 @@ const MyMapComponent = compose(
     searchResult,
     searching,
     formWindowPosition,
+    formRef,
+    onClearForm,
+    onInputMounted,
+    onFormMounted,
     onSetFormWindowPosition,
     onMapMounted,
     onSearchBoxMounted,
@@ -121,6 +136,7 @@ const MyMapComponent = compose(
       >
         <div className={styles.searchbox}>
           <input
+            ref={onInputMounted}
             className={styles.searchbox_input}
             type="text"
             placeholder="Where to explore?"
@@ -128,13 +144,13 @@ const MyMapComponent = compose(
           />
           {(searching && (
             // render x when input value > 0
-            <IconClose
-              className={styles.searchbox_clear}
+            <button
               onClick={() => {
                 onSearchingChanged(false);
-                alert("click");
               }}
-            />
+            >
+              <IconClose className={styles.searchbox_clear} />
+            </button>
             // otherwise, render search icon
           )) || <IconSearch className={styles.searchbox_icon} />}
         </div>
@@ -146,7 +162,6 @@ const MyMapComponent = compose(
           <Marker
             position={searchResult}
             icon={searchResult && icon(google)}
-            draggable={true}
             animation={google.maps.Animation.DROP}
           />
         </Fragment>
@@ -184,11 +199,17 @@ const MyMapComponent = compose(
                   }}
                 >
                   <form
+                    ref={onFormMounted}
                     className={styles.formBox}
-                    onSubmit={e => e.preventDefault()}
+                    onSubmit={e => {
+                      e.preventDefault();
+                      console.log(formRef[0].value);
+                      // onClearForm();
+                      console.log(e);
+                    }}
                   >
-                    <textarea />
-                    <button>Pin me!</button>
+                    <input />
+                    <button>Submit</button>
                   </form>
                 </InfoBox>
               )}
