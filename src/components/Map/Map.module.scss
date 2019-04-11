@@ -31,9 +31,10 @@
 }
 
 .searchBox {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0rem;
+  right: 0rem;
+  z-index: 1;
 
   &_input {
     display: flex;
