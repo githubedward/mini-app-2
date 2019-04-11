@@ -9,6 +9,8 @@
     "axios": "^0.18.0",
     "emotion": "^10.0.9",
     "formik": "^1.5.1",
+    "google-map-react": "^1.1.4",
+    "google-maps-react": "^2.0.2",
     "lodash": "^4.17.11",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

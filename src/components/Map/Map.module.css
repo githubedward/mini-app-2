@@ -28,11 +28,13 @@
   padding: 10px;
 }
 
-.searchbox {
+.searchBox {
+  width: 100vw;
+  height: 100vh;
   position: relative;
 }
 
-.searchbox_input {
+.searchBox_input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,74 +103,74 @@
   }
 }
 
-.searchbox_input::-webkit-input-placeholder {
+.searchBox_input::-webkit-input-placeholder {
   font-size: 1rem;
   color: #fd545f;
   font-weight: 500;
 }
 
-.searchbox_input:-ms-input-placeholder {
+.searchBox_input:-ms-input-placeholder {
   font-size: 1rem;
   color: #fd545f;
   font-weight: 500;
 }
 
-.searchbox_input::-ms-input-placeholder {
+.searchBox_input::-ms-input-placeholder {
   font-size: 1rem;
   color: #fd545f;
   font-weight: 500;
 }
 
-.searchbox_input::placeholder {
+.searchBox_input::placeholder {
   font-size: 1rem;
   color: #fd545f;
   font-weight: 500;
 }
 
-.searchbox_input:hover .searchbox_input::-webkit-input-placeholder {
+.searchBox_input:hover .searchBox_input::-webkit-input-placeholder {
   background: black;
 }
 
-.searchbox_input:hover .searchbox_input:-ms-input-placeholder {
+.searchBox_input:hover .searchBox_input:-ms-input-placeholder {
   background: black;
 }
 
-.searchbox_input:hover .searchbox_input::-ms-input-placeholder {
+.searchBox_input:hover .searchBox_input::-ms-input-placeholder {
   background: black;
 }
 
-.searchbox_input:hover .searchbox_input::placeholder {
+.searchBox_input:hover .searchBox_input::placeholder {
   background: black;
 }
 
-.searchbox_input:focus {
+.searchBox_input:focus {
   -webkit-box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
           box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
   outline: none;
   border: 2px solid #fd545f;
 }
 
-.searchbox_input:focus::-webkit-input-placeholder {
+.searchBox_input:focus::-webkit-input-placeholder {
   color: white;
 }
 
-.searchbox_input:focus:-ms-input-placeholder {
+.searchBox_input:focus:-ms-input-placeholder {
   color: white;
 }
 
-.searchbox_input:focus::-ms-input-placeholder {
+.searchBox_input:focus::-ms-input-placeholder {
   color: white;
 }
 
-.searchbox_input:focus::placeholder {
+.searchBox_input:focus::placeholder {
   color: white;
 }
 
-.searchbox_input:focus.searchbox_icon {
+.searchBox_input:focus.searchbox_icon {
   fill: #fd545f;
 }
 
-.searchbox_icon {
+.searchBox_icon {
   z-index: 10;
   -webkit-animation: fade 1s ease-out;
           animation: fade 1s ease-out;
@@ -197,7 +199,7 @@
   }
 }
 
-.searchbox_clear {
+.searchBox_clear {
   z-index: 10;
   -webkit-animation: fade 1s ease-out;
           animation: fade 1s ease-out;
@@ -236,14 +238,13 @@
   offset-block-end: 10px;
 }
 
-.marker_container {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.marker {
+  fill: #fd545f;
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
 }
 
 .marker_image {

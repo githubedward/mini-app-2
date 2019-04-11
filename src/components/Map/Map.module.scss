@@ -30,7 +30,9 @@
   padding: 10px;
 }
 
-.searchbox {
+.searchBox {
+  width: 100vw;
+  height: 100vh;
   position: relative;
 
   &_input {
@@ -114,16 +116,18 @@
   offset-block-end: 10px;
 }
 
-.marker_container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
+.marker {
+  fill: $light-theme;
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  transform: translate(-50%, -100%);
 
-.marker_image {
-  // @include fade();
-  height: 2.25rem;
-  border-radius: 50%;
-  border: 2px solid $light-theme;
-  opacity: 1;
+  &_image {
+    // @include fade();
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 2px solid $light-theme;
+    opacity: 1;
+  }
 }

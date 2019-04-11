@@ -1,232 +1,100 @@
-import React, { Fragment } from "react";
-// import _ from "lodash";
-import { compose, withProps, lifecycle } from "recompose";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
-import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
-import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
-import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import GoogleMapReact from "google-map-react";
 // components/styles
+import SearchBox from "./SearchBox";
+import Marker from "./Marker";
 import styles from "./Map.module.css";
+// others
 import mapStyle from "./mapstyles/customDefault.json";
-import IconSearch from "../shared/IconSearch";
-import IconClose from "../shared/IconClose";
-import { icon } from "./CustomMarkers";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
-const MyMapComponent = compose(
-  withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${MAP_TOKEN}&v=3.exp&libraries=geometry,places`,
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `100%` }} />,
-    mapElement: <div style={{ height: `100%` }} />
-  }),
-  lifecycle({
-    componentDidMount() {
-      const refs = {};
+class Map extends Component {
+  constructor(props) {
+    super(props);
 
-      this.setState({
-        formRef: null,
-        bounds: null,
-        center: { lat: 43.6532, lng: -79.3832 },
-        searchResult: null,
-        searching: false,
-        formWindowPosition: null,
-        onSetFormWindowPosition: pos => {
-          this.setState({
-            formWindowPosition: pos
-          });
-        },
-        onFormMounted: ref => {
-          this.setState({
-            formRef: ref
-          });
-        },
-        onClearForm: () => {
-          this.setState({
-            formRef: null
-          });
-        },
-        onMapMounted: ref => {
-          refs.map = ref;
-        },
-        onBoundsChanged: () => {
-          this.setState({
-            bounds: refs.map.getBounds(),
-            center: refs.map.getCenter()
-          });
-        },
-        onSearchBoxMounted: ref => {
-          refs.searchBox = ref;
-        },
-        onSearchingChanged: bool => {
-          this.setState({
-            searching: bool
-          });
-        },
-        onPlacesChanged: () => {
-          const place = refs.searchBox.getPlaces()[0];
-          const bounds = new window.google.maps.LatLngBounds();
+    // this.searchBar = React.createRef();
 
-          if (place.geometry.viewport) {
-            bounds.union(place.geometry.viewport);
-          } else {
-            bounds.extend(place.geometry.location);
-          }
-          const searchResult = place.geometry.location;
-          const nextCenter = place.geometry.location;
+    this.state = {
+      mapsApiLoaded: false,
+      mapInstance: null,
+      mapsAPI: null,
+      searchResult: null
+    };
+  }
 
-          this.setState({
-            center: nextCenter,
-            searchResult
-          });
-          // refs.map.fitBounds(bounds);
-        }
-      });
+  static propTypes = {
+    places: PropTypes.array.isRequired,
+    center: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    center: {
+      lat: 43.6532,
+      lng: -79.3832
     }
-  }),
-  withScriptjs,
-  withGoogleMap
-)(props => {
-  const { google } = window;
-  const {
-    center,
-    bounds,
-    searchResult,
-    searching,
-    formWindowPosition,
-    formRef,
-    onClearForm,
-    onInputMounted,
-    onFormMounted,
-    onSetFormWindowPosition,
-    onMapMounted,
-    onSearchBoxMounted,
-    onPlacesChanged,
-    onSearchingChanged,
-    isMarkerShown,
-    places
-  } = props;
-  return (
-    <GoogleMap
-      ref={onMapMounted}
-      defaultOptions={{
-        styles: mapStyle,
-        zoomControl: true,
-        mapTypeControl: false,
-        fullscreenControl: false,
-        draggableCursor: "auto",
-        draggingCursor: "auto"
-      }}
-      defaultZoom={13}
-      center={center}
-      // onBoundsChanged={props.onBoundsChanged}
-    >
-      {console.log(props)}
-      <SearchBox
-        ref={onSearchBoxMounted}
-        bounds={bounds}
-        controlPosition={google.maps.ControlPosition.TOP_RIGHT}
-        onPlacesChanged={onPlacesChanged}
-      >
-        <div className={styles.searchbox}>
-          <input
-            ref={onInputMounted}
-            className={styles.searchbox_input}
-            type="text"
-            placeholder="Where to explore?"
-            onChange={!searching ? () => onSearchingChanged(true) : null}
-          />
-          {(searching && (
-            // render x when input value > 0
-            <button
-              onClick={() => {
-                onSearchingChanged(false);
-              }}
-            >
-              <IconClose className={styles.searchbox_clear} />
-            </button>
-            // otherwise, render search icon
-          )) || <IconSearch className={styles.searchbox_icon} />}
-        </div>
-      </SearchBox>
+  };
 
-      {searchResult && (
-        // search result marker
-        <Fragment>
-          <Marker
-            position={searchResult}
-            icon={searchResult && icon(google)}
-            animation={google.maps.Animation.DROP}
-          />
-        </Fragment>
-      )}
-      {isMarkerShown &&
-        places.map((position, index) => {
-          return (
-            <div key={index} className={styles.marker_container}>
-              <MarkerWithLabel
-                key={index}
-                position={position}
-                animation={google.maps.Animation.DROP}
-                icon={icon(google)}
-                labelAnchor={new google.maps.Point(18, 56)}
-                onClick={() => {
-                  onSetFormWindowPosition(null);
-                  onSetFormWindowPosition(position);
-                }}
-              >
-                <img
-                  className={styles.marker_image}
-                  src={
-                    "https://media.licdn.com/dms/image/C5603AQHtvCohEUWq7Q/profile-displayphoto-shrink_200_200/0?e=1560384000&v=beta&t=nngy3wH1du8RQNeKirGZElRCfecKsWmfVoGHjqbsVsI"
-                  }
-                />
-              </MarkerWithLabel>
-              {formWindowPosition && (
-                <InfoBox
-                  defaultPosition={new google.maps.LatLng(formWindowPosition)}
-                  options={{
-                    closeBoxURL: ``,
-                    enableEventPropagation: true,
-                    alignBottom: true,
-                    pixelOffset: new google.maps.Size(-18, -60)
-                  }}
-                >
-                  <form
-                    ref={onFormMounted}
-                    className={styles.formBox}
-                    onSubmit={e => {
-                      e.preventDefault();
-                      console.log(formRef[0].value);
-                      // onClearForm();
-                      console.log(e);
-                    }}
-                  >
-                    <input />
-                    <button>Submit</button>
-                  </form>
-                </InfoBox>
-              )}
-            </div>
-          );
-        })}
-    </GoogleMap>
-  );
-});
+  onSearchInput = place => {
+    this.setState({
+      searchResult: place
+    });
+  };
 
-class Map extends React.PureComponent {
+  onAPILoaded = (map, maps) => {
+    // map.controls[maps.ControlPosition.TOP_RIGHT].push(this.searchBox.current);
+
+    this.setState({
+      mapsApiLoaded: true,
+      mapInstance: map,
+      mapsAPI: maps
+    });
+  };
+
   render() {
-    const { places } = this.props;
+    const { center } = this.props;
+    const { mapsApiLoaded, mapsAPI, mapInstance, searchResult } = this.state;
     return (
-      <div className={styles.container}>
-        <MyMapComponent isMarkerShown={true} places={places} />
-        {/* <div className={styles.logo}>MapSocial</div> */}
+      <div style={{ height: "100vh", width: "100%" }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{
+            key: MAP_TOKEN,
+            libraries: ["places", "geometry"]
+          }}
+          center={center}
+          zoom={13}
+          options={{
+            styles: mapStyle,
+            draggableCursor: "auto",
+            draggingCursor: "auto",
+            fullscreenControl: false
+          }}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => {
+            this.onAPILoaded(map, maps);
+          }}
+        >
+          <Marker
+            onClick={() => alert("click")}
+            lat={center.lat}
+            lng={center.lng}
+          />
+          {searchResult && (
+            <Marker
+              text={searchResult.name}
+              lat={searchResult.geometry.location.lat()}
+              lng={searchResult.geometry.location.lng()}
+            />
+          )}
+          {mapsApiLoaded && (
+            <SearchBox
+              map={mapInstance}
+              mapsAPI={mapsAPI}
+              onSearchInput={this.onSearchInput}
+            />
+          )}
+        </GoogleMapReact>
       </div>
     );
   }
