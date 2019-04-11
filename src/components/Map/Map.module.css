@@ -221,7 +221,38 @@
   }
 }
 
-.formBox {
+.marker {
+  fill: #fd545f;
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  -webkit-animation: fade 1s ease-out;
+          animation: fade 1s ease-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.marker_result {
+  fill: #fc202f;
+}
+
+.marker_image {
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid #fd545f;
+  opacity: 1;
+}
+
+.pinit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -236,22 +267,63 @@
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: white;
-  offset-block-end: 10px;
-}
-
-.marker {
-  fill: #fd545f;
-  height: 3rem;
-  width: 3rem;
+  border: 1px solid #fd545f;
+  -webkit-transform: translate(-50%, -175%);
+          transform: translate(-50%, -175%);
   position: absolute;
-  -webkit-transform: translate(-50%, -100%);
-          transform: translate(-50%, -100%);
+  padding: 1rem;
+  min-width: 10rem;
+  max-width: 12rem;
+  border-radius: 10px;
 }
 
-.marker_image {
-  height: 2.25rem;
-  border-radius: 50%;
-  border: 2px solid #fd545f;
-  opacity: 1;
+.pinit p {
+  margin-top: 0.5rem;
+}
+
+.pinit button {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.5rem;
+  width: auto;
+  font-size: 0.75rem;
+  padding: 0rem 1rem;
+  background-color: #fd545f;
+  border: 1px solid #fc202f;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+}
+
+.pinit button:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #fc202f;
+  border: 1px solid #fd545f;
+  color: white;
+}
+
+.pinit button:focus {
+  outline: none;
+}
+
+.pinit button:active {
+  background-color: #fd545f;
+  border: 1px solid #fc202f;
+}
+
+.pinit button:disabled {
+  -webkit-transition: opacity 1s ease 0.25s;
+  transition: opacity 1s ease 0.25s;
+  cursor: not-allowed !important;
+  opacity: 0.25 !important;
 }
 /*# sourceMappingURL=Map.module.css.map */

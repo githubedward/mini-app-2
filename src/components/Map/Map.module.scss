@@ -97,38 +97,58 @@
   }
 }
 
-@mixin fade() {
-  animation: fade 1s ease-out;
-
-  @keyframes fade {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
-.formBox {
-  @include flex-center;
-  flex-direction: column;
-  background-color: white;
-  offset-block-end: 10px;
-}
-
 .marker {
   fill: $light-theme;
   height: 3rem;
   width: 3rem;
   position: absolute;
   transform: translate(-50%, -100%);
+  @include fade-in(1s);
+
+  &_result {
+    fill: $theme;
+  }
 
   &_image {
-    // @include fade();
     height: 2.25rem;
     border-radius: 50%;
     border: 2px solid $light-theme;
     opacity: 1;
+  }
+}
+
+.pinit {
+  @include flex-center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid $light-theme;
+  transform: translate(-50%, -175%);
+  position: absolute;
+  padding: 1rem;
+  min-width: 10rem;
+  max-width: 12rem;
+  border-radius: 10px;
+
+  $btn-style: (
+    height: 1.5rem,
+    width: auto,
+    font-size: $help-txt,
+    padding: 0rem 1rem,
+    border: $theme,
+    bg: $light-theme,
+    hover-bg: $theme,
+    hover-border: $light-theme,
+    hover-color: white,
+    color: white
+  );
+
+  p {
+    margin-top: 0.5rem;
+  }
+
+  button {
+    margin-top: 1rem;
+
+    @include button($btn-style...);
   }
 }

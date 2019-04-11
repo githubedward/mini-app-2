@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 // components/styles
 import SearchBox from "./SearchBox";
-import Marker from "./Marker";
+import OwnMarker from "./Marker";
+import PinItWindow from "./PinItWindow";
 // import styles from "./Map.module.css";
 // others
 import mapStyle from "./mapstyles/customDefault.json";
+import * as helpers from "../../utils/functions";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
@@ -18,12 +20,13 @@ class Map extends Component {
       mapsApiLoaded: false,
       mapInstance: null,
       mapsAPI: null,
-      searchResult: null
+      searchResult: null,
+      places: [],
+      pinit: null
     };
   }
 
   static propTypes = {
-    places: PropTypes.array.isRequired,
     center: PropTypes.object.isRequired
   };
 
@@ -35,8 +38,35 @@ class Map extends Component {
   };
 
   onSearchInput = place => {
+    console.log(place);
     this.setState({
       searchResult: place
+    });
+  };
+
+  onPinAPlace = () => {
+    const { places, pinit } = this.state;
+    const newPlace = { ...pinit };
+    this.setState({
+      places: places.concat(newPlace),
+      pinit: null,
+      searchResult: null
+    });
+  };
+
+  onShowPinItWindow = () => {
+    const { searchResult } = this.state;
+    const place = {
+      lat: searchResult.geometry.location.lat(),
+      lng: searchResult.geometry.location.lng(),
+      place_id: searchResult.place_id,
+      vicinity: searchResult.vicinity,
+      address: searchResult.formatted_address,
+      name: searchResult.name
+    };
+    console.log(place);
+    this.setState({
+      pinit: place
     });
   };
 
@@ -50,7 +80,26 @@ class Map extends Component {
 
   render() {
     const { center } = this.props;
-    const { mapsApiLoaded, mapsAPI, mapInstance, searchResult } = this.state;
+    const {
+      mapsApiLoaded,
+      mapsAPI,
+      mapInstance,
+      searchResult,
+      places,
+      pinit
+    } = this.state;
+    const PlacesJSX = places.map(place => {
+      return (
+        <OwnMarker
+          key={place.id}
+          lat={place.lat}
+          lng={place.lng}
+          onClick={() => {
+            console.log(place);
+          }}
+        />
+      );
+    });
     return (
       <div style={{ height: "100vh", width: "100vw" }}>
         {mapsApiLoaded && (
@@ -78,17 +127,22 @@ class Map extends Component {
             this.onAPILoaded(map, maps);
           }}
         >
-          <Marker
-            onClick={() => alert("click")}
-            lat={center.lat}
-            lng={center.lng}
-          />
+          {helpers.chkLength(places) && PlacesJSX}
           {searchResult && (
-            <Marker
-              ref={this.SearchBox}
+            <OwnMarker
               text={searchResult.name}
               lat={searchResult.geometry.location.lat()}
               lng={searchResult.geometry.location.lng()}
+              onClick={this.onShowPinItWindow}
+              result={true}
+            />
+          )}
+          {pinit && (
+            <PinItWindow
+              place={pinit}
+              lat={pinit.lat}
+              lng={pinit.lng}
+              onClick={this.onPinAPlace}
             />
           )}
         </GoogleMapReact>

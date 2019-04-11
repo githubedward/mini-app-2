@@ -60,6 +60,7 @@ export default class SearchBox extends Component {
           placeholder="Where to go?"
           type="text"
           className={styles.searchBox_input}
+          onFocus={() => (this.searchInput.current.value = "")}
         />
       </div>
     );
