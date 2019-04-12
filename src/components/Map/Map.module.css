@@ -4,21 +4,9 @@
   width: 100vw;
 }
 
-.map {
-  cursor: default !important;
-}
-
-.logo {
-  cursor: default;
-  font-family: "Pacifico", cursive;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  color: #fd545f;
-  z-index: 3;
-  background: white;
-  padding: 0.25rem 1rem 0.25rem 0.75rem;
-  border-radius: 8px;
+.default {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .map_nav {
@@ -222,12 +210,14 @@
 }
 
 .marker {
+  cursor: pointer;
   fill: #fd545f;
   height: 3rem;
   width: 3rem;
   position: absolute;
   -webkit-transform: translate(-50%, -100%);
           transform: translate(-50%, -100%);
+  margin: 0;
   -webkit-animation: fade 1s ease-out;
           animation: fade 1s ease-out;
 }
@@ -252,7 +242,9 @@
   opacity: 1;
 }
 
-.pinit {
+.pinit_window {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
+          box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -270,18 +262,18 @@
   border: 1px solid #fd545f;
   -webkit-transform: translate(-50%, -175%);
           transform: translate(-50%, -175%);
-  position: absolute;
-  padding: 1rem;
+  position: relative;
+  padding: 2rem 1rem 1rem 1rem;
   min-width: 10rem;
   max-width: 12rem;
   border-radius: 10px;
 }
 
-.pinit p {
+.pinit_window p {
   margin-top: 0.5rem;
 }
 
-.pinit button {
+.pinit_window__button {
   margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -303,7 +295,7 @@
   color: white;
 }
 
-.pinit button:hover {
+.pinit_window__button:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background: #fc202f;
@@ -311,19 +303,59 @@
   color: white;
 }
 
-.pinit button:focus {
+.pinit_window__button:focus {
   outline: none;
 }
 
-.pinit button:active {
+.pinit_window__button:active {
   background-color: #fd545f;
   border: 1px solid #fc202f;
 }
 
-.pinit button:disabled {
+.pinit_window__button:disabled {
   -webkit-transition: opacity 1s ease 0.25s;
   transition: opacity 1s ease 0.25s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
+}
+
+.pinit_window__close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #b4b4b4;
+}
+
+.pinit_window__close:hover {
+  color: #333333;
+  background: none;
+}
+
+.places_window {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
+          box-shadow: 0px 0px 5px 2px rgba(255, 62, 62, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: white;
+  -webkit-transform: translate(-50%, -175%);
+          transform: translate(-50%, -175%);
+  position: absolute;
+  padding: 1rem;
+  min-width: 10rem;
+  max-width: 12rem;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=Map.module.css.map */

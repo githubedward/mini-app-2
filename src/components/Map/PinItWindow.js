@@ -1,14 +1,20 @@
 import React from "react";
+import IconClose from "../shared/IconClose";
 import styles from "./Map.module.css";
 
-const PinWindow = ({ onClick, place }) => {
+const PinItWindow = ({ onClick, onClose, place }) => {
   return (
-    <div className={styles.pinit}>
+    <div className={styles.pinit_window}>
+      <button onClick={onClose} className={styles.pinit_window__close}>
+        close
+      </button>
       <h3>{place.name}</h3>
       <p>@ {place.vicinity} Vicinity</p>
-      <button onClick={onClick}>Pin this place!</button>
+      <button onClick={onClick} className={styles.pinit_window__button}>
+        Pin this place!
+      </button>
     </div>
   );
 };
 
-export default PinWindow;
+export default PinItWindow;

@@ -46,4 +46,14 @@ ul {
 button {
   cursor: pointer;
 }
+
+a {
+  text-decoration: none;
+  color: #333333;
+}
+
+svg {
+  margin: 0px;
+  padding: 0px;
+}
 /*# sourceMappingURL=App.css.map */

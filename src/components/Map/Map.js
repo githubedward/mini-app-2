@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 // components/styles
 import SearchBox from "./SearchBox";
-import OwnMarker from "./Marker";
+import Marker from "./Marker";
 import PinItWindow from "./PinItWindow";
+import PlaceInfoWindow from "./PlaceInfoWindow";
 // import styles from "./Map.module.css";
 // others
 import mapStyle from "./mapstyles/customDefault.json";
@@ -21,8 +22,41 @@ class Map extends Component {
       mapInstance: null,
       mapsAPI: null,
       searchResult: null,
-      places: [],
-      pinit: null
+      placeInfo: null,
+      places: [
+        {
+          address: "Distillery District, Toronto, ON M5A, Canada",
+          position: {
+            lat: 43.65030549999999,
+            lng: -79.35958
+          },
+
+          name: "Distillery District",
+          place_id: "ChIJCcYBxz3L1IkRFmpW29wp58M",
+          vicinity: "Old Toronto"
+        },
+        {
+          address: "Graffiti Alley, Toronto, ON M5V, Canada",
+          position: {
+            lat: 43.64770849999999,
+            lng: -79.39951880000001
+          },
+          name: "Graffiti Alley",
+          place_id:
+            "EidHcmFmZml0aSBBbGxleSwgVG9yb250bywgT04gTTVWLCBDYW5hZGEiLiosChQKEgm9eRhd3DQriBGJA-KXpt7jsRIUChIJpTvG15DL1IkRd8S0KlBVNTI",
+          vicinity: "Old Toronto"
+        },
+        {
+          address: "301 Front St W, Toronto, ON M5V 2T6, Canada",
+          position: {
+            lat: 43.6425662,
+            lng: -79.38705679999998
+          },
+          name: "CN Tower",
+          place_id: "ChIJmzrzi9Y0K4gRgXUc3sTY7RU",
+          vicinity: "301 Front Street West, Toronto"
+        }
+      ]
     };
   }
 
@@ -37,36 +71,48 @@ class Map extends Component {
     }
   };
 
-  onSearchInput = place => {
-    console.log(place);
+  onSearchInput = searched => {
+    this.onClosePinInfoWindow();
+    const place = {
+      position: {
+        lat: searched.geometry.location.lat(),
+        lng: searched.geometry.location.lng()
+      },
+      place_id: searched.place_id,
+      vicinity: searched.vicinity,
+      address: searched.formatted_address,
+      name: searched.name
+    };
     this.setState({
-      searchResult: place
+      searchResult: place,
+      placeInfo: null
     });
   };
 
   onPinAPlace = () => {
-    const { places, pinit } = this.state;
-    const newPlace = { ...pinit };
+    const { places, searchResult } = this.state;
+    const newPlace = { ...searchResult };
     this.setState({
       places: places.concat(newPlace),
-      pinit: null,
       searchResult: null
     });
   };
 
-  onShowPinItWindow = () => {
-    const { searchResult } = this.state;
-    const place = {
-      lat: searchResult.geometry.location.lat(),
-      lng: searchResult.geometry.location.lng(),
-      place_id: searchResult.place_id,
-      vicinity: searchResult.vicinity,
-      address: searchResult.formatted_address,
-      name: searchResult.name
-    };
-    console.log(place);
+  onClosePinInfoWindow = () => {
     this.setState({
-      pinit: place
+      searchResult: null
+    });
+  };
+
+  onClosePlaceInfoWindow = () => {
+    this.setState({
+      placeInfo: null
+    });
+  };
+
+  onShowPlaceInfoWindow = place => {
+    this.setState({
+      placeInfo: place
     });
   };
 
@@ -78,6 +124,14 @@ class Map extends Component {
     });
   };
 
+  // renderSearchedMarker(map, maps) {
+  //   const position = this.state.searchResult.position;
+  //   let marker = new maps.Marker({
+  //     position: position,
+  //     map
+  //   });
+  // }
+
   render() {
     const { center } = this.props;
     const {
@@ -86,20 +140,8 @@ class Map extends Component {
       mapInstance,
       searchResult,
       places,
-      pinit
+      placeInfo
     } = this.state;
-    const PlacesJSX = places.map(place => {
-      return (
-        <OwnMarker
-          key={place.id}
-          lat={place.lat}
-          lng={place.lng}
-          onClick={() => {
-            console.log(place);
-          }}
-        />
-      );
-    });
     return (
       <div style={{ height: "100vh", width: "100vw" }}>
         {mapsApiLoaded && (
@@ -127,22 +169,42 @@ class Map extends Component {
             this.onAPILoaded(map, maps);
           }}
         >
-          {helpers.chkLength(places) && PlacesJSX}
+          {helpers.chkLength(places) &&
+            // render places markers
+            places.map(place => {
+              return (
+                <Marker
+                  key={place.place_id}
+                  lat={place.position.lat}
+                  lng={place.position.lng}
+                  onMouseOver={() => this.onShowPlaceInfoWindow(place)}
+                  onMouseLeave={this.onClosePlaceInfoWindow}
+                />
+              );
+            })}
           {searchResult && (
-            <OwnMarker
-              text={searchResult.name}
-              lat={searchResult.geometry.location.lat()}
-              lng={searchResult.geometry.location.lng()}
-              onClick={this.onShowPinItWindow}
+            // render search result marker
+            <Marker
+              lat={searchResult.position.lat}
+              lng={searchResult.position.lng}
               result={true}
             />
           )}
-          {pinit && (
+          {searchResult && (
             <PinItWindow
-              place={pinit}
-              lat={pinit.lat}
-              lng={pinit.lng}
+              place={searchResult}
+              lat={searchResult.position.lat}
+              lng={searchResult.position.lng}
               onClick={this.onPinAPlace}
+              onClose={this.onClosePinInfoWindow}
+            />
+          )}
+          {placeInfo && (
+            // render selected place info window
+            <PlaceInfoWindow
+              place={placeInfo}
+              lat={placeInfo.position.lat}
+              lng={placeInfo.position.lng}
             />
           )}
         </GoogleMapReact>

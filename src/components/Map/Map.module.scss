@@ -6,21 +6,9 @@
   width: 100vw;
 }
 
-.map {
-  cursor: default !important;
-}
-
-.logo {
-  cursor: default;
-  font-family: "Pacifico", cursive;
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  color: $light-theme;
-  z-index: 3;
-  background: white;
-  padding: 0.25rem 1rem 0.25rem 0.75rem;
-  border-radius: 8px;
+.default {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .map_nav {
@@ -45,7 +33,7 @@
     padding: 0.5rem;
     border: 1px solid $light-theme;
     outline: 1;
-    font-size: 1rem;
+    font-size: $t3;
     color: $superdarkgray;
     @include shake-animation();
 
@@ -98,11 +86,13 @@
 }
 
 .marker {
+  cursor: pointer;
   fill: $light-theme;
   height: 3rem;
   width: 3rem;
   position: absolute;
   transform: translate(-50%, -100%);
+  margin: 0;
   @include fade-in(1s);
 
   &_result {
@@ -117,38 +107,67 @@
   }
 }
 
-.pinit {
+.pinit_window {
+  @include box-shadow(rgba(255, 62, 62, 0.6));
   @include flex-center;
   flex-direction: column;
   background-color: white;
   border: 1px solid $light-theme;
+  transform: translate(-50%, -175%);
+  position: relative;
+  padding: 2rem 1rem 1rem 1rem;
+  min-width: 10rem;
+  max-width: 12rem;
+  border-radius: 10px;
+
+  p {
+    margin-top: 0.5rem;
+  }
+
+  &__button {
+    margin-top: 1rem;
+
+    $btn-style: (
+      height: 1.5rem,
+      width: auto,
+      font-size: $help-txt,
+      padding: 0rem 1rem,
+      border: $theme,
+      bg: $light-theme,
+      hover-bg: $theme,
+      hover-border: $light-theme,
+      hover-color: white,
+      color: white
+    );
+
+    @include button($btn-style...);
+  }
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: $gray;
+
+    &:hover {
+      color: $superdarkgray;
+      background: none;
+    }
+  }
+}
+
+.places_window {
+  @include box-shadow(rgba(255, 62, 62, 0.6));
+  @include flex-center;
+  flex-direction: column;
+  background-color: white;
+  // border: 1px solid $light-theme;
   transform: translate(-50%, -175%);
   position: absolute;
   padding: 1rem;
   min-width: 10rem;
   max-width: 12rem;
   border-radius: 10px;
-
-  $btn-style: (
-    height: 1.5rem,
-    width: auto,
-    font-size: $help-txt,
-    padding: 0rem 1rem,
-    border: $theme,
-    bg: $light-theme,
-    hover-bg: $theme,
-    hover-border: $light-theme,
-    hover-color: white,
-    color: white
-  );
-
-  p {
-    margin-top: 0.5rem;
-  }
-
-  button {
-    margin-top: 1rem;
-
-    @include button($btn-style...);
-  }
 }
