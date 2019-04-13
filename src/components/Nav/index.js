@@ -8,6 +8,10 @@ import NavRoutes from "./NavRoutes/NavRoutes";
 import "./index.css";
 // state
 import { logout } from "../../actions/user.actions";
+import {
+  showInfoBoxAction,
+  closeInfoBoxAction
+} from "../../actions/places.actions";
 
 class index extends Component {
   render() {
@@ -21,7 +25,11 @@ class index extends Component {
 }
 
 const mapStateToProps = state => {
-  return state;
+  const { user, places } = state;
+  return {
+    user,
+    places
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -30,7 +38,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       localStorage.removeItem("token");
       dispatch(logout());
       ownProps.history.push("/");
-    }
+    },
+    showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
+    closeInfoBoxAction: () => dispatch(closeInfoBoxAction())
   };
 };
 

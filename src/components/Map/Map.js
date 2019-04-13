@@ -21,53 +21,37 @@ class Map extends Component {
       mapsApiLoaded: false,
       mapInstance: null,
       mapsAPI: null,
-      searchResult: null,
-      placeInfo: null,
-      places: [
-        {
-          address: "Distillery District, Toronto, ON M5A, Canada",
-          position: {
-            lat: 43.65030549999999,
-            lng: -79.35958
-          },
-
-          name: "Distillery District",
-          place_id: "ChIJCcYBxz3L1IkRFmpW29wp58M",
-          vicinity: "Old Toronto"
-        },
-        {
-          address: "Graffiti Alley, Toronto, ON M5V, Canada",
-          position: {
-            lat: 43.64770849999999,
-            lng: -79.39951880000001
-          },
-          name: "Graffiti Alley",
-          place_id:
-            "EidHcmFmZml0aSBBbGxleSwgVG9yb250bywgT04gTTVWLCBDYW5hZGEiLiosChQKEgm9eRhd3DQriBGJA-KXpt7jsRIUChIJpTvG15DL1IkRd8S0KlBVNTI",
-          vicinity: "Old Toronto"
-        },
-        {
-          address: "301 Front St W, Toronto, ON M5V 2T6, Canada",
-          position: {
-            lat: 43.6425662,
-            lng: -79.38705679999998
-          },
-          name: "CN Tower",
-          place_id: "ChIJmzrzi9Y0K4gRgXUc3sTY7RU",
-          vicinity: "301 Front Street West, Toronto"
-        }
-      ]
+      searchResult: null
     };
   }
 
   static propTypes = {
-    center: PropTypes.object.isRequired
+    center: PropTypes.object.isRequired,
+    places: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          address: PropTypes.string.isRequired,
+          position: PropTypes.shape({
+            lat: PropTypes.number.isRequired,
+            lng: PropTypes.number.isRequired
+          }),
+          name: PropTypes.string.isRequired,
+          place_id: PropTypes.string.isRequired,
+          vicinity: PropTypes.string.isRequired
+        })
+      ),
+      placeInfo: PropTypes.any
+    })
   };
 
   static defaultProps = {
     center: {
       lat: 43.6532,
       lng: -79.3832
+    },
+    places: {
+      data: [],
+      placeInfo: null
     }
   };
 
@@ -124,24 +108,16 @@ class Map extends Component {
     });
   };
 
-  // renderSearchedMarker(map, maps) {
-  //   const position = this.state.searchResult.position;
-  //   let marker = new maps.Marker({
-  //     position: position,
-  //     map
-  //   });
-  // }
-
   render() {
-    const { center } = this.props;
     const {
-      mapsApiLoaded,
-      mapsAPI,
-      mapInstance,
-      searchResult,
+      center,
       places,
-      placeInfo
-    } = this.state;
+      showInfoBoxAction,
+      closeInfoBoxAction
+    } = this.props;
+    const { placeInfo } = places;
+    const { mapsApiLoaded, mapsAPI, mapInstance, searchResult } = this.state;
+
     return (
       <div style={{ height: "100vh", width: "100vw" }}>
         {mapsApiLoaded && (
@@ -169,16 +145,16 @@ class Map extends Component {
             this.onAPILoaded(map, maps);
           }}
         >
-          {helpers.chkLength(places) &&
+          {helpers.chkLength(places.data) &&
             // render places markers
-            places.map(place => {
+            places.data.map(place => {
               return (
                 <Marker
                   key={place.place_id}
                   lat={place.position.lat}
                   lng={place.position.lng}
-                  onMouseOver={() => this.onShowPlaceInfoWindow(place)}
-                  onMouseLeave={this.onClosePlaceInfoWindow}
+                  onMouseOver={() => !placeInfo && showInfoBoxAction(place)}
+                  onMouseLeave={closeInfoBoxAction}
                 />
               );
             })}

@@ -8,15 +8,15 @@ import { authenticateUserAction } from "../actions/user.actions";
 // components/styles
 import RegAuth from "../components/RegAuth/index";
 import GlobalLoader from "./shared/GlobalLoader";
-import Map from "./Map/index";
-import Nav from "./Nav/index";
+import MapContainer from "./Map/index";
+import NavContainer from "./Nav/index";
 import "./App.css";
 // others
 
 class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
-    if (token && !this.props.user.authenticated) {
+    if (token && !this.props.authenticated) {
       this.props.authenticateUser();
     }
     if (!token) {
@@ -30,8 +30,7 @@ class App extends Component {
 
   render() {
     const token = localStorage.getItem("token");
-    const { loading } = this.props;
-    const { authenticated } = this.props.user;
+    const { loading, authenticated } = this.props;
     if (loading) return <GlobalLoader loading={loading} />;
     if (!token)
       return (
@@ -44,8 +43,8 @@ class App extends Component {
     else
       return (
         <main className="App">
-          <Nav />
-          <Map />
+          <NavContainer />
+          <MapContainer />
         </main>
       );
   }
@@ -53,10 +52,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const { loading } = state.global;
-  const { user } = state;
+  const { authenticated } = state.user;
   return {
     loading,
-    user
+    authenticated
   };
 };
 
@@ -64,7 +63,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleGlobalLoaderAction: bool => dispatch(toggleGlobalLoaderAction(bool)),
     authenticateUser: () => {
-      ownProps.history.push("/");
+      ownProps.history.push("/places");
       dispatch(authenticateUserAction());
     }
   };

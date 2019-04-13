@@ -32,20 +32,20 @@ a {
   &:hover {
     @include box-shadow(rgba(204, 204, 204, 0.7));
     background-color: white;
-  }
-}
 
-.icons {
-  height: $nav-width;
-  width: auto;
-  padding: 1rem;
-  fill: white;
-
-  &:hover {
-    fill: $light-theme;
+    .icons {
+      fill: $light-theme;
+    }
   }
 
-  &_active {
-    fill: $light-theme;
+  .icons {
+    height: $nav-width;
+    width: auto;
+    padding: 1rem;
+    fill: white;
+
+    &_active {
+      fill: $light-theme;
+    }
   }
 }

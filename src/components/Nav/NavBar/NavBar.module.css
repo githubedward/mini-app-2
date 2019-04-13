@@ -43,18 +43,18 @@ a:hover {
   background-color: white;
 }
 
-.icons {
+a:hover .icons {
+  fill: #fd545f;
+}
+
+a .icons {
   height: 4rem;
   width: auto;
   padding: 1rem;
   fill: white;
 }
 
-.icons:hover {
-  fill: #fd545f;
-}
-
-.icons_active {
+a .icons_active {
   fill: #fd545f;
 }
 /*# sourceMappingURL=NavBar.module.css.map */

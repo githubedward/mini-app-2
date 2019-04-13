@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "PlacesInfoWindow.module.scss"
+        "TabPlaces.module.scss"
     ],
     "names": [],
-    "file": "PlacesInfoWindow.module.css"
+    "file": "TabPlaces.module.css"
 }

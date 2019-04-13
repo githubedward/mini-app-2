@@ -63,58 +63,6 @@
           box-shadow: 0px 2px 4px 0px rgba(158, 158, 158, 0.6);
 }
 
-.title {
-  font-family: "Pacifico", cursive;
-  font-size: 1.375rem;
-  color: #fd545f;
-  padding: 0.7rem 0rem;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #333333;
-}
-
-.row_text {
-  width: 100%;
-  text-align: left;
-  font-weight: 300;
-  padding: 1rem 0.5rem;
-  margin: 0 1rem 0 0.5rem;
-  font-size: 1rem;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-.row:last-child .row_text {
-  border-bottom: none;
-}
-
-.row_icon {
-  margin: 0 1rem 0 2rem;
-  height: 2rem;
-  fill: #333333;
-}
-
-.row_group {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-right: 1.5rem;
-}
-
 .button_logout {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,36 +108,116 @@
   opacity: 0.25 !important;
 }
 
-.map_tools {
-  position: fixed;
-  top: 10.5rem;
-  left: 4rem;
-  width: auto;
-  padding: 1rem;
-  background-color: white;
-  color: gray;
-  z-index: 4;
-  border-radius: 0 10px 10px 0;
-  -webkit-box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
-          box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
-  -webkit-animation: slide 0.35s ease-out;
-          animation: slide 0.35s ease-out;
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: 1.375rem;
+  color: #fd545f;
+  padding: 0.7rem 0rem;
+  border-bottom: 1px solid #f1f1f1;
 }
 
-@keyframes slide {
-  from {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  to {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #333333;
 }
 
-.map_tools__inactive {
-  -webkit-box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
-          box-shadow: 1px 0px 5px 1px rgba(119, 119, 119, 0.4);
-  margin: 1rem 0;
+.row_text {
+  width: 100%;
+  text-align: left;
+  font-weight: 300;
+  padding: 1rem 0.5rem;
+  margin: 0 1rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+.row_text__border {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.row_icon {
+  margin: 0 1rem 0 2rem;
+  height: 2rem;
+  fill: #333333;
+}
+
+.row_group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 1.5rem;
+}
+
+.places {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.places_container {
+  padding: 0 1rem;
+}
+
+.places:hover {
+  background-color: #f1f1f1;
+}
+
+.places:last-child {
+  border-bottom: none;
+}
+
+.places_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 2rem;
+  height: auto;
+  fill: #333333;
+}
+
+.places_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem 0.5rem;
+  margin: 0 1rem 0 0.5rem;
+}
+
+.places:last-child .places_right {
+  border-bottom: none;
+}
+
+.places p {
+  font-size: 1rem;
+  font-weight: 300;
 }
 /*# sourceMappingURL=NavRoutes.module.css.map */

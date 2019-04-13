@@ -17,7 +17,9 @@ const Home = ({ user: { fullname, username }, logout, history }) => {
         <ul>
           <li className={styles.row}>
             <IconRoundUser className={styles.row_icon} />
-            <div className={styles.row_text}>{fullname}</div>
+            <div className={`${styles.row_text} ${styles.row_text__border}`}>
+              {fullname}
+            </div>
           </li>
           <li className={styles.row}>
             <IconRoundId className={styles.row_icon} />
