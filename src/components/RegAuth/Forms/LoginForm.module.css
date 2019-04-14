@@ -158,8 +158,8 @@
 }
 
 .btn_login:disabled {
-  -webkit-transition: opacity 1s ease 0.25s;
-  transition: opacity 1s ease 0.25s;
+  -webkit-transition: opacity 0.75s ease 0.25s;
+  transition: opacity 0.75s ease 0.25s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }

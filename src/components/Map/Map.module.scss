@@ -8,9 +8,9 @@
 
 .logo {
   position: absolute;
-  font-size: $t1;
   bottom: 1.75rem;
   left: 4.75rem;
+  font-size: $t1;
   font-family: "Pacifico", cursive;
   color: $light-theme;
   z-index: 1;
@@ -97,32 +97,64 @@
 
 .marker {
   cursor: pointer;
+  $msize: 4.25rem;
   fill: $light-theme;
-  height: 3rem;
-  width: 3rem;
-  position: absolute;
+  height: $msize;
+  width: $msize;
   transform: translate(-50%, -100%);
   margin: 0;
   @include fade-in(1s);
 
-  &_result {
-    fill: $theme;
+  &_shadow {
+    $size: 1rem;
+    height: $size / 6;
+    width: $size;
+    background-color: none;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    @include box-shadow-ext($light-theme);
   }
 
-  &_image {
-    height: 2.25rem;
+  &_result {
+    cursor: pointer;
+    fill: $lovelyblue;
+
+    &__shadow {
+      @extend .marker_shadow;
+      @include box-shadow-ext($lovelyblue);
+    }
+  }
+
+  &_type {
+    $size: 2rem;
+
+    cursor: pointer;
+    position: absolute;
+    top: -3.6rem;
+    left: -1rem;
+    height: $size;
+    width: $size;
+    padding: 0.25rem;
+    background-color: $lightgray;
     border-radius: 50%;
-    border: 2px solid $light-theme;
-    opacity: 1;
+    // border: 2px solid $light-theme;
+    fill: $darkgray;
+
+    &__active {
+      background-color: $color_icon_active;
+      fill: $extralightgray;
+    }
   }
 }
 
 .pinit_window {
-  @include box-shadow(rgba(255, 62, 62, 0.6));
+  @include box-shadow(rgba(62, 81, 255, 0.6));
   @include flex-center;
   flex-direction: column;
   background-color: white;
-  border: 1px solid $light-theme;
+  border: 1px solid $lovelyblue;
   transform: translate(-50%, -175%);
   position: relative;
   padding: 2rem 1rem 1rem 1rem;
@@ -142,9 +174,9 @@
       width: auto,
       font-size: $t-help,
       padding: 0rem 1rem,
-      border: $theme,
-      bg: $light-theme,
-      hover-bg: $theme,
+      border: $lovelyblue,
+      bg: $lovelyblue,
+      hover-bg: $light-theme,
       hover-border: $light-theme,
       hover-color: white,
       color: white
@@ -174,15 +206,17 @@
 }
 
 .places_window {
-  @include box-shadow(rgba(255, 62, 62, 0.6));
+  @include box-shadow($darkgray);
+  @include fade-in(0.5s);
   @include flex-center;
   flex-direction: column;
-  background-color: white;
-  // border: 1px solid $light-theme;
-  transform: translate(-50%, -175%);
+  background-color: $navyblue;
+  color: white;
+  transform: translate(-50%, -200%);
   position: absolute;
   padding: 1rem;
   min-width: 10rem;
   max-width: 12rem;
-  border-radius: 10px;
+  border-radius: 5px;
+  text-align: center;
 }

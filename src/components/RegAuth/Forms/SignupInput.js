@@ -1,6 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-import ErrorIcon from "../../shared/IconError";
+import ErrorIcon from "../../shared-components/IconError";
 import styles from "./SignupForm.module.css";
 
 const SignupInput = ({

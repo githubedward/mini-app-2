@@ -1,7 +1,7 @@
 import React from "react";
 // components/styles
 import styles from "./NavRoutes.module.css";
-import IconArrowBack from "../../shared/IconArrowBack";
+import IconArrowBack from "../../shared-components/IconArrowBack";
 
 const MapTab = ({ history }) => {
   return (

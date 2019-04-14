@@ -39,6 +39,17 @@ export const initialPlacesState = {
       place_id: "ChIJmzrzi9Y0K4gRgXUc3sTY7RU",
       vicinity: "301 Front Street West, Toronto",
       type: "museum"
+    },
+    {
+      address: "461 Danforth Ave, Toronto, ON M4K 1P1, Canada",
+      position: {
+        lat: 43.6777648,
+        lng: -79.35022620000001
+      },
+      name: "Sushi Bistro Japanese Restaurant",
+      place_id: "ChIJsR6j7-LN1IkROPhp9pEBq60",
+      vicinity: "461 Danforth Avenue, Toronto",
+      type: "restaurant"
     }
   ],
   placeInfo: null

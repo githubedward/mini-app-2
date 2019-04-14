@@ -140,6 +140,12 @@ class Map extends Component {
                   lng={place.position.lng}
                   onMouseOver={() => !placeInfo && showInfoBoxAction(place)}
                   onMouseLeave={closeInfoBoxAction}
+                  type={place.type}
+                  active={
+                    (placeInfo &&
+                      (placeInfo.place_id === place.place_id && true)) ||
+                    false
+                  }
                 />
               );
             })}
@@ -149,9 +155,11 @@ class Map extends Component {
               lat={searchResult.position.lat}
               lng={searchResult.position.lng}
               result={true}
+              type={searchResult.type}
             />
           )}
           {searchResult && (
+            // render add place window
             <PinItWindow
               place={searchResult}
               lat={searchResult.position.lat}
@@ -161,7 +169,7 @@ class Map extends Component {
             />
           )}
           {placeInfo && (
-            // render selected place info window
+            // render place info window on hover
             <PlaceInfoWindow
               place={placeInfo}
               lat={placeInfo.position.lat}

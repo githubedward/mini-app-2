@@ -78,6 +78,10 @@
   box-shadow: 0px 0px 5px 2px $shadow;
 }
 
+@mixin box-shadow-ext($shadow) {
+  box-shadow: 0px 0px 10px 5px $shadow;
+}
+
 @mixin tbox-shadow($shadow) {
   box-shadow: 0px 2px 4px 0px $shadow;
 }
@@ -126,7 +130,7 @@
   }
 
   &:disabled {
-    @include trans-opacity(1s);
+    @include trans-opacity(0.75s);
     cursor: not-allowed !important;
     opacity: 0.25 !important;
   }

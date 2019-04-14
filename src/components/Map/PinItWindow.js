@@ -1,5 +1,5 @@
 import React from "react";
-import IconClose from "../shared/IconClose";
+import IconClose from "../shared-components/IconClose";
 import styles from "./Map.module.css";
 
 const PinItWindow = ({ onClick, onClose, place }) => {

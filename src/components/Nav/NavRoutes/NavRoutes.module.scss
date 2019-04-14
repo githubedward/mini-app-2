@@ -3,7 +3,6 @@
 $tab-width: 23rem;
 
 .container {
-  position: relative;
   width: $tab-width;
   height: 100vh;
   background-color: white;
@@ -44,7 +43,7 @@ $tab-width: 23rem;
 $btn-style: (
   height: 1.5rem,
   width: 4rem,
-  font-size: $help-txt,
+  font-size: $t-help,
   padding: 0rem 1rem,
   border: $gray,
   bg: white,
@@ -68,7 +67,7 @@ $btn-style: (
   border-bottom: 1px solid $lightgray;
 }
 
-.row {
+.home {
   display: flex;
   align-items: center;
   color: $superdarkgray;
@@ -105,13 +104,10 @@ $btn-style: (
   cursor: pointer;
   display: flex;
   border-bottom: 1px solid $lightgray;
+  fill: white;
 
   &_container {
     padding: 0 1rem;
-  }
-
-  &:hover {
-    background-color: $lightgray;
   }
 
   &:last-child {
@@ -120,9 +116,25 @@ $btn-style: (
 
   &_left {
     @include flex-center;
-    margin: 0 2rem;
-    height: auto;
-    fill: $superdarkgray;
+    margin: 0 1rem;
+
+    &__icon {
+      $size: 2.5rem;
+      height: $size;
+      width: $size;
+      padding: 0.4rem;
+
+      background-color: $gray;
+      border-radius: 50%;
+    }
+  }
+
+  &_active {
+    background-color: $lightgray;
+  }
+
+  &_active &_left__icon {
+    background-color: $color_icon_active;
   }
 
   &_right {
@@ -130,14 +142,18 @@ $btn-style: (
     flex-direction: column;
     padding: 1rem 0.5rem;
     margin: 0 1rem 0 0.5rem;
+
+    &__name {
+      font-weight: $fw-medium;
+    }
+
+    &__address {
+      font-size: $t4;
+      font-weight: $fw-light;
+    }
   }
 
   &:last-child &_right {
     border-bottom: none;
-  }
-
-  p {
-    font-size: $t3;
-    font-weight: $fw-light;
   }
 }

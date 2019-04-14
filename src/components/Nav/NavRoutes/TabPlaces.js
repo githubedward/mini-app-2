@@ -1,8 +1,8 @@
 import React from "react";
 // components/styles
-import IconArrowBack from "../../shared/IconArrowBack";
-import IconPin from "../../shared/IconPin";
+import IconArrowBack from "../../shared-components/IconArrowBack";
 import styles from "./NavRoutes.module.css";
+import createIcon from "../../shared-utils/createMarkerIcon";
 
 const Places = ({ history, places, showInfoBoxAction, closeInfoBoxAction }) => {
   return (
@@ -18,18 +18,22 @@ const Places = ({ history, places, showInfoBoxAction, closeInfoBoxAction }) => {
             return (
               <li
                 key={place.place_id}
-                className={styles.places}
+                className={`${styles.places} ${places.placeInfo &&
+                  places.placeInfo.place_id === place.place_id &&
+                  styles.places_active}`}
                 onMouseOver={() =>
                   !places.placeInfo && showInfoBoxAction(place)
                 }
                 onMouseLeave={closeInfoBoxAction}
               >
                 <div className={styles.places_left}>
-                  <IconPin />
+                  {createIcon(place.type, styles.places_left__icon)}
                 </div>
                 <div className={styles.places_right}>
-                  <p className={styles.places_text}>{place.name}</p>
-                  <p>@ {place.vicinity}</p>
+                  <h4 className={styles.places_right__name}>{place.name}</h4>
+                  <p className={styles.places_right__address}>
+                    {place.address}
+                  </p>
                 </div>
               </li>
             );

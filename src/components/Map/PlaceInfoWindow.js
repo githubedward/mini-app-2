@@ -5,7 +5,7 @@ const PlacesInfoWindow = ({ place }) => {
   return (
     <div className={styles.places_window}>
       <h3>{place.name}</h3>
-      <p>@ {place.vicinity} Vicinity</p>
+      <p>{place.address}</p>
     </div>
   );
 };

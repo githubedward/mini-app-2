@@ -7,7 +7,7 @@ import { toggleGlobalLoaderAction } from "../actions/global.actions";
 import { authenticateUserAction } from "../actions/user.actions";
 // components/styles
 import RegAuth from "../components/RegAuth/index";
-import GlobalLoader from "./shared/GlobalLoader";
+import GlobalLoader from "./shared-components/GlobalLoader";
 import MapContainer from "./Map/index";
 import NavContainer from "./Nav/index";
 import "./App.css";

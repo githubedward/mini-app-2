@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./NavRoutes.module.css";
 import IconRoundUser from "./Icons/IconRoundId";
 import IconRoundId from "./Icons/IconRoundUser";
-import IconArrowBack from "../../shared/IconArrowBack";
+import IconArrowBack from "../../shared-components/IconArrowBack";
 
 const Home = ({ user: { fullname, username }, logout, history }) => {
   return (
@@ -15,16 +15,16 @@ const Home = ({ user: { fullname, username }, logout, history }) => {
       <div className={styles.tab}>
         <h1 className={styles.title}>My Profile</h1>
         <ul>
-          <li className={styles.row}>
-            <IconRoundUser className={styles.row_icon} />
-            <div className={`${styles.row_text} ${styles.row_text__border}`}>
+          <li className={styles.home}>
+            <IconRoundUser className={styles.home_icon} />
+            <div className={`${styles.home_text} ${styles.home_text__border}`}>
               {fullname}
             </div>
           </li>
-          <li className={styles.row}>
-            <IconRoundId className={styles.row_icon} />
-            <div className={styles.row_group}>
-              <div className={styles.row_text}>{username}</div>
+          <li className={styles.home}>
+            <IconRoundId className={styles.home_icon} />
+            <div className={styles.home_group}>
+              <div className={styles.home_text}>{username}</div>
               <button
                 type="button"
                 onClick={logout}

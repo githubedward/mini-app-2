@@ -1,6 +1,6 @@
 import React from "react";
 // components/styles
-import IconArrowBack from "../../shared/IconArrowBack";
+import IconArrowBack from "../../shared-components/IconArrowBack";
 import styles from "./NavRoutes.module.css";
 
 const Community = ({ history }) => {

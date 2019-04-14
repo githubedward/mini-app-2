@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import IconCommunity from "./Icons/IconCommunity";
 import IconFeed from "./Icons/IconPlaces";
 import IconHome from "./Icons/IconHome";
-import IconMap from "./Icons/IconMap";
+// import IconMap from "./Icons/IconMap";
 import styles from "./NavBar.module.css";
 
 const NavBar = props => {
@@ -33,9 +33,9 @@ const NavBar = props => {
       <Link to="/places" className={getLinkClasses("/places")}>
         <IconFeed className={getIconClasses("/places")} />
       </Link>
-      <Link to="/map" className={getLinkClasses("/map")}>
+      {/* <Link to="/map" className={getLinkClasses("/map")}>
         <IconMap className={getIconClasses("/map")} />
-      </Link>
+      </Link> */}
     </div>
   );
 };
