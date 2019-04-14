@@ -127,7 +127,7 @@ class FormContainer extends Component {
     } = this.state;
     return (
       <section className={styles.background}>
-        <div className={styles.logo}>MapSocial</div>
+        <div className={styles.logo}>Pinit</div>
         <div className={styles.container}>
           <LoginForm
             onSubmit={this.handleLogin}

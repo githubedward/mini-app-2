@@ -12,3 +12,10 @@ export const closeInfoBoxAction = () => {
     type: types.CLOSE_INFOBOX
   };
 };
+
+export const addPlaceAction = place => {
+  return {
+    type: types.ADD_PLACE,
+    place
+  };
+};

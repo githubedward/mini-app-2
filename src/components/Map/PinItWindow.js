@@ -6,7 +6,7 @@ const PinItWindow = ({ onClick, onClose, place }) => {
   return (
     <div className={styles.pinit_window}>
       <button onClick={onClose} className={styles.pinit_window__close}>
-        close
+        <IconClose />
       </button>
       <h3>{place.name}</h3>
       <p>@ {place.vicinity} Vicinity</p>

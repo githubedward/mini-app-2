@@ -4,7 +4,8 @@ import Map from "./Map";
 // state
 import {
   showInfoBoxAction,
-  closeInfoBoxAction
+  closeInfoBoxAction,
+  addPlaceAction
 } from "../../actions/places.actions";
 
 class index extends Component {
@@ -23,7 +24,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
-    closeInfoBoxAction: () => dispatch(closeInfoBoxAction())
+    closeInfoBoxAction: () => dispatch(closeInfoBoxAction()),
+    addPlaceAction: place => dispatch(addPlaceAction(place))
   };
 };
 

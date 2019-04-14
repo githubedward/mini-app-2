@@ -1,4 +1,8 @@
-import { SHOW_INFOBOX, CLOSE_INFOBOX } from "../actions/places.types";
+import {
+  SHOW_INFOBOX,
+  CLOSE_INFOBOX,
+  ADD_PLACE
+} from "../actions/places.types";
 
 export const initialPlacesState = {
   data: [
@@ -10,7 +14,8 @@ export const initialPlacesState = {
       },
       name: "Distillery District",
       place_id: "ChIJCcYBxz3L1IkRFmpW29wp58M",
-      vicinity: "Old Toronto"
+      vicinity: "Old Toronto",
+      type: "neighbourhood"
     },
     {
       address: "Graffiti Alley, Toronto, ON M5V, Canada",
@@ -21,7 +26,8 @@ export const initialPlacesState = {
       name: "Graffiti Alley",
       place_id:
         "EidHcmFmZml0aSBBbGxleSwgVG9yb250bywgT04gTTVWLCBDYW5hZGEiLiosChQKEgm9eRhd3DQriBGJA-KXpt7jsRIUChIJpTvG15DL1IkRd8S0KlBVNTI",
-      vicinity: "Old Toronto"
+      vicinity: "Old Toronto",
+      type: "route"
     },
     {
       address: "301 Front St W, Toronto, ON M5V 2T6, Canada",
@@ -31,7 +37,8 @@ export const initialPlacesState = {
       },
       name: "CN Tower",
       place_id: "ChIJmzrzi9Y0K4gRgXUc3sTY7RU",
-      vicinity: "301 Front Street West, Toronto"
+      vicinity: "301 Front Street West, Toronto",
+      type: "museum"
     }
   ],
   placeInfo: null
@@ -49,6 +56,11 @@ export default function places(state = initialPlacesState, action) {
       return {
         ...state,
         placeInfo: null
+      };
+    case ADD_PLACE:
+      return {
+        ...state,
+        data: state.data.concat(action.place)
       };
     default:
       return state;

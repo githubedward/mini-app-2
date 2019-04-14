@@ -4,6 +4,16 @@
   width: 100vw;
 }
 
+.logo {
+  position: absolute;
+  font-size: 1.375rem;
+  bottom: 1.75rem;
+  left: 4.75rem;
+  font-family: "Pacifico", cursive;
+  color: #fd545f;
+  z-index: 1;
+}
+
 .default {
   margin: 0 !important;
   padding: 0 !important;
@@ -322,15 +332,20 @@
 .pinit_window__close {
   position: absolute;
   top: 5px;
-  right: 10px;
+  right: 5px;
   background: none;
   border: none;
-  color: #b4b4b4;
+  fill: #b4b4b4;
 }
 
 .pinit_window__close:hover {
-  color: #333333;
+  fill: #333333;
   background: none;
+}
+
+.pinit_window__close svg {
+  height: 1rem;
+  width: 1rem;
 }
 
 .places_window {

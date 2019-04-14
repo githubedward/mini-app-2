@@ -8,7 +8,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
     <div
       className="logo"
     >
-      MapSocial
+      Pinit
     </div>
     <div
       className="container"

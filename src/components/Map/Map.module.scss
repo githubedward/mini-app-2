@@ -6,6 +6,16 @@
   width: 100vw;
 }
 
+.logo {
+  position: absolute;
+  font-size: $t1;
+  bottom: 1.75rem;
+  left: 4.75rem;
+  font-family: "Pacifico", cursive;
+  color: $light-theme;
+  z-index: 1;
+}
+
 .default {
   margin: 0 !important;
   padding: 0 !important;
@@ -130,7 +140,7 @@
     $btn-style: (
       height: 1.5rem,
       width: auto,
-      font-size: $help-txt,
+      font-size: $t-help,
       padding: 0rem 1rem,
       border: $theme,
       bg: $light-theme,
@@ -146,14 +156,19 @@
   &__close {
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 5px;
     background: none;
     border: none;
-    color: $gray;
+    fill: $gray;
 
     &:hover {
-      color: $superdarkgray;
+      fill: $superdarkgray;
       background: none;
+    }
+
+    svg {
+      height: $t3;
+      width: $t3;
     }
   }
 }

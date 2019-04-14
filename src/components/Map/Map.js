@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 // components/styles
@@ -6,9 +6,9 @@ import SearchBox from "./SearchBox";
 import Marker from "./Marker";
 import PinItWindow from "./PinItWindow";
 import PlaceInfoWindow from "./PlaceInfoWindow";
-// import styles from "./Map.module.css";
+import styles from "./Map.module.css";
 // others
-import mapStyle from "./mapstyles/customDefault.json";
+import { mapOptions } from "./helpers/functions";
 import * as helpers from "../../utils/functions";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
@@ -37,7 +37,8 @@ class Map extends Component {
           }),
           name: PropTypes.string.isRequired,
           place_id: PropTypes.string.isRequired,
-          vicinity: PropTypes.string.isRequired
+          vicinity: PropTypes.string,
+          type: PropTypes.string.isRequired
         })
       ),
       placeInfo: PropTypes.any
@@ -57,6 +58,7 @@ class Map extends Component {
 
   onSearchInput = searched => {
     this.onClosePinInfoWindow();
+    console.log(searched);
     const place = {
       position: {
         lat: searched.geometry.location.lat(),
@@ -65,19 +67,19 @@ class Map extends Component {
       place_id: searched.place_id,
       vicinity: searched.vicinity,
       address: searched.formatted_address,
-      name: searched.name
+      name: searched.name,
+      type: searched.types[0]
     };
     this.setState({
-      searchResult: place,
-      placeInfo: null
+      searchResult: place
     });
   };
 
   onPinAPlace = () => {
-    const { places, searchResult } = this.state;
+    const { searchResult } = this.state;
     const newPlace = { ...searchResult };
+    this.props.addPlaceAction(newPlace);
     this.setState({
-      places: places.concat(newPlace),
       searchResult: null
     });
   };
@@ -85,18 +87,6 @@ class Map extends Component {
   onClosePinInfoWindow = () => {
     this.setState({
       searchResult: null
-    });
-  };
-
-  onClosePlaceInfoWindow = () => {
-    this.setState({
-      placeInfo: null
-    });
-  };
-
-  onShowPlaceInfoWindow = place => {
-    this.setState({
-      placeInfo: place
     });
   };
 
@@ -119,7 +109,7 @@ class Map extends Component {
     const { mapsApiLoaded, mapsAPI, mapInstance, searchResult } = this.state;
 
     return (
-      <div style={{ height: "100vh", width: "100vw" }}>
+      <div style={{ height: "102vh", width: "100vw", position: "fixed" }}>
         {mapsApiLoaded && (
           <SearchBox
             map={mapInstance}
@@ -134,12 +124,7 @@ class Map extends Component {
           }}
           center={center}
           zoom={13}
-          options={{
-            styles: mapStyle,
-            draggableCursor: "auto",
-            draggingCursor: "auto",
-            fullscreenControl: false
-          }}
+          options={mapOptions}
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => {
             this.onAPILoaded(map, maps);
@@ -184,6 +169,7 @@ class Map extends Component {
             />
           )}
         </GoogleMapReact>
+        <div className={styles.logo}>Pinit</div>
       </div>
     );
   }
