@@ -45,6 +45,7 @@
     outline: 1;
     font-size: $t3;
     color: $superdarkgray;
+    background-color: rgba(255, 255, 255, 0.85);
     @include shake-animation();
 
     &::placeholder {
@@ -62,6 +63,7 @@
       @include box-shadow(rgba(255, 62, 62, 0.6));
       outline: none;
       border: 2px solid $light-theme;
+      background-color: white;
 
       &::placeholder {
         color: white;
@@ -103,6 +105,7 @@
   width: $msize;
   transform: translate(-50%, -100%);
   margin: 0;
+  padding: 0;
   @include fade-in(1s);
 
   &_shadow {
@@ -137,33 +140,32 @@
     height: $size;
     width: $size;
     padding: 0.25rem;
-    background-color: $lightgray;
+    background-color: $extralightgray;
     border-radius: 50%;
-    // border: 2px solid $light-theme;
     fill: $darkgray;
 
     &__active {
-      background-color: $color_icon_active;
-      fill: $extralightgray;
+      fill: $color_icon_active;
     }
   }
 }
 
 .pinit_window {
-  @include box-shadow(rgba(62, 81, 255, 0.6));
+  @include box-shadow($gray);
   @include flex-center;
   flex-direction: column;
   background-color: white;
-  border: 1px solid $lovelyblue;
-  transform: translate(-50%, -175%);
+  // border: 1px solid white;
+  transform: translate(-50%, -155%);
   position: relative;
   padding: 2rem 1rem 1rem 1rem;
   min-width: 10rem;
   max-width: 12rem;
   border-radius: 10px;
+  text-align: center;
 
   p {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   &__button {
@@ -206,11 +208,11 @@
 }
 
 .places_window {
-  @include box-shadow($darkgray);
+  @include box-shadow($gray);
   @include fade-in(0.5s);
   @include flex-center;
   flex-direction: column;
-  background-color: $navyblue;
+  background-color: $color_icon_active;
   color: white;
   transform: translate(-50%, -200%);
   position: absolute;

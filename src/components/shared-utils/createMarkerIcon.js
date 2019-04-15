@@ -16,10 +16,7 @@ import IconTranspo from "../shared-components/place_types/IconTranspo";
 const iconTypes = {
   airport: className => <IconAirport className={className} />,
   drink: className => <IconDrink className={className} />,
-  eat: className => {
-    console.log(className);
-    return <IconEat className={className} />;
-  },
+  eat: className => <IconEat className={className} />,
   fitness: className => <IconFitness className={className} />,
   lodging: className => <IconLodging className={className} />,
   finance: className => <IconMoney className={className} />,

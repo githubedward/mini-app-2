@@ -13,7 +13,7 @@ const Marker = ({ onMouseOver, onMouseLeave, result, type, active }) => {
     <div
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
-      className={styles.default}
+      // className={styles.default}
     >
       <IconPin className={markerStyle} />
       {createMarkerIcon(type, iconStyle)}

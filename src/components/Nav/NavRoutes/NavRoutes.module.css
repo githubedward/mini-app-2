@@ -35,16 +35,16 @@
 .container_back {
   position: absolute;
   top: 15px;
-  right: -33px;
+  right: -25px;
   background-color: white;
   padding: 0.5rem 0;
   height: 2.5rem;
-  width: 2rem;
+  width: 1.5rem;
   fill: #888888;
   cursor: pointer;
   -webkit-box-shadow: 1px 0px 5px 1px rgba(141, 141, 141, 0.219);
           box-shadow: 1px 0px 5px 1px rgba(141, 141, 141, 0.219);
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 3px 3px 0;
 }
 
 .container_back:hover {
@@ -197,11 +197,11 @@
 }
 
 .places_active {
-  background-color: #f1f1f1;
+  background-color: #f8f8f8;
 }
 
 .places_active .places_left__icon {
-  background-color: #143c58;
+  background-color: #2694e0;
 }
 
 .places_right {

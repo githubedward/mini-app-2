@@ -9,7 +9,7 @@ const PinItWindow = ({ onClick, onClose, place }) => {
         <IconClose />
       </button>
       <h3>{place.name}</h3>
-      <p>@ {place.vicinity} Vicinity</p>
+      <p>{place.address}</p>
       <button onClick={onClick} className={styles.pinit_window__button}>
         Pin this place!
       </button>
