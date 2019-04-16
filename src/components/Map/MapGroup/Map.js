@@ -8,8 +8,8 @@ import PinItWindow from "./PinItWindow";
 import PlaceInfoWindow from "./PlaceInfoWindow";
 import styles from "./Map.module.css";
 // others
-import { mapOptions } from "./helpers/functions";
-import * as helpers from "../../utils/functions";
+import { mapOptions } from "../helpers/functions";
+import * as helpers from "../../../utils/functions";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 

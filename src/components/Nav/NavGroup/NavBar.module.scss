@@ -1,0 +1,55 @@
+@import "../../style-helpers/mixins.scss";
+
+$nav-height: 4rem;
+
+.container {
+  z-index: 5;
+  @include flex-center;
+  justify-content: center;
+  height: $nav-height;
+  width: 23rem;
+  background-color: white;
+  // @include box-shadow($lightgray);
+
+  &_back {
+    position: absolute;
+    top: 12px;
+    right: -25px;
+    background-color: white;
+    padding: 0.5rem 0;
+    height: 2.5rem;
+    width: 1.5rem;
+    fill: $darkgray;
+    cursor: pointer;
+    @include rbox-shadow(rgba(141, 141, 141, 0.219));
+    border-radius: 0 3px 3px 0;
+
+    &:hover {
+      fill: white;
+      background-color: $light-theme;
+      @include rbox-shadow(rgba(255, 68, 68, 0.7));
+    }
+  }
+}
+
+a {
+  &.active {
+    border-bottom: 1px solid $lightgray;
+  }
+
+  &:hover {
+    @include box-shadow($lightgray);
+    background-color: white;
+  }
+
+  .icons {
+    height: $nav-height;
+    width: auto;
+    padding: 1rem;
+    fill: $darkgray;
+
+    &_active {
+      fill: $light-theme;
+    }
+  }
+}

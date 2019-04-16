@@ -32,12 +32,7 @@ class App extends Component {
     const token = localStorage.getItem("token");
     const { loading, authenticated } = this.props;
     if (loading) return <GlobalLoader loading={loading} />;
-    if (!token)
-      return (
-        <div>
-          <RegAuth />
-        </div>
-      );
+    if (!token) return <RegAuth />;
     if (token && !authenticated) return null;
     // return main page
     else

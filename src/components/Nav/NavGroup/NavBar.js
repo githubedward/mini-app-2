@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 // components/styles
-import IconCommunity from "./Icons/IconCommunity";
-import IconFeed from "./Icons/IconPlaces";
-import IconHome from "./Icons/IconHome";
-// import IconMap from "./Icons/IconMap";
+import IconCommunity from "../../shared-components/IconCommunity";
+import IconFeed from "../../shared-components/IconPlaces";
+import IconHome from "../../shared-components/IconHome";
+import IconArrowBack from "../../shared-components/IconArrowBack";
 import styles from "./NavBar.module.css";
 
-const NavBar = props => {
-  const path = props.location.pathname;
+const NavBar = ({ location, history }) => {
+  const path = location.pathname;
   // generate classes for links
   const getLinkClasses = linkPath => {
     return path === linkPath ? styles.active : undefined;
@@ -24,6 +23,12 @@ const NavBar = props => {
 
   return (
     <div className={containerClasses}>
+      <IconArrowBack
+        className={styles.container_back}
+        onClick={() => {
+          history.push("/");
+        }}
+      />
       <Link to="/home" className={getLinkClasses("/home")}>
         <IconHome className={getIconClasses("/home")} />
       </Link>
@@ -33,11 +38,8 @@ const NavBar = props => {
       <Link to="/places" className={getLinkClasses("/places")}>
         <IconFeed className={getIconClasses("/places")} />
       </Link>
-      {/* <Link to="/map" className={getLinkClasses("/map")}>
-        <IconMap className={getIconClasses("/map")} />
-      </Link> */}
     </div>
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;

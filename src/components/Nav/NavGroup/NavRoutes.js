@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./TabHome";
 import Community from "./TabCommunity";
 import Places from "./TabPlaces";
-// import Map from "./TabMap";
 
 const NavRoutes = props => {
   return (
@@ -19,9 +18,6 @@ const NavRoutes = props => {
         <Route exact path="/places">
           <Places {...props} />
         </Route>
-        {/* <Route exact path="/map">
-          <Map {...props} />
-        </Route> */}
       </Switch>
     </div>
   );

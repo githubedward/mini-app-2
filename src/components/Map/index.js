@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Map from "./Map";
+import Map from "./MapGroup/Map";
 // state
 import {
   showInfoBoxAction,

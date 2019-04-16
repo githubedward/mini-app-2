@@ -1,17 +1,12 @@
 import React from "react";
 // components/styles
 import styles from "./NavRoutes.module.css";
-import IconRoundUser from "./Icons/IconRoundId";
-import IconRoundId from "./Icons/IconRoundUser";
-import IconArrowBack from "../../shared-components/IconArrowBack";
+import IconRoundUser from "../../shared-components/IconRoundId";
+import IconRoundId from "../../shared-components/IconRoundUser";
 
 const Home = ({ user: { fullname, username }, logout, history }) => {
   return (
     <div className={styles.container}>
-      <IconArrowBack
-        className={styles.container_back}
-        onClick={() => history.push("/")}
-      />
       <div className={styles.tab}>
         <h1 className={styles.title}>My Profile</h1>
         <ul>

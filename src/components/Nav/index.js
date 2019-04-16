@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 // components/styles
-import NavBar from "./NavBar/NavBar";
-import NavRoutes from "./NavRoutes/NavRoutes";
-import "./index.css";
+import NavContainer from "./NavGroup/NavContainer";
 // state
 import { logout } from "../../actions/user.actions";
 import {
@@ -15,12 +13,7 @@ import {
 
 class index extends Component {
   render() {
-    return (
-      <section>
-        <NavBar />
-        <NavRoutes {...this.props} />
-      </section>
-    );
+    return <NavContainer {...this.props} />;
   }
 }
 

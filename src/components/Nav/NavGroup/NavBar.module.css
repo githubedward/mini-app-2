@@ -1,0 +1,60 @@
+.container {
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 23rem;
+  background-color: white;
+}
+
+.container_back {
+  position: absolute;
+  top: 12px;
+  right: -25px;
+  background-color: white;
+  padding: 0.5rem 0;
+  height: 2.5rem;
+  width: 1.5rem;
+  fill: #888888;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 0px 5px 1px rgba(141, 141, 141, 0.219);
+          box-shadow: 1px 0px 5px 1px rgba(141, 141, 141, 0.219);
+  border-radius: 0 3px 3px 0;
+}
+
+.container_back:hover {
+  fill: white;
+  background-color: #fd545f;
+  -webkit-box-shadow: 1px 0px 5px 1px rgba(255, 68, 68, 0.7);
+          box-shadow: 1px 0px 5px 1px rgba(255, 68, 68, 0.7);
+}
+
+a.active {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+a:hover {
+  -webkit-box-shadow: 0px 0px 5px 2px #f1f1f1;
+          box-shadow: 0px 0px 5px 2px #f1f1f1;
+  background-color: white;
+}
+
+a .icons {
+  height: 4rem;
+  width: auto;
+  padding: 1rem;
+  fill: #888888;
+}
+
+a .icons_active {
+  fill: #fd545f;
+}
+/*# sourceMappingURL=NavBar.module.css.map */
