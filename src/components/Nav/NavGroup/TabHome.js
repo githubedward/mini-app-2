@@ -4,7 +4,13 @@ import styles from "./NavRoutes.module.css";
 import IconRoundUser from "../../shared-components/IconRoundId";
 import IconRoundId from "../../shared-components/IconRoundUser";
 
-const Home = ({ user: { fullname, username }, logout, history }) => {
+const Home = ({
+  user: {
+    fullname,
+    logins: { username }
+  },
+  logout
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.tab}>
