@@ -5,7 +5,8 @@ import Map from "./MapGroup/Map";
 import {
   showInfoBoxAction,
   closeInfoBoxAction,
-  addPlaceAction
+  addPlaceAction,
+  getAllPlaces
 } from "../../actions/places.actions";
 
 class index extends Component {
@@ -15,8 +16,9 @@ class index extends Component {
 }
 
 const mapStateToProps = state => {
-  const { places } = state;
+  const { places, user } = state;
   return {
+    user_id: user.id,
     places
   };
 };
@@ -25,7 +27,8 @@ const mapDispatchToProps = dispatch => {
   return {
     showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
     closeInfoBoxAction: () => dispatch(closeInfoBoxAction()),
-    addPlaceAction: place => dispatch(addPlaceAction(place))
+    addPlaceAction: place => dispatch(addPlaceAction(place)),
+    getAllPlaces: () => dispatch(getAllPlaces())
   };
 };
 

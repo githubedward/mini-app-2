@@ -19,3 +19,15 @@ export const addPlaceAction = place => {
     place
   };
 };
+
+export const getUserPlaceAction = () => {
+  return {
+    type: types.GET_USER_PLACES
+  };
+};
+
+export const getAllPlaces = () => {
+  return {
+    type: types.GET_ALL_PLACES
+  };
+};

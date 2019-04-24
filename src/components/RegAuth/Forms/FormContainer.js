@@ -5,7 +5,7 @@ import SignupForm from "./SignupForm";
 import styles from "./FormContainer.module.css";
 // others
 import * as helper from "../../../utils/functions";
-import Api from "../../../services/index";
+import authApi from "../../../services/auth.services";
 
 class FormContainer extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class FormContainer extends Component {
     await helper.delay(500);
     try {
       // const resp = await axios.post(SIGNUP_URL, data);
-      const resp = await Api.signup(data);
+      const resp = await authApi.signup(data);
       const { username } = resp;
       this.setState({
         ...this.state,
@@ -69,7 +69,7 @@ class FormContainer extends Component {
     await helper.delay(500);
     try {
       // const resp = await axios.post(LOGIN_URL, data);
-      const resp = await Api.login(data);
+      const resp = await authApi.login(data);
       localStorage.setItem("token", resp.token);
       this.props.authenticateUserAction();
     } catch (err) {

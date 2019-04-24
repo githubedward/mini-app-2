@@ -10,6 +10,7 @@ import styles from "./Map.module.css";
 // others
 import { mapOptions } from "../helpers/functions";
 import * as helpers from "../../../utils/functions";
+// import placesApi from "../../../services/places.services";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
@@ -31,10 +32,8 @@ class Map extends Component {
       data: PropTypes.arrayOf(
         PropTypes.shape({
           address: PropTypes.string.isRequired,
-          position: PropTypes.shape({
-            lat: PropTypes.number.isRequired,
-            lng: PropTypes.number.isRequired
-          }),
+          lat: PropTypes.number.isRequired,
+          lng: PropTypes.number.isRequired,
           name: PropTypes.string.isRequired,
           place_id: PropTypes.string.isRequired,
           vicinity: PropTypes.string,
@@ -58,12 +57,9 @@ class Map extends Component {
 
   onSearchInput = searched => {
     this.onClosePinInfoWindow();
-    console.log(searched);
     const place = {
-      position: {
-        lat: searched.geometry.location.lat(),
-        lng: searched.geometry.location.lng()
-      },
+      lat: searched.geometry.location.lat(),
+      lng: searched.geometry.location.lng(),
       place_id: searched.place_id,
       vicinity: searched.vicinity,
       address: searched.formatted_address,
@@ -77,7 +73,7 @@ class Map extends Component {
 
   onPinAPlace = () => {
     const { searchResult } = this.state;
-    const newPlace = { ...searchResult };
+    const newPlace = { ...searchResult, user_id: this.props.user_id };
     this.props.addPlaceAction(newPlace);
     this.setState({
       searchResult: null
@@ -136,8 +132,8 @@ class Map extends Component {
               return (
                 <Marker
                   key={place.place_id}
-                  lat={place.position.lat}
-                  lng={place.position.lng}
+                  lat={place.lat}
+                  lng={place.lng}
                   onMouseOver={() => !placeInfo && showInfoBoxAction(place)}
                   onMouseLeave={closeInfoBoxAction}
                   type={place.type}
@@ -152,8 +148,8 @@ class Map extends Component {
           {searchResult && (
             // render search result marker
             <Marker
-              lat={searchResult.position.lat}
-              lng={searchResult.position.lng}
+              lat={searchResult.lat}
+              lng={searchResult.lng}
               result={true}
               type={searchResult.type}
             />
@@ -162,8 +158,8 @@ class Map extends Component {
             // render add place window
             <PinItWindow
               place={searchResult}
-              lat={searchResult.position.lat}
-              lng={searchResult.position.lng}
+              lat={searchResult.lat}
+              lng={searchResult.lng}
               onClick={this.onPinAPlace}
               onClose={this.onClosePinInfoWindow}
             />
@@ -172,8 +168,8 @@ class Map extends Component {
             // render place info window on hover
             <PlaceInfoWindow
               place={placeInfo}
-              lat={placeInfo.position.lat}
-              lng={placeInfo.position.lng}
+              lat={placeInfo.lat}
+              lng={placeInfo.lng}
             />
           )}
         </GoogleMapReact>

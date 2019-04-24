@@ -5,7 +5,7 @@ const SIGNUP_URL = `${API_URL}/register`;
 const LOGIN_URL = `${API_URL}/login`;
 const AUTH_URL = `${API_URL}/authenticated`;
 
-export default class Api {
+export default class authApi {
   /**
    * signup function
    * @param {object} data
