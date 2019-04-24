@@ -104,7 +104,10 @@ const formikEnhancer = withFormik({
   }),
   handleSubmit: (values, formikBag) => {
     formikBag.props.handleLoginFocus();
-    formikBag.props.onSubmit(values);
+    formikBag.props.onSubmit({
+      username: values.username,
+      password: values.password
+    });
   },
   displayName: "LoginForm"
 });

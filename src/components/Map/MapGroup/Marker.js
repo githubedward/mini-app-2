@@ -6,7 +6,8 @@ import createMarkerIcon from "../../shared-utils/createMarkerIcon";
 const Marker = ({ onMouseOver, onMouseLeave, result, type, active }) => {
   const shadowStyle =
     (result && styles.marker_result__shadow) || styles.marker_shadow;
-  const markerStyle = `${styles.marker} ${result && styles.marker_result}`;
+  const markerStyle = `${styles.marker} ${result &&
+    styles.marker_result} ${active && styles.marker_active}`;
   const iconStyle = `${styles.marker_type} ${active &&
     styles.marker_type__active}`;
   return (

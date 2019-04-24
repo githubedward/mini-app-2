@@ -71,7 +71,7 @@ export default function places(state = initialPlacesState, action) {
     case ADD_PLACE:
       return {
         ...state,
-        data: state.data.concat(action.place)
+        data: state.data.concat(...action.place)
       };
     default:
       return state;

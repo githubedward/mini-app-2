@@ -108,6 +108,11 @@
   padding: 0;
   @include fade-in(1s);
 
+  &_active {
+    height: 5rem;
+    width: 5rem;
+  }
+
   &_shadow {
     $size: 1rem;
     height: $size / 6;
@@ -140,12 +145,16 @@
     height: $size;
     width: $size;
     padding: 0.25rem;
-    background-color: $extralightgray;
+    background-color: $light-theme;
     border-radius: 50%;
-    fill: $darkgray;
+    fill: $lightgray;
 
     &__active {
-      fill: $color_icon_active;
+      $size: 2.25rem;
+      top: -4.2rem;
+      left: -1.15rem;
+      height: $size;
+      width: $size;
     }
   }
 }

@@ -7,12 +7,14 @@ import {
 // NOTE: signup and login are handled with local state
 
 export const initialState = {
+  id: null,
   authenticated: false,
   error: "",
   fullname: "",
-  id: null,
-  updatedAt: "",
-  username: ""
+  logins: {
+    username: ""
+  },
+  updatedAt: ""
 };
 
 export default function user(state = initialState, action) {

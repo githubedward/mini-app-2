@@ -243,6 +243,11 @@
   }
 }
 
+.marker_active {
+  height: 5rem;
+  width: 5rem;
+}
+
 .marker_shadow, .marker_result__shadow {
   height: 0.16667rem;
   width: 1rem;
@@ -273,13 +278,16 @@
   height: 2rem;
   width: 2rem;
   padding: 0.25rem;
-  background-color: #f8f8f8;
+  background-color: #fd545f;
   border-radius: 50%;
-  fill: #888888;
+  fill: #f1f1f1;
 }
 
 .marker_type__active {
-  fill: #2694e0;
+  top: -4.2rem;
+  left: -1.15rem;
+  height: 2.25rem;
+  width: 2.25rem;
 }
 
 .pinit_window {

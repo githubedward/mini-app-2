@@ -1,5 +1,3 @@
-## Loading .....
-
 ### Current stack used:
 
 - React - UI (create-react-app)
@@ -11,3 +9,9 @@
 - Yup - form validations
 - Axios - http requests
 - Jest/Enzyme - unit testing (partially applied)
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### npm start
