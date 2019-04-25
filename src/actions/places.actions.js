@@ -13,21 +13,22 @@ export const closeInfoBoxAction = () => {
   };
 };
 
-export const addPlaceAction = place => {
+export const addPlaceAction = payload => {
   return {
     type: types.ADD_PLACE,
-    place
+    payload
+  };
+};
+
+export const getAllPlaces = payload => {
+  return {
+    type: types.GET_ALL_PLACES,
+    payload
   };
 };
 
 export const getUserPlaceAction = () => {
   return {
     type: types.GET_USER_PLACES
-  };
-};
-
-export const getAllPlaces = () => {
-  return {
-    type: types.GET_ALL_PLACES
   };
 };

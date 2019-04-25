@@ -1,4 +1,5 @@
 import axios from "axios";
+import { authInit } from "./helper";
 
 const API_URL = process.env.REACT_APP_DEV_API_URL;
 const PLACES_URL = `${API_URL}/places`;
@@ -12,8 +13,13 @@ export default class placesApi {
    * @returns {object} return api payload
    */
   static async addPlace(data) {
-    const resp = axios.post(`${USERPLACES_URL}/${data.user_id}`, data);
-    return resp.data;
+    try {
+      const resp = await axios.post(USERPLACES_URL, data, authInit());
+      return resp.data;
+    } catch (err) {
+      // insert error handler later
+      console.log(err);
+    }
   }
 
   /**
@@ -21,7 +27,12 @@ export default class placesApi {
    * @returns {object} return api payload
    */
   static async getAllPlaces() {
-    const resp = axios.get(ALLPLACES_URL);
-    return resp.data;
+    try {
+      const resp = await axios.get(ALLPLACES_URL, authInit());
+      return resp.data;
+    } catch (err) {
+      // insert error handler later
+      console.log(err);
+    }
   }
 }

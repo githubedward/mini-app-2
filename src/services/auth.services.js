@@ -1,4 +1,5 @@
 import axios from "axios";
+import { authInit } from "./helper";
 
 const API_URL = process.env.REACT_APP_DEV_API_URL;
 const SIGNUP_URL = `${API_URL}/register`;
@@ -32,13 +33,7 @@ export default class authApi {
    * @returns {object} api payload
    */
   static async authenticateUser() {
-    const token = localStorage.getItem("token");
-    const init = {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    };
-    const resp = await axios.get(AUTH_URL, init);
+    const resp = await axios.get(AUTH_URL, authInit());
     return resp.data;
   }
 }

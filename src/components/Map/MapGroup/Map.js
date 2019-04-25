@@ -15,15 +15,15 @@ import * as helpers from "../../../utils/functions";
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    mapsApiLoaded: false,
+    mapInstance: null,
+    mapsAPI: null,
+    searchResult: null
+  };
 
-    this.state = {
-      mapsApiLoaded: false,
-      mapInstance: null,
-      mapsAPI: null,
-      searchResult: null
-    };
+  componentDidMount() {
+    this.props.getAllPlaces();
   }
 
   static propTypes = {
@@ -32,8 +32,8 @@ class Map extends Component {
       data: PropTypes.arrayOf(
         PropTypes.shape({
           address: PropTypes.string.isRequired,
-          lat: PropTypes.number.isRequired,
-          lng: PropTypes.number.isRequired,
+          lat: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+          lng: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
           name: PropTypes.string.isRequired,
           place_id: PropTypes.string.isRequired,
           vicinity: PropTypes.string,
@@ -73,7 +73,7 @@ class Map extends Component {
 
   onPinAPlace = () => {
     const { searchResult } = this.state;
-    const newPlace = { ...searchResult, user_id: this.props.user_id };
+    const newPlace = { ...searchResult };
     this.props.addPlaceAction(newPlace);
     this.setState({
       searchResult: null

@@ -78,8 +78,8 @@ const LoginForm = props => {
 
 LoginForm.propTypes = {
   values: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
+    username: PropTypes.string,
+    password: PropTypes.string,
     isSignupFocus: PropTypes.bool.isRequired,
     isLoginFocus: PropTypes.bool.isRequired,
     handleLoginFocus: PropTypes.func.isRequired,

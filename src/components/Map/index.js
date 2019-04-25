@@ -8,6 +8,7 @@ import {
   addPlaceAction,
   getAllPlaces
 } from "../../actions/places.actions";
+import placesApi from "../../services/places.services";
 
 class index extends Component {
   render() {
@@ -27,8 +28,14 @@ const mapDispatchToProps = dispatch => {
   return {
     showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
     closeInfoBoxAction: () => dispatch(closeInfoBoxAction()),
-    addPlaceAction: place => dispatch(addPlaceAction(place)),
-    getAllPlaces: () => dispatch(getAllPlaces())
+    addPlaceAction: async place => {
+      const payload = await placesApi.addPlace(place);
+      dispatch(addPlaceAction(payload));
+    },
+    getAllPlaces: async () => {
+      const payload = await placesApi.getAllPlaces();
+      dispatch(getAllPlaces(payload));
+    }
   };
 };
 

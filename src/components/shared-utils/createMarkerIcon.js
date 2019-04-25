@@ -37,7 +37,7 @@ const groups = {
   lodging: ["lodging"],
   finance: ["atm", "bank", "accounting", "insurance_agency"],
   movies: ["movie_rental", "movie_theater"],
-  nature: ["campground", "park", "rv_park"],
+  nature: ["campground", "park", "rv_park", "natural_feature"],
   relax: ["spa"],
   store: [
     "beauty_salon",
