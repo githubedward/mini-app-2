@@ -6,11 +6,10 @@ import SearchBox from "./SearchBox";
 import Marker from "./Marker";
 import PinItWindow from "./PinItWindow";
 import PlaceInfoWindow from "./PlaceInfoWindow";
-import styles from "./Map.module.css";
+import styles from "./styles/Map.module.css";
 // others
 import { mapOptions } from "../helpers/functions";
-import * as helpers from "../../../utils/functions";
-// import placesApi from "../../../services/places.services";
+import * as helpers from "utils/functions";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
@@ -128,15 +127,22 @@ class Map extends Component {
         >
           {helpers.chkLength(places.data) &&
             // render places markers
+
             places.data.map(place => {
+              const pinned = place.users.find(
+                user => user.id === this.props.user_id
+              );
               return (
                 <Marker
                   key={place.place_id}
                   lat={place.lat}
                   lng={place.lng}
-                  onMouseOver={() => !placeInfo && showInfoBoxAction(place)}
+                  onMouseOver={() =>
+                    !placeInfo && showInfoBoxAction({ ...place, pinned })
+                  }
                   onMouseLeave={closeInfoBoxAction}
                   type={place.type}
+                  pinned={pinned}
                   active={
                     (placeInfo &&
                       (placeInfo.place_id === place.place_id && true)) ||
@@ -170,6 +176,7 @@ class Map extends Component {
               place={placeInfo}
               lat={placeInfo.lat}
               lng={placeInfo.lng}
+              pinned={placeInfo.pinned}
             />
           )}
         </GoogleMapReact>

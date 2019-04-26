@@ -1,4 +1,4 @@
-@import "../../style-helpers/mixins.scss";
+@import "../../../style-helpers/mixins.scss";
 
 $tab-width: 23rem;
 
@@ -124,6 +124,14 @@ $btn-style: (
 
       background-color: $gray;
       border-radius: 50%;
+
+      &_default {
+        background-color: $default_marker_color;
+      }
+
+      &_pinned {
+        background-color: $pinned_marker_color;
+      }
     }
   }
 
@@ -131,13 +139,10 @@ $btn-style: (
     background-color: $extralightgray;
   }
 
-  &_active &_left__icon {
-    background-color: $color_icon_active;
-  }
-
   &_right {
-    @include flex-center();
+    // @include flex-center();
     flex-direction: column;
+    text-align: left;
     padding: 1rem 0.5rem;
     margin: 0 1rem 0 0.5rem;
     width: 100%;

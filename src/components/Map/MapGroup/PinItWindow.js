@@ -1,6 +1,6 @@
 import React from "react";
 import IconClose from "../../shared-components/IconClose";
-import styles from "./Map.module.css";
+import styles from "./styles/InfoWindow.module.css";
 
 const PinItWindow = ({ onClick, onClose, place }) => {
   return (

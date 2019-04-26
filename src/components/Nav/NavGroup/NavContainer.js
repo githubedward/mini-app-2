@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import NavRoutes from "./NavRoutes";
 import IconArrowForw from "../../shared-components/IconArrowForw";
-import styles from "./NavContainer.module.css";
+import styles from "./styles/NavContainer.module.css";
 
 const NavContainer = props => {
   if (props.location.pathname === "/")

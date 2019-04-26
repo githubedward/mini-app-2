@@ -1,6 +1,6 @@
 import React from "react";
 // components/styles
-import styles from "./NavRoutes.module.css";
+import styles from "./styles/NavRoutes.module.css";
 import IconRoundUser from "../../shared-components/IconRoundId";
 import IconRoundId from "../../shared-components/IconRoundUser";
 

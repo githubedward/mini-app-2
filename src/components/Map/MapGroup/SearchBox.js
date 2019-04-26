@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styles from "./Map.module.css";
+import styles from "./styles/SearchBox.module.css";
 
 export default class SearchBox extends Component {
   static propTypes = {

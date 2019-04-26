@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo {
+  position: fixed;
+  bottom: 8px;
+  left: 15px;
+  font-size: 1.375rem;
+  font-family: "Pacifico", cursive;
+  color: #fd545f;
+  z-index: 6;
+}
+
+.default {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.map_nav {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 0;
+  padding: 10px;
+}
+/*# sourceMappingURL=Map.module.css.map */

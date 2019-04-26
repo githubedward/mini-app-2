@@ -1,0 +1,79 @@
+@import "../../../style-helpers/mixins.scss";
+
+.pinit_window {
+  @include box-shadow($gray);
+  @include flex-center;
+  flex-direction: column;
+  background-color: white;
+  // border: 1px solid white;
+  transform: translate(-50%, -155%);
+  position: relative;
+  padding: 2rem 1rem 1rem 1rem;
+  min-width: 10rem;
+  max-width: 12rem;
+  border-radius: 10px;
+  text-align: center;
+
+  p {
+    margin-top: 0.25rem;
+  }
+
+  &__button {
+    margin-top: 1rem;
+
+    $btn-style: (
+      height: 1.5rem,
+      width: auto,
+      font-size: $t-help,
+      padding: 0rem 1rem,
+      border: $lovelyblue,
+      bg: $lovelyblue,
+      hover-bg: $light-theme,
+      hover-border: $light-theme,
+      hover-color: white,
+      color: white
+    );
+
+    @include button($btn-style...);
+  }
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    fill: $gray;
+
+    &:hover {
+      fill: $superdarkgray;
+      background: none;
+    }
+
+    svg {
+      height: $t3;
+      width: $t3;
+    }
+  }
+}
+
+.places_window {
+  @include box-shadow($gray);
+  @include fade-in(0.5s);
+  @include flex-center;
+  flex-direction: column;
+  background-color: $default_marker_color;
+  color: white;
+  transform: translate(-50%, -200%);
+  // position: absolute;
+  padding: 1rem;
+  height: 5rem;
+  min-width: 10rem;
+  // max-width: 12rem;
+  border-radius: 5px;
+  text-align: center;
+
+  &__pinned {
+    background-color: $pinned_marker_color;
+  }
+}

@@ -1,0 +1,84 @@
+@import "../../../style-helpers/mixins.scss";
+
+.marker {
+  cursor: pointer;
+  $msize: 4.25rem;
+  fill: $default_marker_color;
+  height: $msize;
+  width: $msize;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+  @include fade-in(0.75s);
+
+  &_shadow {
+    $size: 1rem;
+    height: $size / 6;
+    width: $size;
+    background-color: none;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    @include box-shadow-ext($default_marker_color);
+  }
+
+  &_pinned {
+    fill: $pinned_marker_color;
+
+    &__shadow {
+      @extend .marker_shadow;
+      @include box-shadow-ext($pinned_marker_color);
+    }
+  }
+
+  &_active {
+    height: 5rem;
+    width: 5rem;
+
+    &__shadow {
+      @extend .marker_shadow;
+      @include box-shadow-ext($active_marker_color);
+    }
+  }
+
+  &_result {
+    cursor: pointer;
+    fill: $result_marker_color;
+
+    &__shadow {
+      @extend .marker_shadow;
+      @include box-shadow-ext($result_marker_color);
+    }
+  }
+
+  &_type {
+    $size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: -3.6rem;
+    left: -1rem;
+    height: $size;
+    width: $size;
+    padding: 0.25rem;
+    background-color: $default_marker_color;
+    border-radius: 50%;
+    fill: $lightgray;
+
+    &__pinned {
+      background-color: $pinned_marker_color;
+    }
+
+    &__result {
+      background-color: $result_marker_color;
+    }
+
+    &__active {
+      $size: 2.25rem;
+      top: -4.2rem;
+      left: -1.15rem;
+      height: $size;
+      width: $size;
+    }
+  }
+}

@@ -1,36 +1,58 @@
 import React from "react";
 // components/styles
-import styles from "./NavRoutes.module.css";
-import createIcon from "../../shared-utils/createMarkerIcon";
+import styles from "./styles/NavRoutes.module.css";
+import createIcon from "components/shared-utils/createMarkerIcon";
 
-const Places = ({ places, showInfoBoxAction, closeInfoBoxAction }) => {
+const Place = ({
+  place,
+  placeInfo,
+  pinned,
+  showInfoBoxAction,
+  closeInfoBoxAction
+}) => {
+  const active = placeInfo && placeInfo.place_id === place.place_id;
+  const iconStyles = `${styles.places_left__icon} ${active &&
+    styles.places_left__icon_default}
+    ${active && pinned && styles.places_left__icon_pinned}`;
+  return (
+    <li
+      key={place.place_id}
+      className={`${styles.places} ${active && styles.places_active}`}
+      onMouseOver={() => !placeInfo && showInfoBoxAction({ ...place, pinned })}
+      onMouseLeave={closeInfoBoxAction}
+    >
+      <div className={styles.places_left}>
+        {createIcon(place.type, iconStyles)}
+      </div>
+      <div className={styles.places_right}>
+        <h4 className={styles.places_right__name}>{place.name}</h4>
+        <p className={styles.places_right__address}>{place.address}</p>
+      </div>
+    </li>
+  );
+};
+
+const Places = ({
+  places,
+  showInfoBoxAction,
+  closeInfoBoxAction,
+  user: propsUser
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.tab}>
         <h1 className={styles.title}>Places</h1>
         <ul className={styles.places_container}>
           {places.data.map(place => {
+            const pinned = place.users.find(user => user.id === propsUser.id);
             return (
-              <li
-                key={place.place_id}
-                className={`${styles.places} ${places.placeInfo &&
-                  places.placeInfo.place_id === place.place_id &&
-                  styles.places_active}`}
-                onMouseOver={() =>
-                  !places.placeInfo && showInfoBoxAction(place)
-                }
-                onMouseLeave={closeInfoBoxAction}
-              >
-                <div className={styles.places_left}>
-                  {createIcon(place.type, styles.places_left__icon)}
-                </div>
-                <div className={styles.places_right}>
-                  <h4 className={styles.places_right__name}>{place.name}</h4>
-                  <p className={styles.places_right__address}>
-                    {place.address}
-                  </p>
-                </div>
-              </li>
+              <Place
+                place={place}
+                placeInfo={places.placeInfo}
+                pinned={pinned}
+                showInfoBoxAction={showInfoBoxAction}
+                closeInfoBoxAction={closeInfoBoxAction}
+              />
             );
           })}
         </ul>

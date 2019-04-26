@@ -1,0 +1,70 @@
+@import "../../../style-helpers/mixins.scss";
+
+.searchBox {
+  position: fixed;
+  top: 0rem;
+  right: 0rem;
+  z-index: 1;
+
+  &_input {
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    margin: 0.75rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    border: 1px solid $light-theme;
+    outline: 1;
+    font-size: $t3;
+    color: $superdarkgray;
+    background-color: rgba(255, 255, 255, 0.85);
+    @include shake-animation();
+
+    &::placeholder {
+      font-size: 1rem;
+      color: $light-theme;
+      font-weight: $fw-medium;
+      // text-align: center;
+    }
+
+    &:hover &::placeholder {
+      background: black;
+    }
+
+    &:focus {
+      @include box-shadow(rgba(255, 62, 62, 0.6));
+      outline: none;
+      border: 2px solid $light-theme;
+      background-color: white;
+
+      &::placeholder {
+        color: white;
+      }
+
+      &.searchbox_icon {
+        fill: $light-theme;
+      }
+    }
+  }
+
+  &_icon {
+    z-index: 10;
+    @include fade-in(1s);
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    fill: $darkgray;
+    background-color: white;
+  }
+
+  &_clear {
+    z-index: 10;
+    @include fade-in(1s);
+    cursor: pointer;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    fill: $superdarkgray;
+    background-color: white;
+  }
+}

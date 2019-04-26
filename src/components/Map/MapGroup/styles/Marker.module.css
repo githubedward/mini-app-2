@@ -1,0 +1,100 @@
+.marker {
+  cursor: pointer;
+  fill: #2694e0;
+  height: 4.25rem;
+  width: 4.25rem;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+  -webkit-animation: fade 0.75s ease-out;
+          animation: fade 0.75s ease-out;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.marker_shadow, .marker_pinned__shadow, .marker_active__shadow, .marker_result__shadow {
+  height: 0.16667rem;
+  width: 1rem;
+  background-color: none;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  -webkit-box-shadow: 0px 0px 10px 5px #2694e0;
+          box-shadow: 0px 0px 10px 5px #2694e0;
+}
+
+.marker_pinned {
+  fill: #fd545f;
+}
+
+.marker_pinned__shadow {
+  -webkit-box-shadow: 0px 0px 10px 5px #fd545f;
+          box-shadow: 0px 0px 10px 5px #fd545f;
+}
+
+.marker_active {
+  height: 5rem;
+  width: 5rem;
+}
+
+.marker_active__shadow {
+  -webkit-box-shadow: 0px 0px 10px 5px #fc202f;
+          box-shadow: 0px 0px 10px 5px #fc202f;
+}
+
+.marker_result {
+  cursor: pointer;
+  fill: #2694e0;
+}
+
+.marker_result__shadow {
+  -webkit-box-shadow: 0px 0px 10px 5px #2694e0;
+          box-shadow: 0px 0px 10px 5px #2694e0;
+}
+
+.marker_type {
+  cursor: pointer;
+  position: absolute;
+  top: -3.6rem;
+  left: -1rem;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.25rem;
+  background-color: #2694e0;
+  border-radius: 50%;
+  fill: #f1f1f1;
+}
+
+.marker_type__pinned {
+  background-color: #fd545f;
+}
+
+.marker_type__result {
+  background-color: #2694e0;
+}
+
+.marker_type__active {
+  top: -4.2rem;
+  left: -1.15rem;
+  height: 2.25rem;
+  width: 2.25rem;
+}
+/*# sourceMappingURL=Marker.module.css.map */

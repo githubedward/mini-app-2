@@ -170,28 +170,24 @@
   border-radius: 50%;
 }
 
+.places_left__icon_default {
+  background-color: #2694e0;
+}
+
+.places_left__icon_pinned {
+  background-color: #fd545f;
+}
+
 .places_active {
   background-color: #f8f8f8;
 }
 
-.places_active .places_left__icon {
-  background-color: #fd545f;
-}
-
 .places_right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-align: left;
   padding: 1rem 0.5rem;
   margin: 0 1rem 0 0.5rem;
   width: 100%;
