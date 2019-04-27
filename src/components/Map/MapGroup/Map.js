@@ -18,7 +18,8 @@ class Map extends Component {
     mapsApiLoaded: false,
     mapInstance: null,
     mapsAPI: null,
-    searchResult: null
+    searchResult: null,
+    clickedPlace: null
   };
 
   componentDidMount() {

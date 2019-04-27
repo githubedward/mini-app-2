@@ -50,7 +50,8 @@ class FormContainer extends Component {
         isFocus: {
           isSignupFocus: false,
           isLoginFocus: false
-        }
+        },
+        asyncSignupError: {}
       });
     } catch (err) {
       const error = err.response.data.errors[0];
