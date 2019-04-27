@@ -4,10 +4,17 @@ $tab-width: 23rem;
 
 .container {
   width: $tab-width;
-  height: 100vh;
+  height: 94.5vh;
   background-color: white;
   position: absolute;
   z-index: 4;
+  overflow: scroll;
+  &::-webkit-scroll {
+    width: 10px;
+  }
+  &::-webkit-scroll-thumb:hover {
+    background: #555;
+  }
 
   &_back {
     position: absolute;

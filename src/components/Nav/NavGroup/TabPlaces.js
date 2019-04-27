@@ -16,7 +16,6 @@ const Place = ({
     ${active && pinned && styles.places_left__icon_pinned}`;
   return (
     <li
-      key={place.place_id}
       className={`${styles.places} ${active && styles.places_active}`}
       onMouseOver={() => !placeInfo && showInfoBoxAction({ ...place, pinned })}
       onMouseLeave={closeInfoBoxAction}
@@ -47,6 +46,7 @@ const Places = ({
             const pinned = place.users.find(user => user.id === propsUser.id);
             return (
               <Place
+                key={place.place_id}
                 place={place}
                 placeInfo={places.placeInfo}
                 pinned={pinned}

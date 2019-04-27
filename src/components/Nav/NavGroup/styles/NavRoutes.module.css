@@ -1,9 +1,18 @@
 .container {
   width: 23rem;
-  height: 100vh;
+  height: 94.5vh;
   background-color: white;
   position: absolute;
   z-index: 4;
+  overflow: scroll;
+}
+
+.container::-webkit-scroll {
+  width: 10px;
+}
+
+.container::-webkit-scroll-thumb:hover {
+  background: #555;
 }
 
 .container_back {

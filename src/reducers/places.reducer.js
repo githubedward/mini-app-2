@@ -27,7 +27,7 @@ export default function places(state = initialPlacesState, action) {
     case ADD_PLACE:
       return {
         ...state,
-        data: state.data.concat(action.payload)
+        data: state.data.concat({ ...action.payload })
       };
     case GET_ALL_PLACES:
       return {
