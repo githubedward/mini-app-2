@@ -18,7 +18,7 @@ class Map extends Component {
     mapsApiLoaded: false,
     mapInstance: null,
     mapsAPI: null,
-    searchResult: null
+    unPinnedPlace: null
   };
 
   componentDidMount() {
@@ -56,7 +56,7 @@ class Map extends Component {
   };
 
   onSearchInput = searched => {
-    this.onClosePinInfoWindow();
+    this.props.closeInfoBoxAction();
     const place = {
       lat: searched.geometry.location.lat(),
       lng: searched.geometry.location.lng(),
@@ -66,24 +66,13 @@ class Map extends Component {
       name: searched.name,
       type: searched.types[0]
     };
-    this.setState({
-      searchResult: place
-    });
+    this.props.showActivePlaceAction(place);
   };
 
   onPinAPlace = () => {
-    const { searchResult } = this.state;
-    const newPlace = { ...searchResult };
+    const newPlace = { ...this.props.places.activePlaceInfo };
     this.props.addPlaceAction(newPlace);
-    this.setState({
-      searchResult: null
-    });
-  };
-
-  onClosePinInfoWindow = () => {
-    this.setState({
-      searchResult: null
-    });
+    this.props.closeInfoBoxAction();
   };
 
   onAPILoaded = (map, maps) => {
@@ -99,11 +88,11 @@ class Map extends Component {
       center,
       places,
       showHoverPlaceAction,
+      showActivePlaceAction,
       closeInfoBoxAction
     } = this.props;
-    const { placeInfo } = places;
-    const { mapsApiLoaded, mapsAPI, mapInstance, searchResult } = this.state;
-
+    const { placeInfo, activePlaceInfo } = places;
+    const { mapsApiLoaded, mapsAPI, mapInstance } = this.state;
     return (
       <div style={{ height: "102vh", width: "100vw", position: "fixed" }}>
         {mapsApiLoaded && (
@@ -128,7 +117,6 @@ class Map extends Component {
         >
           {helpers.chkLength(places.data) &&
             // render places markers
-
             places.data.map(place => {
               const pinned = place.users.find(
                 user => user.id === this.props.user_id
@@ -138,37 +126,43 @@ class Map extends Component {
                   key={place.place_id}
                   lat={place.lat}
                   lng={place.lng}
-                  onMouseOver={() =>
-                    !placeInfo && showHoverPlaceAction({ ...place, pinned })
-                  }
-                  onMouseLeave={closeInfoBoxAction}
+                  onMouseOver={() => {
+                    if (!activePlaceInfo)
+                      showHoverPlaceAction({ ...place, pinned });
+                  }}
+                  onClick={() => {
+                    showActivePlaceAction({ ...place, pinned });
+                  }}
+                  onMouseLeave={() => !activePlaceInfo && closeInfoBoxAction()}
                   type={place.type}
                   pinned={pinned}
                   active={
-                    (placeInfo &&
-                      (placeInfo.place_id === place.place_id && true)) ||
+                    (placeInfo && placeInfo.place_id === place.place_id) ||
+                    (activePlaceInfo &&
+                      activePlaceInfo.place_id === place.place_id) ||
                     false
                   }
                 />
               );
             })}
-          {searchResult && (
+          {activePlaceInfo && !activePlaceInfo.pinned && (
             // render search result marker
             <Marker
-              lat={searchResult.lat}
-              lng={searchResult.lng}
+              lat={activePlaceInfo.lat}
+              lng={activePlaceInfo.lng}
               result={true}
-              type={searchResult.type}
+              type={activePlaceInfo.type}
+              active={true}
             />
           )}
-          {searchResult && (
+          {activePlaceInfo && !activePlaceInfo.pinned && (
             // render add place window
             <PinItWindow
-              place={searchResult}
-              lat={searchResult.lat}
-              lng={searchResult.lng}
+              place={activePlaceInfo}
+              lat={activePlaceInfo.lat}
+              lng={activePlaceInfo.lng}
               onClick={this.onPinAPlace}
-              onClose={this.onClosePinInfoWindow}
+              onClose={closeInfoBoxAction}
             />
           )}
           {placeInfo && (

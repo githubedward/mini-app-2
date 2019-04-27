@@ -5,7 +5,7 @@ import IconCommunity from "../../shared-components/IconCommunity";
 import IconFeed from "../../shared-components/IconPlaces";
 import IconHome from "../../shared-components/IconHome";
 import IconArrowBack from "../../shared-components/IconArrowBack";
-import styles from "./styles/NavBar.module.css";
+import styles from "./styles/Nav.module.css";
 
 const NavBar = ({ location, history }) => {
   const path = location.pathname;

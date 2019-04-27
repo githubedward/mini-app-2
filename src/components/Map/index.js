@@ -6,7 +6,6 @@ import {
   showHoverPlaceAction,
   showActivePlaceAction,
   closeInfoBoxAction,
-  addPlaceAction,
   getAllPlaces
 } from "../../actions/places.actions";
 import placesApi from "../../services/places.services";
@@ -28,10 +27,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showHoverPlaceAction: place => dispatch(showHoverPlaceAction(place)),
+    showActivePlaceAction: place => dispatch(showActivePlaceAction(place)),
     closeInfoBoxAction: () => dispatch(closeInfoBoxAction()),
     addPlaceAction: async place => {
-      const payload = await placesApi.addPlace(place);
-      dispatch(addPlaceAction(payload));
+      await placesApi.addPlace(place);
+      if (!place.pinned) {
+        const places = await placesApi.getAllPlaces();
+        dispatch(getAllPlaces(places));
+      }
     },
     getAllPlaces: async () => {
       const payload = await placesApi.getAllPlaces();

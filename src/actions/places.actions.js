@@ -9,7 +9,8 @@ export const showHoverPlaceAction = place => {
 
 export const showActivePlaceAction = place => {
   return {
-    type: types.SHOW_ACTIVE_PLACE_INFOBOX
+    type: types.SHOW_ACTIVE_PLACE_INFOBOX,
+    place
   };
 };
 

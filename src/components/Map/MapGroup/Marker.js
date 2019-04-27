@@ -6,6 +6,7 @@ import createMarkerIcon from "components/shared-utils/createMarkerIcon";
 const Marker = ({
   onMouseOver,
   onMouseLeave,
+  onClick,
   result,
   type,
   active,
@@ -23,7 +24,11 @@ const Marker = ({
     styles.marker_type__active} ${result &&
     styles.marker_type__result} ${pinned && styles.marker_type__pinned}`;
   return (
-    <div onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <div
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
+      onClick={onClick}
+    >
       <IconPin className={markerStyle} />
       {createMarkerIcon(type, iconStyle)}
       <div className={shadowStyle} />

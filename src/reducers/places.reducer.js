@@ -24,7 +24,8 @@ export default function places(state = initialPlacesState, action) {
     case SHOW_ACTIVE_PLACE_INFOBOX:
       return {
         ...state,
-        activePlaceInfo: action.place
+        activePlaceInfo: action.place,
+        placeInfo: null
       };
     case CLOSE_INFOBOX:
       return {

@@ -1,6 +1,6 @@
 import React from "react";
 // components/styles
-import styles from "./styles/NavRoutes.module.css";
+import styles from "./styles/Routes.module.css";
 import createIcon from "components/shared-utils/createMarkerIcon";
 
 const Place = ({
