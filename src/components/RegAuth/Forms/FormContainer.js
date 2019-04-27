@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // component/styles
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import styles from "./FormContainer.module.css";
+import styles from "./styles/FormContainer.module.css";
 // others
 import * as helper from "../../../utils/functions";
 import authApi from "../../../services/auth.services";

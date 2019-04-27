@@ -5,7 +5,7 @@ import { PulseLoader } from "react-spinners";
 // components/styles
 import SignupInput from "./SignupInput";
 import "./helpers/tooltip-error.css";
-import styles from "./SignupForm.module.css";
+import styles from "./styles/SignupForm.module.css";
 // others
 import { signupValidationSchema as validationSchema } from "./helpers/validationSchema";
 

@@ -5,7 +5,7 @@ import Home from "./TabHome";
 import Community from "./TabCommunity";
 import Places from "./TabPlaces";
 
-const NavRoutes = props => {
+const Routes = props => {
   return (
     <div>
       <Switch>
@@ -23,4 +23,4 @@ const NavRoutes = props => {
   );
 };
 
-export default NavRoutes;
+export default Routes;

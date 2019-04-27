@@ -1,7 +1,7 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import ErrorIcon from "../../shared-components/IconError";
-import styles from "./LoginForm.module.css";
+import styles from "./styles/LoginForm.module.css";
 
 const LoginInput = ({
   type,

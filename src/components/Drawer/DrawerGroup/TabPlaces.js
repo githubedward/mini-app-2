@@ -7,7 +7,7 @@ const Place = ({
   place,
   placeInfo,
   pinned,
-  showInfoBoxAction,
+  showHoverPlaceAction,
   closeInfoBoxAction
 }) => {
   const active = placeInfo && placeInfo.place_id === place.place_id;
@@ -17,7 +17,9 @@ const Place = ({
   return (
     <li
       className={`${styles.places} ${active && styles.places_active}`}
-      onMouseOver={() => !placeInfo && showInfoBoxAction({ ...place, pinned })}
+      onMouseOver={() =>
+        !placeInfo && showHoverPlaceAction({ ...place, pinned })
+      }
       onMouseLeave={closeInfoBoxAction}
     >
       <div className={styles.places_left}>
@@ -33,7 +35,7 @@ const Place = ({
 
 const Places = ({
   places,
-  showInfoBoxAction,
+  showHoverPlaceAction,
   closeInfoBoxAction,
   user: propsUser
 }) => {
@@ -50,7 +52,7 @@ const Places = ({
                 place={place}
                 placeInfo={places.placeInfo}
                 pinned={pinned}
-                showInfoBoxAction={showInfoBoxAction}
+                showHoverPlaceAction={showHoverPlaceAction}
                 closeInfoBoxAction={closeInfoBoxAction}
               />
             );

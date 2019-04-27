@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // components
-import NavBar from "./NavBar";
-import NavRoutes from "./NavRoutes";
+import Nav from "./Nav";
+import Routes from "./Routes";
 import IconArrowForw from "../../shared-components/IconArrowForw";
 import styles from "./styles/NavContainer.module.css";
 
-const NavContainer = props => {
+const Container = props => {
   if (props.location.pathname === "/")
     return (
       <Link className={styles.icon} to="/places">
@@ -16,10 +16,10 @@ const NavContainer = props => {
 
   return (
     <section className={styles.container}>
-      <NavBar {...props} />
-      <NavRoutes {...props} />
+      <Nav {...props} />
+      <Routes {...props} />
     </section>
   );
 };
 
-export default NavContainer;
+export default Container;

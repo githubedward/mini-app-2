@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 // components/styles
-import NavContainer from "./NavGroup/NavContainer";
+import Container from "./DrawerGroup/DrawerContainer";
 // state
 import { logout } from "../../actions/user.actions";
 import {
-  showInfoBoxAction,
+  showHoverPlaceAction,
   closeInfoBoxAction
 } from "../../actions/places.actions";
 
 class index extends Component {
   render() {
-    return <NavContainer {...this.props} />;
+    return <Container {...this.props} />;
   }
 }
 
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(logout());
       ownProps.history.push("/");
     },
-    showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
+    showHoverPlaceAction: place => dispatch(showHoverPlaceAction(place)),
     closeInfoBoxAction: () => dispatch(closeInfoBoxAction())
   };
 };

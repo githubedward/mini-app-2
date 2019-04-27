@@ -5,7 +5,7 @@ import GoogleMapReact from "google-map-react";
 import SearchBox from "./SearchBox";
 import Marker from "./Marker";
 import PinItWindow from "./PinItWindow";
-import PlaceInfoWindow from "./PlaceInfoWindow";
+import PlaceInfoWindow from "./PlaceHoverWindow";
 import styles from "./styles/Map.module.css";
 // others
 import { mapOptions } from "../helpers/functions";
@@ -18,8 +18,7 @@ class Map extends Component {
     mapsApiLoaded: false,
     mapInstance: null,
     mapsAPI: null,
-    searchResult: null,
-    clickedPlace: null
+    searchResult: null
   };
 
   componentDidMount() {
@@ -40,7 +39,8 @@ class Map extends Component {
           type: PropTypes.string.isRequired
         })
       ),
-      placeInfo: PropTypes.any
+      placeInfo: PropTypes.any,
+      activePlaceInfo: PropTypes.any
     })
   };
 
@@ -98,7 +98,7 @@ class Map extends Component {
     const {
       center,
       places,
-      showInfoBoxAction,
+      showHoverPlaceAction,
       closeInfoBoxAction
     } = this.props;
     const { placeInfo } = places;
@@ -139,7 +139,7 @@ class Map extends Component {
                   lat={place.lat}
                   lng={place.lng}
                   onMouseOver={() =>
-                    !placeInfo && showInfoBoxAction({ ...place, pinned })
+                    !placeInfo && showHoverPlaceAction({ ...place, pinned })
                   }
                   onMouseLeave={closeInfoBoxAction}
                   type={place.type}

@@ -5,7 +5,7 @@ import { PulseLoader } from "react-spinners";
 // components/styles
 import LoginInput from "./LoginInput";
 import "./helpers/tooltip-error.css";
-import styles from "./LoginForm.module.css";
+import styles from "./styles/LoginForm.module.css";
 // others
 import { loginValidationSchema as validationSchema } from "./helpers/validationSchema";
 

@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import Map from "./MapGroup/Map";
 // state
 import {
-  showInfoBoxAction,
+  showHoverPlaceAction,
+  showActivePlaceAction,
   closeInfoBoxAction,
   addPlaceAction,
   getAllPlaces
@@ -26,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    showInfoBoxAction: place => dispatch(showInfoBoxAction(place)),
+    showHoverPlaceAction: place => dispatch(showHoverPlaceAction(place)),
     closeInfoBoxAction: () => dispatch(closeInfoBoxAction()),
     addPlaceAction: async place => {
       const payload = await placesApi.addPlace(place);

@@ -9,7 +9,7 @@ import { authenticateUserAction } from "../actions/user.actions";
 import RegAuth from "../components/RegAuth/index";
 import GlobalLoader from "./shared-components/GlobalLoader";
 import MapContainer from "./Map/index";
-import NavContainer from "./Nav/index";
+import NavContainer from "./Drawer/index";
 import "./App.css";
 // others
 

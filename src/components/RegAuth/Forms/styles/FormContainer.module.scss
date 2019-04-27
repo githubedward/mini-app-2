@@ -1,10 +1,10 @@
-@import "../../style-helpers/mixins.scss";
+@import "../../../style-helpers/mixins.scss";
 
 .background {
   @include fade-in(0.75s);
   @include flex-center;
   @include full-page;
-  background-image: url("../../../assets/path.jpg");
+  background-image: url("../../../../assets/path.jpg");
   background-origin: center;
   background-size: cover;
   position: relative;
