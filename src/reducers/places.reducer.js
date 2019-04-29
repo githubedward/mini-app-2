@@ -1,6 +1,6 @@
 import {
-  SHOW_ACTIVE_PLACE_INFOBOX,
-  SHOW_HOVER_PLACE_INFOBOX,
+  SHOW_ACTIVE_PLACE,
+  SHOW_HOVER_PLACE,
   CLOSE_INFOBOX,
   ADD_PLACE,
   GET_ALL_PLACES
@@ -16,12 +16,12 @@ export const initialPlacesState = {
 export default function places(state = initialPlacesState, action) {
   if (!action) return state;
   switch (action.type) {
-    case SHOW_HOVER_PLACE_INFOBOX:
+    case SHOW_HOVER_PLACE:
       return {
         ...state,
         placeInfo: action.place
       };
-    case SHOW_ACTIVE_PLACE_INFOBOX:
+    case SHOW_ACTIVE_PLACE:
       return {
         ...state,
         activePlaceInfo: action.place,

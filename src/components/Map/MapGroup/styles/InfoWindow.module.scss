@@ -1,6 +1,6 @@
 @import "../../../style-helpers/mixins.scss";
 
-.pinit_window {
+.active_window {
   @include box-shadow($gray);
   @include flex-center;
   flex-direction: column;
@@ -31,6 +31,25 @@
       bg: $lovelyblue,
       hover-bg: $light-theme,
       hover-border: $light-theme,
+      hover-color: white,
+      color: white
+    );
+
+    @include button($btn-style...);
+  }
+
+  &__button_active {
+    margin-top: 1rem;
+
+    $btn-style: (
+      height: 1.5rem,
+      width: auto,
+      font-size: $t-help,
+      padding: 0rem 1rem,
+      border: $light-theme,
+      bg: $light-theme,
+      hover-bg: $theme,
+      hover-border: $theme,
       hover-color: white,
       color: white
     );

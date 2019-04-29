@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 // components/styles
 import IconCommunity from "../../shared-components/IconCommunity";
 import IconFeed from "../../shared-components/IconPlaces";
@@ -7,7 +8,7 @@ import IconHome from "../../shared-components/IconHome";
 import IconArrowBack from "../../shared-components/IconArrowBack";
 import styles from "./styles/Nav.module.css";
 
-const NavBar = ({ location, history }) => {
+const Nav = ({ location, history }) => {
   const path = location.pathname;
   // generate classes for links
   const getLinkClasses = linkPath => {
@@ -42,4 +43,9 @@ const NavBar = ({ location, history }) => {
   );
 };
 
-export default NavBar;
+Nav.propTypes = {
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+export default Nav;

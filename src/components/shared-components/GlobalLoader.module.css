@@ -1,6 +1,6 @@
 .container {
-  -webkit-animation: appear 1s ease-out;
-          animation: appear 1s ease-out;
+  -webkit-animation: fade 1s ease-out;
+          animation: fade 1s ease-out;
   -webkit-transition: opacity 0.75s ease 0.25s;
   transition: opacity 0.75s ease 0.25s;
   display: -webkit-box;
@@ -20,7 +20,7 @@
   height: 100vh;
 }
 
-@-webkit-keyframes appear {
+@-webkit-keyframes fade {
   from {
     opacity: 0;
   }
@@ -29,7 +29,7 @@
   }
 }
 
-@keyframes appear {
+@keyframes fade {
   from {
     opacity: 0;
   }

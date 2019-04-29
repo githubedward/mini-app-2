@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./styles/InfoWindow.module.css";
 
 const PlacesInfoWindow = ({ place, pinned }) => {
@@ -10,6 +11,11 @@ const PlacesInfoWindow = ({ place, pinned }) => {
       <p>{place.address}</p>
     </div>
   );
+};
+
+PlacesInfoWindow.propTypes = {
+  place: PropTypes.object.isRequired,
+  pinned: PropTypes.any
 };
 
 export default PlacesInfoWindow;

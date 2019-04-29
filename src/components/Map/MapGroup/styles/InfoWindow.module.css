@@ -1,4 +1,4 @@
-.pinit_window {
+.active_window {
   -webkit-box-shadow: 0px 0px 5px 2px #b4b4b4;
           box-shadow: 0px 0px 5px 2px #b4b4b4;
   display: -webkit-box;
@@ -26,11 +26,11 @@
   text-align: center;
 }
 
-.pinit_window p {
+.active_window p {
   margin-top: 0.25rem;
 }
 
-.pinit_window__button {
+.active_window__button {
   margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,7 +52,7 @@
   color: white;
 }
 
-.pinit_window__button:hover {
+.active_window__button:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background: #fd545f;
@@ -60,23 +60,69 @@
   color: white;
 }
 
-.pinit_window__button:focus {
+.active_window__button:focus {
   outline: none;
 }
 
-.pinit_window__button:active {
+.active_window__button:active {
   background-color: #2694e0;
   border: 1px solid #2694e0;
 }
 
-.pinit_window__button:disabled {
+.active_window__button:disabled {
   -webkit-transition: opacity 0.75s ease 0.25s;
   transition: opacity 0.75s ease 0.25s;
   cursor: not-allowed !important;
   opacity: 0.25 !important;
 }
 
-.pinit_window__close {
+.active_window__button_active {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.5rem;
+  width: auto;
+  font-size: 0.75rem;
+  padding: 0rem 1rem;
+  background-color: #fd545f;
+  border: 1px solid #fd545f;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+}
+
+.active_window__button_active:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #fc202f;
+  border: 1px solid #fc202f;
+  color: white;
+}
+
+.active_window__button_active:focus {
+  outline: none;
+}
+
+.active_window__button_active:active {
+  background-color: #fd545f;
+  border: 1px solid #fd545f;
+}
+
+.active_window__button_active:disabled {
+  -webkit-transition: opacity 0.75s ease 0.25s;
+  transition: opacity 0.75s ease 0.25s;
+  cursor: not-allowed !important;
+  opacity: 0.25 !important;
+}
+
+.active_window__close {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -85,12 +131,12 @@
   fill: #b4b4b4;
 }
 
-.pinit_window__close:hover {
+.active_window__close:hover {
   fill: #333333;
   background: none;
 }
 
-.pinit_window__close svg {
+.active_window__close svg {
   height: 1rem;
   width: 1rem;
 }

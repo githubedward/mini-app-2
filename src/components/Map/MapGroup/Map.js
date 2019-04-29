@@ -4,7 +4,7 @@ import GoogleMapReact from "google-map-react";
 // components/styles
 import SearchBox from "./SearchBox";
 import Marker from "./Marker";
-import PinItWindow from "./PinItWindow";
+import ActiveInfoWindow from "./ActiveInfoWindow";
 import PlaceInfoWindow from "./PlaceHoverWindow";
 import styles from "./styles/Map.module.css";
 // others
@@ -18,7 +18,8 @@ class Map extends Component {
     mapsApiLoaded: false,
     mapInstance: null,
     mapsAPI: null,
-    unPinnedPlace: null
+    unPinnedPlace: null,
+    searchedMarker: false
   };
 
   componentDidMount() {
@@ -66,6 +67,10 @@ class Map extends Component {
       name: searched.name,
       type: searched.types[0]
     };
+    const isNewPlace = this.props.places.data.indexOf(
+      exPlace => exPlace.place_id === place.place_id
+    );
+    if (isNewPlace !== 0) this.setState({ searchedMarker: true });
     this.props.showActivePlaceAction(place);
   };
 
@@ -92,7 +97,7 @@ class Map extends Component {
       closeInfoBoxAction
     } = this.props;
     const { placeInfo, activePlaceInfo } = places;
-    const { mapsApiLoaded, mapsAPI, mapInstance } = this.state;
+    const { mapsApiLoaded, mapsAPI, mapInstance, searchedMarker } = this.state;
     return (
       <div style={{ height: "102vh", width: "100vw", position: "fixed" }}>
         {mapsApiLoaded && (
@@ -145,24 +150,23 @@ class Map extends Component {
                 />
               );
             })}
-          {activePlaceInfo && !activePlaceInfo.pinned && (
-            // render search result marker
+          {activePlaceInfo && searchedMarker && (
             <Marker
               lat={activePlaceInfo.lat}
               lng={activePlaceInfo.lng}
-              result={true}
+              result={searchedMarker}
               type={activePlaceInfo.type}
-              active={true}
             />
           )}
-          {activePlaceInfo && !activePlaceInfo.pinned && (
+          {activePlaceInfo && (
             // render add place window
-            <PinItWindow
+            <ActiveInfoWindow
               place={activePlaceInfo}
               lat={activePlaceInfo.lat}
               lng={activePlaceInfo.lng}
-              onClick={this.onPinAPlace}
+              onClick={!activePlaceInfo.pinned && this.onPinAPlace}
               onClose={closeInfoBoxAction}
+              pinned={activePlaceInfo.pinned}
             />
           )}
           {placeInfo && (

@@ -2,14 +2,14 @@ import * as types from "./places.types";
 
 export const showHoverPlaceAction = place => {
   return {
-    type: types.SHOW_HOVER_PLACE_INFOBOX,
+    type: types.SHOW_HOVER_PLACE,
     place
   };
 };
 
 export const showActivePlaceAction = place => {
   return {
-    type: types.SHOW_ACTIVE_PLACE_INFOBOX,
+    type: types.SHOW_ACTIVE_PLACE,
     place
   };
 };

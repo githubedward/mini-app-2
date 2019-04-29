@@ -105,7 +105,7 @@ $btn-style: (
   }
 }
 
-.places {
+.row {
   cursor: pointer;
   display: flex;
   border-bottom: 1px solid $lightgray;
@@ -154,11 +154,11 @@ $btn-style: (
     margin: 0 1rem 0 0.5rem;
     width: 100%;
 
-    &__name {
+    &__top {
       font-weight: $fw-medium;
     }
 
-    &__address {
+    &__bottom {
       font-size: $t4;
       font-weight: $fw-light;
     }

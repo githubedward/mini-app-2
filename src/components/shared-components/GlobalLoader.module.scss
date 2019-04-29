@@ -2,7 +2,7 @@
 
 .container {
   @include fade-in(1s);
-  @include trans-opacity;
+  @include trans-opacity(0.75s);
   display: flex;
   flex-direction: column;
   justify-content: center;

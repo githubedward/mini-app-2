@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 // components/styles
 import styles from "./styles/Routes.module.css";
 import IconRoundUser from "../../shared-components/IconRoundId";
@@ -39,6 +40,11 @@ const Home = ({
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  user: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default Home;

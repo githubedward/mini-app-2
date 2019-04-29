@@ -24,10 +24,6 @@ class App extends Component {
     }
   }
 
-  // shouldComponentUpdate(prevProps, nextProps) {
-  //   return this.props !== nextState;
-  // }
-
   render() {
     const token = localStorage.getItem("token");
     const { loading, authenticated } = this.props;
