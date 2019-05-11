@@ -1,3 +1,7 @@
+# Pinit App
+
+> A simple app where users can pin places they've been to and share it to their network. 
+
 ### Current stack used:
 
 - React - UI (create-react-app)
