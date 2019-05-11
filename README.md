@@ -14,13 +14,6 @@
 - Axios - http requests
 - Jest/Enzyme - unit testing (partially applied)
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### npm start
-
-
 ## Screenies
 
 > Signup and Login
