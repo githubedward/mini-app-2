@@ -13,6 +13,7 @@
 - Yup - form validations
 - Axios - http requests
 - Jest/Enzyme - unit testing (partially applied)
+- Babel 
 
 ## Screenies
 
