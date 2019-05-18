@@ -19,7 +19,10 @@ class index extends Component {
 const mapStateToProps = state => {
   const { places, user } = state;
   return {
-    user_id: user.id,
+    user: {
+      id: user.id,
+      fullname: user.fullname
+    },
     places
   };
 };

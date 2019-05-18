@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles/InfoWindow.module.css";
 
-const PlacesInfoWindow = ({ place, pinned }) => {
+const PlacesInfoWindow = ({ place, pinned, user }) => {
   const windowStyles = `${styles.places_window} ${pinned &&
     styles.places_window__pinned}`;
   return (

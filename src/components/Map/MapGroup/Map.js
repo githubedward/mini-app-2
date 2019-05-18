@@ -28,6 +28,10 @@ class Map extends Component {
 
   static propTypes = {
     center: PropTypes.object.isRequired,
+    user: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      fullname: PropTypes.string.isRequired
+    }),
     places: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -91,6 +95,7 @@ class Map extends Component {
   render() {
     const {
       center,
+      user,
       places,
       showHoverPlaceAction,
       showActivePlaceAction,
@@ -124,7 +129,7 @@ class Map extends Component {
             // render places markers
             places.data.map(place => {
               const pinned = place.users.find(
-                user => user.id === this.props.user_id
+                user => user.id === this.props.user.id
               );
               return (
                 <Marker
@@ -167,6 +172,7 @@ class Map extends Component {
               onClick={!activePlaceInfo.pinned && this.onPinAPlace}
               onClose={closeInfoBoxAction}
               pinned={activePlaceInfo.pinned}
+              user={user}
             />
           )}
           {placeInfo && (
@@ -176,6 +182,7 @@ class Map extends Component {
               lat={placeInfo.lat}
               lng={placeInfo.lng}
               pinned={placeInfo.pinned}
+              user={user}
             />
           )}
         </GoogleMapReact>
