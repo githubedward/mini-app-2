@@ -24,6 +24,7 @@ ActiveInfoWindow.propTypes = {
   pinned: PropTypes.any
 };
 
+// sub component
 const PinnedBy = ({ pinned, user, place }) => {
   const users = place.users;
   const others = users.length;
@@ -31,21 +32,22 @@ const PinnedBy = ({ pinned, user, place }) => {
     <Fragment>
       {pinned && (
         <p className={styles.active_window__pinnedby}>
-          <span>You</span>
-          {` and ${others} others have been here`}
+          Pinned by <span>You</span>
+          {` and ${others} others`}
         </p>
       )}
       {!pinned && (
-        <p className={styles.active_window__pinnedby}>{`${users[0].fullname} ${
-          others - 1 !== 0 ? `and ${others - 1}` : ""
-        } ${
+        <p className={styles.active_window__pinnedby}>{`Pinned by ${
+          users[0].fullname
+        } ${others - 1 !== 0 ? `and ${others - 1}` : ""} ${
           others - 1 > 1 ? "others" : others - 1 === 1 ? "other" : ""
-        } have been here`}</p>
+        }`}</p>
       )}
     </Fragment>
   );
 };
 
+// sub component
 const ActionButton = ({ pinned, onClick }) => {
   return (
     <Fragment>
