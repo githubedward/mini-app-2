@@ -1,0 +1,4 @@
+[build]
+base = "pinit/"
+publish = "pinit/build/"
+command = "npm run build"
