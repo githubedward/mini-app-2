@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import IconPin from "../../shared-components/IconPin";
 import styles from "./styles/Marker.module.css";
-import createMarkerIcon from "components/shared-utils/createMarkerIcon";
+import createMarkerIcon from "../../shared-utils/createMarkerIcon";
 
 const Marker = ({
   onMouseOver,

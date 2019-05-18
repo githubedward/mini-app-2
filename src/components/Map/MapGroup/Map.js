@@ -9,7 +9,7 @@ import PlaceInfoWindow from "./PlaceHoverWindow";
 import styles from "./styles/Map.module.css";
 // others
 import { mapOptions } from "../helpers/functions";
-import * as helpers from "utils/functions";
+import * as helpers from "../../../utils/functions";
 
 const MAP_TOKEN = process.env.REACT_APP_MAP_TOKEN;
 
