@@ -1,18 +1,17 @@
 import * as Yup from "yup";
 
 const errorMsg = {
-  min: "Enter at least 6 characters"
+  min: "Enter at least 6 characters",
+  noSpaces: "No spaces please"
 };
 
 export const loginValidationSchema = Yup.object().shape({
   username: Yup.string()
     .min(6, errorMsg.min)
-    .required("What's your username?")
-    .trim(),
+    .required("What's your username?"),
   password: Yup.string()
     .min(6, errorMsg.min)
     .required("What's your password?")
-    .trim()
 });
 
 export const signupValidationSchema = Yup.object().shape({
@@ -23,9 +22,9 @@ export const signupValidationSchema = Yup.object().shape({
   username: Yup.string()
     .required("You'll need this when you login.")
     .min(6, errorMsg.min)
-    .trim(),
+    .matches(/^\S*$/, errorMsg.noSpaces),
   password: Yup.string()
     .required("You'll need this when you login.")
     .min(6, errorMsg.min)
-    .trim()
+    .matches(/^\S*$/, errorMsg.noSpaces)
 });
