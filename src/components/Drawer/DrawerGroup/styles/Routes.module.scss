@@ -73,6 +73,7 @@ $btn-style: (
 }
 
 .home {
+  @include fade-in(0.75s);
   display: flex;
   align-items: center;
   color: $superdarkgray;
@@ -106,6 +107,7 @@ $btn-style: (
 }
 
 .row {
+  @include fade-in(1s);
   cursor: pointer;
   display: flex;
   border-bottom: 1px solid $lightgray;

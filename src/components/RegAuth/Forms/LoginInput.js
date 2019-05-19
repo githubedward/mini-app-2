@@ -21,6 +21,7 @@ const LoginInput = ({
     >
       {label}
       <input
+        autoComplete="off"
         className={`${styles.input} ${error && styles.input_error} ${pressed &&
           styles.input_pressed}`}
         type={type}

@@ -150,6 +150,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
                 >
                   Username
                   <input
+                    autoComplete="off"
                     className="input undefined false"
                     data-for="username-login"
                     name="username"
@@ -176,6 +177,7 @@ exports[`<FormContainer /> should render correctly 1`] = `
                 >
                   Password
                   <input
+                    autoComplete="off"
                     className="input undefined false"
                     data-for="password-login"
                     name="password"
