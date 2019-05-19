@@ -26,7 +26,11 @@ class FormContainer extends Component {
         isLoginFocus: false
       },
       asyncSignupError: {},
-      asyncLoginError: {}
+      asyncLoginError: {},
+      signupSuccess: {
+        status: false,
+        username: ""
+      }
     };
   }
 
@@ -40,19 +44,25 @@ class FormContainer extends Component {
       // const resp = await axios.post(SIGNUP_URL, data);
       const resp = await authApi.signup(data);
       const { username } = resp;
-      this.setState({
-        ...this.state,
-        loginInput: {
-          ...this.state.loginInput,
-          username: username,
-          password: ""
-        },
-        isFocus: {
-          isSignupFocus: false,
-          isLoginFocus: false
-        },
-        asyncSignupError: {}
-      });
+      if (username) {
+        this.setState({
+          ...this.state,
+          loginInput: {
+            ...this.state.loginInput,
+            username: username,
+            password: ""
+          },
+          isFocus: {
+            isSignupFocus: false,
+            isLoginFocus: false
+          },
+          asyncSignupError: {},
+          signupSuccess: {
+            status: true,
+            username: username
+          }
+        });
+      }
     } catch (err) {
       const error = err.response.data.errors[0];
       const asyncSignupError = {
@@ -124,7 +134,8 @@ class FormContainer extends Component {
       signupInput,
       isFocus,
       asyncSignupError,
-      asyncLoginError
+      asyncLoginError,
+      signupSuccess
     } = this.state;
     return (
       <section className={styles.background}>
@@ -144,6 +155,11 @@ class FormContainer extends Component {
             asyncError={asyncSignupError}
             handleSignupFocus={this.handleSignupFocus}
           />
+          {signupSuccess.status && (
+            <div className={styles.successModal}>
+              <p>{`${signupSuccess.username} successfully registered`}</p>
+            </div>
+          )}
         </div>
       </section>
     );

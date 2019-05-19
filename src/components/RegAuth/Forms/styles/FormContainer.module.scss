@@ -15,6 +15,7 @@
   @include box-shadow(rgba(209, 209, 209, 0.6));
   width: 500px;
   border-radius: $auth-b-radius;
+  position: relative;
 }
 
 .logo {
@@ -24,4 +25,24 @@
   font-family: "Pacifico", cursive;
   font-size: $t2;
   color: $light-theme;
+}
+
+.successModal {
+  @include flex-center;
+  @include fade-in(0.75s);
+  @include disappear(3s);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fffffff9;
+  border-radius: $auth-b-radius;
+  font-weight: $fw-light;
+  font-size: $t1;
+  z-index: -1;
+  opacity: 0;
+
+  p {
+    @include shake-animation();
+  }
 }
