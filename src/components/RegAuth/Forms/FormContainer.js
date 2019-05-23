@@ -43,6 +43,7 @@ class FormContainer extends Component {
     try {
       // const resp = await axios.post(SIGNUP_URL, data);
       const resp = await authApi.signup(data);
+      // console.log(resp);
       const { username } = resp;
       if (username) {
         this.setState({

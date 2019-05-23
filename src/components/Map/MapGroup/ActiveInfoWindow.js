@@ -11,7 +11,7 @@ const ActiveInfoWindow = ({ onClick, onClose, place, pinned, user }) => {
       </button>
       <h3>{place.name}</h3>
       <p>{place.address}</p>
-      <PinnedBy pinned={pinned} user={user} place={place} />
+      {place.users && <PinnedBy pinned={pinned} user={user} place={place} />}
       <ActionButton pinned={pinned} onClick={onClick} />
     </div>
   );
@@ -25,7 +25,7 @@ ActiveInfoWindow.propTypes = {
 };
 
 // sub component
-const PinnedBy = ({ pinned, user, place }) => {
+const PinnedBy = ({ pinned, place }) => {
   const users = place.users;
   const others = users.length;
   return (

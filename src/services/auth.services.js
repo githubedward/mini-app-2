@@ -13,8 +13,12 @@ export default class authApi {
    * @returns {object} api payload
    */
   static async signup(data) {
-    const resp = await axios.post(SIGNUP_URL, data);
-    return resp.data;
+    try {
+      const resp = await axios.post(SIGNUP_URL, data);
+      return resp.data;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   /**
